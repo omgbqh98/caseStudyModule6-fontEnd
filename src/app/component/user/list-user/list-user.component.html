@@ -1,0 +1,28 @@
+<h1>list Book</h1>
+<hr>
+<!--<p>có {{listBook.length}} quyển sách</p>-->
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">title</th>
+    <th scope="col">author</th>
+    <th scope="col">action</th>
+    <!--    <td>delete</td>-->
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of listUser">
+    <td>{{user.userId}}</td>
+    <td><a [routerLink]="['detail',user.fullName]">{{user.fullName}}</a></td>
+    <td>{{user.username}}</td>
+    <td>
+      <button class="btn-success" [routerLink]="['/updateProfile', user.userId]">update</button>
+      <button class="btn-danger" [routerLink]="['/delete', user.userId]">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="btn-dark" [routerLink]="['create']">create new</button>
+
