@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IUser} from '../../../iuser';
+import {User} from '../../../model/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -13,7 +13,7 @@ export class UpdateProfileComponent implements OnInit {
  // @ts-ignore
   private userId: number;
   // @ts-ignore
-  private user: IUser;
+  private user: User;
   // @ts-ignore
   newFormUpdate: FormGroup;
   constructor(

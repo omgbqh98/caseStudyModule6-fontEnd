@@ -1,10 +1,10 @@
-export interface IUser {
+export interface User {
   userId?: number;
   username?: string;
   password?: string;
-  fullName?: string;
-  phone?: number;
   address?: string;
-  email?: string;
   avatar?: string;
+  email?: string;
+  fullName?: string;
+  phone?: string;
 }
