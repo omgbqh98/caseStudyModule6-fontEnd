@@ -22,20 +22,20 @@ import { ListRentedHousesComponent } from './modules/page-content/booking/list/l
 import { UserCheckInComponent } from './modules/page-content/booking/edit/user-check-in/user-check-in.component';
 import { BookingHotelComponent } from './modules/page-content/booking/create/booking-hotel/booking-hotel.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LoginComponent} from './component/user/login/login.component';
+import {LoginComponent} from './modules/page-content/user/login/login.component';
 // =======
 // import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 // import { UpdateProfileComponent } from './component/user/update-profile/update-profile.component';
-import { ListUserComponent } from './component/user/list-user/list-user.component';
+// import { ListUserComponent } from './component/user/list-user/list-user.component';
 // import { UpdatePasswordComponent } from './component/user/update-password/update-password.component';
-import { ProfileComponent } from './component/user/profile/profile.component';
+// import { ProfileComponent } from './component/user/profile/profile.component';
 // import { LoginComponent } from './component/user/login/login.component';
-import { HomeComponent } from './component/home/home/home.component';
+// import { HomeComponent } from './component/home/home/home.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import {UpdateProfileComponent} from './component/user/update-profile/update-profile.component';
-import {UpdatePasswordComponent} from './component/user/update-password/update-password.component';
+// import {UpdateProfileComponent} from './component/user/update-profile/update-profile.component';
+// import {UpdatePasswordComponent} from './component/user/update-password/update-password.component';
 // >>>>>>> 770c87ac2b1ccf43b5feebfaa58a2a0bc28407b2
 
 @NgModule({
@@ -61,12 +61,12 @@ import {UpdatePasswordComponent} from './component/user/update-password/update-p
     BookingHotelComponent,
     LoginComponent,
 // =======
-    UpdateProfileComponent,
-    ListUserComponent,
-    UpdatePasswordComponent,
-    ProfileComponent,
+//     UpdateProfileComponent,
+    // ListUserComponent,
+    // UpdatePasswordComponent,
+    // ProfileComponent,
     LoginComponent,
-    HomeComponent
+    // HomeComponent
 // >>>>>>> 770c87ac2b1ccf43b5feebfaa58a2a0bc28407b2
   ],
   imports: [
