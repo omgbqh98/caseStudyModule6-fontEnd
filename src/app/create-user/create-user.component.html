@@ -1,0 +1,143 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>Official Signup Form Flat Responsive widget Template :: w3layouts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="keywords"
+        content="Official Signup Form Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+  <script type="application/x-javascript"> addEventListener("load", function () {
+    setTimeout(hideURLbar, 0);
+  }, false);
+
+  function hideURLbar() {
+    window.scrollTo(0, 1);
+  } </script>
+  <!-- fonts -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+  <!-- /fonts -->
+  <!-- css -->
+  <link href="/assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <!--  <link href="css/style.css" rel='stylesheet' type='text/css' media="all"/>-->
+<!--  <link href="assets/style2.css" rel='stylesheet' type='text/css' media="all"/>-->
+  <!-- /css -->
+</head>
+<body>
+<div class="title">
+
+</div>
+<div>
+  <div class="content-w3ls">
+    <div class="content-agile1">
+      <h2 class="agileits1">AirBnB</h2>
+      <p class="agileits2">Your New Home!</p>
+    </div>
+    <div class="content-agile2">
+      <div class="login-wrap">
+        <div class="login-html">
+          <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign
+          In</label>
+          <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+          <div class="login-form">
+            <div class="sign-up-htm">
+              <form [formGroup]="newFromUser" (ngSubmit)="createNewUser()">
+                <div class="group">
+                  <input type="text" id="username" formControlName="username" placeholder="User Name"
+                         title="Please enter your First Name" required="" class="input">
+                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div  *ngIf="f.username.errors.required">* UserName is required</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <input type="text" class="lock" formControlName="phone" placeholder="Phone" id="phone" required=""
+                         class="input">
+                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">* Phone Number is required</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <input type="password"  formControlName="password" placeholder="Password..."
+                         id="password1" class="input" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">* Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">* Password must be at least 6 characters</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <input type="password"  formControlName="confirmPassword"
+                         placeholder="Confirm password..."
+                         id="password2" class="input" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                  <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmPassword.errors.required">* Confirm Password is required</div>
+                    <div *ngIf="f.confirmPassword.errors.mustMatch">* Passwords must match</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <input type="submit" class="button" value="Register">
+                </div>
+              </form>
+              <script type="text/javascript">
+                window.onload = function () {
+                  document.getElementById("password").onchange = validatePassword;
+                  document.getElementById("password2").onchange = validatePassword;
+                }
+
+                function validatePassword() {
+                  var pass2 = document.getElementById("password2").value;
+                  var pass1 = document.getElementById("password").value;
+                  if (pass1 != pass2)
+                    document.getElementById("password2").setCustomValidity("Passwords do not match!");
+                  else
+                    document.getElementById("password2").setCustomValidity('');
+                  //empty string means no validation error
+                }
+              </script>
+              <!--              <p class="wthree w3l">Fast Signup With Your Favourite Social Profile</p>-->
+              <ul class="social-agileinfo wthree2">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+            <div class="sign-in-htm">
+
+              <form [formGroup]="newFromLogin" (ngSubmit)="login()">
+                <div class="group">
+                  <input type="text" class="lock" formControlName="username" placeholder="Username..." id="username1" required=""
+                         class="input">
+                  <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                    <div *ngIf="f.userName.errors.required">* Username is required</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <input type="text" class="lock" formControlName="password" placeholder="Password..." id="password" required=""
+                         class="input">
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">* Password is required</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <input id="check" type="checkbox" class="check" checked>
+                  <!--                <label for="check"><span class="icon"></span> Keep me Signed in</label>-->
+                </div>
+                <div class="group">
+                  <input type="submit" class="button" value="Sign In">
+                </div>
+                <div class="hr"></div>
+                <div class="foot-lnk">
+                  <a href="#forgot">Forgot Password?</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <p class="copyright w3l">© 2017 Official Signup Form. All Rights Reserved | Design by <a
+      href="https://w3layouts.com/" target="_blank">W3layouts</a></p>
+  </div>
+</div>
+</body>
