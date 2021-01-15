@@ -146,7 +146,7 @@
       </i>
       <div class="dropdown-menu dropdown-menu-right" id="c">
 
-        <a class="dropdown-item" [routerLink]="'user-show'"
+        <a class="dropdown-item" [routerLink]="['user-show',user.userId]"
            role="menuitem"><i class="icon fa fa-user fa-fw iconsmall" aria-hidden="true"
                               title="Hồ sơ"></i>Profile</a>
         <div class="dropdown-divider" role="presentation"></div>
@@ -163,7 +163,7 @@
            href="https://james.codegym.vn/message/index.php"
            role="menuitem"><i
           class="icon fa fa-comment fa-fw iconsmall" aria-hidden="true" title="Tin nhắn"></i>Tin
-          nhắn</a><a class="dropdown-item" [routerLink]="'change-password'"
+          nhắn</a><a class="dropdown-item" [routerLink]="['change-password',user.userId]"
                       role="menuitem"><i class="icon fa fa-wrench fa-fw iconsmall"
                                          aria-hidden="true" title="Tuỳ chọn"></i>Change password</a>
         <div class="dropdown-divider" role="presentation"></div>

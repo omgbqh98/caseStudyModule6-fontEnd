@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../../model/user';
+import {User} from '../../../modules/page-content/user/model-user/user';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../service/user.service';
+import {UserService} from '../../../modules/page-content/user/user-service/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserToken} from '../../../model/user-token';
-import {AuthService} from '../../../service/auth.service';
+import {UserToken} from '../../../modules/page-content/user/model-user/user-token';
+import {AuthService} from '../../../authen-service/auth.service';
 
 @Component({
   selector: 'app-update-password',

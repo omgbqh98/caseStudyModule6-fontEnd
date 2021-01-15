@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../../model/user';
-import {UserService} from '../../../service/user.service';
-import {AuthService} from '../../../service/auth.service';
-import {UserToken} from '../../../model/user-token';
+import {User} from '../../../modules/page-content/user/model-user/user';
+import {UserService} from '../../../modules/page-content/user/user-service/user.service';
+import {AuthService} from '../../../authen-service/auth.service';
+import {UserToken} from '../../../modules/page-content/user/model-user/user-token';
 
 @Component({
   selector: 'app-home',
