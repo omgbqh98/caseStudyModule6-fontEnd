@@ -1,6 +1,3 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {HomeContentComponent} from './modules/home-content/home-content.component';
 import {ListAllHousesComponent} from './modules/page-content/houses/list/list-all-houses/list-all-houses.component';
 import {ListOwnHousesComponent} from './modules/page-content/houses/list/list-own-houses/list-own-houses.component';
 import {AboutContentComponent} from './_shared/about-content/about-content.component';
@@ -8,11 +5,21 @@ import {UserShowComponent} from './modules/page-content/user/detail/user-show/us
 import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
 import {HouseDetailViewComponent} from './modules/page-content/houses/detail/house-detail-view/house-detail-view.component';
 import {UserChangePasswordComponent} from './modules/page-content/user/update/user-change-password/user-change-password.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeContentComponent} from './modules/home-content/home-content.component';
+import {LoginComponent} from './modules/authentication/login/login.component';
+import {AuthGuard} from './helper/auth-guard';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
-    component: HomeContentComponent
+    component: HomeContentComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'houses',
     component: ListAllHousesComponent
@@ -26,11 +33,11 @@ const routes: Routes = [
     component: AboutContentComponent
   },
   {
-    path: 'user-show',
+    path: 'user-show/:id',
     component: UserShowComponent
   },
   {
-    path: 'user-update',
+    path: 'user-update/:username',
     component: UserUpdateComponent
   },
   {
@@ -38,12 +45,13 @@ const routes: Routes = [
     component: HouseDetailViewComponent
   },
   {
-    path: 'change-password',
+    path: 'change-password/:id',
     component: UserChangePasswordComponent
   }
 ];
 
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

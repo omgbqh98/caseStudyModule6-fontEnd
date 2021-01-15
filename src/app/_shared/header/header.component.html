@@ -117,18 +117,6 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'about'">About</a>
         </li>
-<!--        <li class="nav-item dropdown">-->
-<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"-->
-<!--             aria-haspopup="true" aria-expanded="false">-->
-<!--            Pages-->
-<!--          </a>-->
-<!--          <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--            <a class="dropdown-item" [routerLink]="'property-single'">Property Single</a>-->
-<!--            <a class="dropdown-item" href="blog-single.html">Blog Single</a>-->
-<!--            <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>-->
-<!--            <a class="dropdown-item" href="agent-single.html">Agent Single</a>-->
-<!--          </div>-->
-<!--        </li>-->
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Become a host</a>
         </li>
@@ -139,7 +127,7 @@
       <span class="fa fa-search" aria-hidden="true"></span>
     </button>
     <li class="nav-item">
-      <a href="#panel7" role="tab"><i class="icon fa fa-user fa-fw iconsmall"></i>
+      <a [routerLink]="'login'" role="tab"><i class="icon fa fa-user fa-fw iconsmall"></i>
         Login</a>
     </li>
 
@@ -149,7 +137,7 @@
       </i>
       <div class="dropdown-menu dropdown-menu-right" id="c">
 
-        <a class="dropdown-item" [routerLink]="'user-show'"
+        <a class="dropdown-item" [routerLink]="['user-show',user.userId]"
            role="menuitem"><i class="icon fa fa-user fa-fw iconsmall" aria-hidden="true"
                               title="Hồ sơ"></i>Profile</a>
         <div class="dropdown-divider" role="presentation"></div>
@@ -166,11 +154,11 @@
            href="https://james.codegym.vn/message/index.php"
            role="menuitem"><i
           class="icon fa fa-comment fa-fw iconsmall" aria-hidden="true" title="Tin nhắn"></i>Tin
-          nhắn</a><a class="dropdown-item" [routerLink]="'change-password'"
+          nhắn</a><a class="dropdown-item" [routerLink]="['change-password',user.userId]"
                       role="menuitem"><i class="icon fa fa-wrench fa-fw iconsmall"
                                          aria-hidden="true" title="Tuỳ chọn"></i>Change password</a>
         <div class="dropdown-divider" role="presentation"></div>
-        <a class="dropdown-item" href="/sell/logout"
+        <a (click)="logout()" class="dropdown-item"
         ><i class="icon fa fa-sign-out fa-fw iconsmall" aria-hidden="true"
             title="Thoát"></i>Log out</a>
       </div>
@@ -178,4 +166,3 @@
   </div>
 
 </nav>
-
