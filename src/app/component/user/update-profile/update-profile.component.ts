@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../model/user';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-update-profile',
@@ -10,54 +11,45 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent implements OnInit {
- // @ts-ignore
-  private userId: number;
   // @ts-ignore
-  private user: User;
+  private user: string;
+  // @ts-ignore
+  private currentUser: User;
   // @ts-ignore
   newFormUpdate: FormGroup;
+
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
     private router: Router,
     private activatedRouter: ActivatedRoute
   ) { }
-
   ngOnInit(): void {
-    this.newFormUpdate = this.fb.group({
-      fullName: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      email: ['', [Validators.required]]
-    });
-    this.activatedRouter.params.subscribe(params => {
-      this.userId = params.id;
-      this.userService.finById(this.userId).subscribe(res => {
-        this.user = res;
-        this.newFormUpdate.setValue({
-          fullName: res.fullName,
-          phone: res.phone,
-          address: res.address,
-          email: res.email
-        });
-      });
-    });
+    // this.newFormUpdate = this.fb.group({
+    //   fullName: ['', [Validators.required]],
+    //   email: ['', [Validators.required]],
+    //   phone: ['', [Validators.required]],
+    //   address: ['', [Validators.required]],
+    // });
+    // this.activatedRouter.params.subscribe(params => {
+    //   this.userService.(this.id).subscribe(res => {
+    //     this.user = res;
+    //     this.newFormUpdate.setValue({
+    //       title: res.title,
+    //       author: res.author,
+    //       description: res.author
+    //     });
+    //   });
+    // });
   }
-
   // tslint:disable-next-line:typedef
-  update() {
-    if (!this.newFormUpdate.invalid) {
-      this.user.fullName = this.newFormUpdate.value.fullName;
-      this.user.phone = this.newFormUpdate.value.phone;
-      this.user.address = this.newFormUpdate.value.address;
-      this.user.email = this.newFormUpdate.value.email;
-      console.log(this.user);
-      this.userService.updateProfile(this.user).toPromise().then(value => {
-        console.log('update', value);
-        alert('update ok');
-      });
-      this.router.navigate(['']);
-    }
+  getUserProfile() {
+    // @ts-ignore
+    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('id');
+      // @ts-ignore
+      this.getUserProfileById(id);
+    });
   }
 
 }

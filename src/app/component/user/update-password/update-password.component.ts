@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserToken} from '../../../model/user-token';
+import {AuthService} from '../../../service/auth.service';
 
 @Component({
   selector: 'app-update-password',
@@ -28,7 +29,8 @@ export class UpdatePasswordComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    private authService: AuthService
   ) {
     // @ts-ignore
     this.authService.currentUser.subscribe(
@@ -41,13 +43,19 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentUser = {
+      fullName: '',
+      username: '',
+      userId: 1
+    };
     this.getUserProfile();
   }
   // tslint:disable-next-line:typedef
   getUserProfile() {
     // @ts-ignore
-    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+    this.sub = this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
+      console.log(id);
       // @ts-ignore
       this.getUserProfileById(id);
     });
@@ -55,13 +63,9 @@ export class UpdatePasswordComponent implements OnInit {
   // tslint:disable-next-line:typedef
   private getUserProfileById(id: string) {
     // @ts-ignore
-    this.userService.getUserProfile(id).subscribe(value => {
+    this.userService.getUserProfileById(id).subscribe(value => {
       this.currentUser = value;
-      this.userFullName = value.fullName;
-      this.userAddress = value.address;
-      this.userPhone = value.phone;
-      // this.userPhoneNumber = value.phoneNumber;
-      this.userEmail = value.email;
+      console.log(value);
     }, () => {
       console.log('Lỗi!');
     });
@@ -71,19 +75,14 @@ export class UpdatePasswordComponent implements OnInit {
     // @ts-ignore
     const user = this.setNewUser();
     // @ts-ignore
-    this.userService.newPassword(user, this.currentUser.id, this.currentUserToken.accessToken).subscribe(() => {
-      console.log('Đổi mật khẩu thành công');
+    this.userService.newPassword(user, this.currentUser.userId).subscribe(() => {
+      alert('Đổi mật khẩu thành công');
       this.newPasswordForm.reset();
       this.router.navigate(['/']);
       // @ts-ignore
     }, err => {
       console.log(user);
-      console.log(this.currentUser);
-      // @ts-ignore
-      console.log(this.currentUserToken);
-      console.log(err);
     });
-    console.log(user);
   }
   // tslint:disable-next-line:typedef
   private setNewUser() {

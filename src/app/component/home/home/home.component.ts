@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../model/user';
+import {UserService} from '../../../service/user.service';
+import {AuthService} from '../../../service/auth.service';
+import {UserToken} from '../../../model/user-token';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +11,21 @@ import {User} from '../../../model/user';
 })
 export class HomeComponent implements OnInit {
 // @ts-ignore
-  private user: User;
-  constructor() { }
+   user: User;
+  // @ts-ignore
+   userCurrent: UserToken;
+  constructor(
+    private userService: UserService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.userCurrent = JSON.parse(localStorage.getItem('user'));
+    // @ts-ignore
+    console.log(this.userCurrent);
+    // @ts-ignore
+    this.userService.getUserProfile(this.userCurrent.username).subscribe(value => this.user = value);
+    console.log(this.user);
   }
-
 }

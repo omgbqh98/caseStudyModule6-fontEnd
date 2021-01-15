@@ -1,21 +1,41 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
 import {Observable} from 'rxjs';
+import {environment} from '../environments/environment';
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private API_URL = 'http://localhost:8080/users';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
+
   getAllUser(): Observable<any> {
-    return this.http.get(this.API_URL);
+    return this.http.get(API_URL);
   }
+
   updateProfile(user: User): Observable<any> {
-    return this.http.put(this.API_URL + `/${user.userId}`, user);
+    return this.http.put(API_URL + `/${user.userId}`, user);
   }
+
   finById(id: number): Observable<any> {
-    return this.http.get(this.API_URL + `/${id}`);
+    return this.http.get(API_URL + `/users/${id}`);
+  }
+
+  getUserProfile(username: string): Observable<User> {
+    // @ts-ignore
+    return this.http.get<User>(API_URL + `/${username}`);
+  }
+
+  getUserProfileById(id: number): Observable<any> {
+    return this.http.get(API_URL + '/users' + `/${id}`);
+  }
+
+  newPassword(user: User, id: number): Observable<User> {
+    return this.http.put<User>(API_URL + `/changePassword/${id}`, user);
   }
 }

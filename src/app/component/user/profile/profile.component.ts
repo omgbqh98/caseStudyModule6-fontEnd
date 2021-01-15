@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   // @ts-ignore
   currentUser: User;
   // @ts-ignore
+  user: User;
+  // @ts-ignore
   sub: Subscription;
   userFullName = '';
   userAddress = '';
@@ -29,40 +31,13 @@ export class ProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
   }
-
   ngOnInit(): void {
-    this.currentUser = {
-      // @ts-ignore
-      id: 1,
-      firstName: 'a',
-      lastName: 'b'
-    };
-    this.getUserProfile();
-  }
-  // tslint:disable-next-line:typedef
-  getUserProfile() {
-    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = paramMap.get('id');
-      // @ts-ignore
-      this.getUserProfileById(id);
-    });
-  }
-  // tslint:disable-next-line:typedef
-  private getUserProfileById(id: number) {
-    this.userService.finById(id).subscribe(value => {
-      this.currentUser = value;
-      // @ts-ignore
-      this.userFullName = this.currentUser.fullName;
-      // @ts-ignore
-      this.userAddress = this.currentUser.address;
-      // @ts-ignore
-      this.userPhone = this.currentUser.phone;
-      // @ts-ignore
-      this.userEmail = this.currentUser.email;
-      // @ts-ignore
-      this.arrayPicture = this.currentUser.avatar;
-    }, () => {
-      console.log('Loi' + this.arrayPicture);
-    });
+    // @ts-ignore
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    // @ts-ignore
+    console.log(this.currentUser);
+    // @ts-ignore
+    this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
+    console.log(this.user);
   }
 }
