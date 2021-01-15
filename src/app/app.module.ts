@@ -3,14 +3,51 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './_shared/header/header.component';
+import { FooterComponent } from './_shared/footer/footer.component';
+import { SearchComponent } from './_shared/search/search.component';
+import { HomeContentComponent } from './modules/home-content/home-content.component';
+import { ListAllHousesComponent } from './modules/page-content/houses/list/list-all-houses/list-all-houses.component';
+import { ListOwnHousesComponent } from './modules/page-content/houses/list/list-own-houses/list-own-houses.component';
+import { AboutContentComponent } from './_shared/about-content/about-content.component';
+import { UserShowComponent } from './modules/page-content/user/detail/user-show/user-show.component';
+import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
+import { HouseDetailPostedComponent } from './modules/page-content/houses/detail/house-detail-posted/house-detail-posted.component';
+import { HouseDetailViewComponent } from './modules/page-content/houses/detail/house-detail-view/house-detail-view.component';
+import { CreateHouseComponent } from './modules/page-content/houses/create/create-house/create-house.component';
+import { PostedHouseEditComponent } from './modules/page-content/houses/edit/posted-house-edit/posted-house-edit.component';
+import { UserChangePasswordComponent } from './modules/page-content/user/update/user-change-password/user-change-password.component';
+import { ListRentedHousesComponent } from './modules/page-content/booking/list/list-rented-houses/list-rented-houses.component';
+import { UserCheckInComponent } from './modules/page-content/booking/edit/user-check-in/user-check-in.component';
+import { BookingHotelComponent } from './modules/page-content/booking/create/booking-hotel/booking-hotel.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    SearchComponent,
+    HomeContentComponent,
+    ListAllHousesComponent,
+    ListOwnHousesComponent,
+    AboutContentComponent,
+    UserShowComponent,
+    UserUpdateComponent,
+    HouseDetailPostedComponent,
+    HouseDetailViewComponent,
+    CreateHouseComponent,
+    PostedHouseEditComponent,
+    UserChangePasswordComponent,
+    ListRentedHousesComponent,
+    UserCheckInComponent,
+    BookingHotelComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
