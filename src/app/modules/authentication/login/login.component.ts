@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserToken} from '../model-user/user-token';
+import {UserToken} from '../../../model/user-model/user-token';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../../../authen-service/auth.service';
-import {User} from '../model-user/user';
+import {AuthService} from '../../../service/authen-service/auth.service';
+import {User} from '../../../model/user-model/user';
 import {first} from 'rxjs/operators';
 
 @Component({

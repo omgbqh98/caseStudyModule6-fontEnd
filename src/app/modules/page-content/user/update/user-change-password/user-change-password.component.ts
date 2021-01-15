@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserToken} from '../../model-user/user-token';
-import {User} from '../../model-user/user';
-import {UserService} from '../../user-service/user.service';
+import {UserToken} from '../../../../../model/user-model/user-token';
+import {User} from '../../../../../model/user-model/user';
+import {UserService} from '../../../../../service/user-service/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../../../../authen-service/auth.service';
+import {AuthService} from '../../../../../service/authen-service/auth.service';
 
 @Component({
   selector: 'app-user-change-password',

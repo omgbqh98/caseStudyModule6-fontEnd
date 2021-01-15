@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../modules/page-content/user/user-service/user.service';
+import {UserService} from '../../service/user-service/user.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from '../../modules/page-content/user/model-user/user';
+import {User} from '../../model/user-model/user';
 import {FormBuilder} from '@angular/forms';
 
 @Component({

@@ -6,9 +6,9 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import {UserToken} from '../modules/page-content/user/model-user/user-token';
+import {UserToken} from '../model/user-model/user-token';
 // @ts-ignore
-import {AuthenticationService, AuthService} from '../authen-service/auth.service';
+import {AuthenticationService, AuthService} from '../service/authen-service/auth.service';
 
 
 @Injectable({

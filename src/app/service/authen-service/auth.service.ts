@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 // @ts-ignore
 import {EventEmitter} from 'events';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {UserToken} from '../modules/page-content/user/model-user/user-token';
+import {UserToken} from '../../model/user-model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {User} from '../modules/page-content/user/model-user/user';
+import {User} from '../../model/user-model/user';
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'

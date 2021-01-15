@@ -22,7 +22,7 @@ import { ListRentedHousesComponent } from './modules/page-content/booking/list/l
 import { UserCheckInComponent } from './modules/page-content/booking/edit/user-check-in/user-check-in.component';
 import { BookingHotelComponent } from './modules/page-content/booking/create/booking-hotel/booking-hotel.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LoginComponent} from './modules/page-content/user/login/login.component';
+import {LoginComponent} from './modules/authentication/login/login.component';
 // =======
 // import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -34,6 +34,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 // import { HomeComponent } from './component/home/home/home.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
+import { HistoryBookingComponent } from './modules/history-booking/history-booking.component';
+import { StatisticsComponent } from './modules/statistics/statistics.component';
+import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
 // import {UpdateProfileComponent} from './component/user/update-profile/update-profile.component';
 // import {UpdatePasswordComponent} from './component/user/update-password/update-password.component';
 // >>>>>>> 770c87ac2b1ccf43b5feebfaa58a2a0bc28407b2
@@ -66,6 +69,9 @@ import {ErrorInterceptor} from './helper/error-interceptor';
     // UpdatePasswordComponent,
     // ProfileComponent,
     LoginComponent,
+HistoryBookingComponent,
+StatisticsComponent,
+ListRentHousesByTimeComponent,
     // HomeComponent
 // >>>>>>> 770c87ac2b1ccf43b5feebfaa58a2a0bc28407b2
   ],
