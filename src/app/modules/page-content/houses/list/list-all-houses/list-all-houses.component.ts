@@ -8,10 +8,12 @@ import {House} from '../../../../../model/house-model/house';
   styleUrls: ['./list-all-houses.component.css']
 })
 export class ListAllHousesComponent implements OnInit {
-  listHouses: House[];
-  constructor(private houseService: HouseService) { }
+  listHouses: House[] = [];
+  constructor(private houseService: HouseService) {
+  }
 
   ngOnInit(): void {
+    this.getAllHouses();
   }
   getAllHouses(): House[] {
     this.houseService.getAllHouse().subscribe((result) => {
