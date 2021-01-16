@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "caseStudy-Module6"
+  "defaultProject": "caseStudy-Module6",
+  "cli": {
+    "analytics": "88529fe8-bb2d-4afa-9bee-78c2f15a7432"
+  }
 }
