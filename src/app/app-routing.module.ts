@@ -10,6 +10,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeContentComponent} from './modules/home-content/home-content.component';
 import {LoginComponent} from './modules/authentication/login/login.component';
 import {AuthGuard} from './helper/auth-guard';
+import {ListRentedHousesComponent} from './modules/page-content/booking/list/list-rented-houses/list-rented-houses.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: HomeContentComponent,
-    canActivate: [AuthGuard]
+    component: HomeContentComponent
   }, {
     path: 'houses',
     component: ListAllHousesComponent
@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'change-password/:id',
     component: UserChangePasswordComponent
+  },
+  {
+    path: 'list-rented-houses',
+    component: ListRentedHousesComponent
   }
 ];
 
