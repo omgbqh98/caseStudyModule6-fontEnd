@@ -1,0 +1,52 @@
+#b {
+  position: relative;
+  left: 50px;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+}
+#a {
+  width: 45px;
+  height: 45px;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+}
+
+#c {
+  position: fixed;
+  top: 90px;
+  right: 25px;
+}
+
+/*.dropdown{*/
+/*  position: relative;*/
+/*  display: inline-block;*/
+/*}*/
+/*.dropdown-item {*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  padding: 0.25rem 1.5rem;*/
+/*  clear: both;*/
+/*  font-weight: 400;*/
+/*  color: #212529;*/
+/*  text-align: inherit;*/
+/*  white-space: nowrap;*/
+/*  background-color: transparent;*/
+/*  border: 0;*/
+/*}*/
+/*!*.dropdown-item:hover, .dropdown-item:focus {*!*/
+/*!*  color: #16181b;*!*/
+/*!*  text-decoration: none;*!*/
+/*!*  background-color: #f8f9fa;*!*/
+/*!*}*!*/
+/*.dropdown-item.active, .dropdown-item:active {*/
+/*  color: #fff;*/
+/*  text-decoration: none;*/
+/*  background-color: #fed136;*/
+/*}*/
+/*.dropdown-item.disabled, .dropdown-item:disabled {*/
+/*  color: #6c757d;*/
+/*  pointer-events: none;*/
+/*  background-color: transparent;*/
+/*}*/
