@@ -12,7 +12,7 @@ import { ListAllHousesComponent } from './modules/page-content/houses/list/list-
 import { ListOwnHousesComponent } from './modules/page-content/houses/list/list-own-houses/list-own-houses.component';
 import { AboutContentComponent } from './_shared/about-content/about-content.component';
 import { UserShowComponent } from './modules/page-content/user/detail/user-show/user-show.component';
-import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
+// import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
 import { HouseDetailPostedComponent } from './modules/page-content/houses/detail/house-detail-posted/house-detail-posted.component';
 import { HouseDetailViewComponent } from './modules/page-content/houses/detail/house-detail-view/house-detail-view.component';
 import { CreateHouseComponent } from './modules/page-content/houses/create/create-house/create-house.component';
@@ -37,9 +37,8 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import { HistoryBookingComponent } from './modules/history-booking/history-booking.component';
 import { StatisticsComponent } from './modules/statistics/statistics.component';
 import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
-// import {UpdateProfileComponent} from './component/user/update-profile/update-profile.component';
-// import {UpdatePasswordComponent} from './component/user/update-password/update-password.component';
-// >>>>>>> 770c87ac2b1ccf43b5feebfaa58a2a0bc28407b2
+import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
+// import {UserUpdateComponent} from "./modules/page-content/user/update/user-update/user-update.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +52,7 @@ import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-tim
     ListOwnHousesComponent,
     AboutContentComponent,
     UserShowComponent,
-    UserUpdateComponent,
+    // UserUpdateComponent,
     HouseDetailPostedComponent,
     HouseDetailViewComponent,
     CreateHouseComponent,
@@ -72,6 +71,7 @@ import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-tim
 HistoryBookingComponent,
 StatisticsComponent,
 ListRentHousesByTimeComponent,
+UserUpdateComponent,
     // HomeComponent
 // >>>>>>> 770c87ac2b1ccf43b5feebfaa58a2a0bc28407b2
   ],

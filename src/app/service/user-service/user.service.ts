@@ -30,6 +30,12 @@ export class UserService {
     // @ts-ignore
     return this.http.get<User>(API_URL + `/${username}`);
   }
+  getUserByUsername(username: any): Observable<any> {
+    return this.http.get(API_URL + `/${username}`);
+  }
+  updateUser(user: User): Observable<any> {
+    return this.http.put(API_URL + `users/update`, user);
+  }
 
   getUserProfileById(id: number): Observable<any> {
     return this.http.get(API_URL + '/users' + `/${id}`);
@@ -37,5 +43,8 @@ export class UserService {
 
   newPassword(user: User, id: number): Observable<User> {
     return this.http.put<User>(API_URL + `/changePassword/${id}`, user);
+  }
+  updateUserProfile(id: number, user: User): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
 }
