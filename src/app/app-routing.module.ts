@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeContentComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   }, {
     path: 'houses',
     component: ListAllHousesComponent

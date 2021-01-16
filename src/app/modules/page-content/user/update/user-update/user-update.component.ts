@@ -29,7 +29,10 @@ export class UserUpdateComponent implements OnInit {
       this.updateUserForm = this.fb.group({
         id: [''],
         username: [''],
-        fullName: ['']
+        fullName: [''],
+        address: [''],
+        phone: [''],
+        email: [''],
       });
       this.authService.currentUser.subscribe(value => {
         this.currentUser = value;
@@ -38,7 +41,10 @@ export class UserUpdateComponent implements OnInit {
           this.updateUserForm.setValue({
             id: this.user.userId,
             username: this.user.username,
-            fullName: this.user.fullName
+            fullName: this.user.fullName,
+            address: this.user.address,
+            phone: this.user.phone,
+            email: this.user.email,
           });
         });
       });
@@ -48,9 +54,12 @@ export class UserUpdateComponent implements OnInit {
     this.user.userId = this.updateUserForm.value.id;
     this.user.username = this.updateUserForm.value.username;
     this.user.fullName = this.updateUserForm.value.fullName;
+    this.user.phone = this.updateUserForm.value.phone;
+    this.user.email = this.updateUserForm.value.email;
+    this.user.address = this.updateUserForm.value.address;
     this.userService.updateUser(this.user).subscribe(() => {
       alert('Cập nhật User thành công!');
-      this.router.navigate(['/host']);
+      this.router.navigate(['/user-update', this.currentUser.username]);
     }, error => {
       alert('Lỗi!');
     });

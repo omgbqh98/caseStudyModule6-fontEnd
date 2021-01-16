@@ -34,7 +34,7 @@ export class UserService {
     return this.http.get(API_URL + `/${username}`);
   }
   updateUser(user: User): Observable<any> {
-    return this.http.put(API_URL + `users/update`, user);
+    return this.http.put(API_URL + `/users/update`, user);
   }
 
   getUserProfileById(id: number): Observable<any> {
