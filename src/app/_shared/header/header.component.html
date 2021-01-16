@@ -126,12 +126,12 @@
             data-target="#navbarTogglerDemo01" aria-expanded="false">
       <span class="fa fa-search" aria-hidden="true"></span>
     </button>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!user" id="d" >
       <a [routerLink]="'login'" role="tab"><i class="icon fa fa-user fa-fw iconsmall"></i>
         Login</a>
     </li>
 
-    <div>
+    <div *ngIf="user">
       <i data-toggle="dropdown" id="b">
         <img id="a" src="assets/img/slide-2.jpg">
       </i>
@@ -141,7 +141,7 @@
            role="menuitem"><i class="icon fa fa-user fa-fw iconsmall" aria-hidden="true"
                               title="Hồ sơ"></i>Profile</a>
         <div class="dropdown-divider" role="presentation"></div>
-        <a class="dropdown-item" href="/"
+        <a class="dropdown-item" [routerLink]="'list-rented-houses'"
            role="menuitem"><i
           class="icon fa fa-tachometer fa-fw iconsmall" aria-hidden="true"
           title="Nhà của tôi"></i>History</a>
@@ -158,7 +158,7 @@
                       role="menuitem"><i class="icon fa fa-wrench fa-fw iconsmall"
                                          aria-hidden="true" title="Tuỳ chọn"></i>Change password</a>
         <div class="dropdown-divider" role="presentation"></div>
-        <a class="dropdown-item" href="/sell/logout"
+        <a class="dropdown-item" (click)="logout()"
         ><i class="icon fa fa-sign-out fa-fw iconsmall" aria-hidden="true"
             title="Thoát"></i>Log out</a>
       </div>
