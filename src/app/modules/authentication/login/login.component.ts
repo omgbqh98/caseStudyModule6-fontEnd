@@ -82,7 +82,6 @@ export class LoginComponent implements OnInit {
           alert('Thêm thành công');
         }
       );
-
     }
     else {
       alert('this.newFormUser.invalid');

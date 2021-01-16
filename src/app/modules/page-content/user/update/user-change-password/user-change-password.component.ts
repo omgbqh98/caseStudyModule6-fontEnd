@@ -24,6 +24,7 @@ export class UserChangePasswordComponent implements OnInit {
   userAddress = '';
   newPasswordForm: FormGroup = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)])
   });
   constructor(
     private userService: UserService,
@@ -46,7 +47,9 @@ export class UserChangePasswordComponent implements OnInit {
     this.currentUser = {
       fullName: '',
       username: '',
-      userId: 1
+      userId: 1,
+      // @ts-ignore
+      // confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     };
     this.getUserProfile();
   }
@@ -72,17 +75,26 @@ export class UserChangePasswordComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   changePassword() {
-    // @ts-ignore
-    const user = this.setNewUser();
-    // @ts-ignore
-    this.userService.newPassword(user, this.currentUser.userId).subscribe(() => {
-      alert('Đổi mật khẩu thành công');
-      this.newPasswordForm.reset();
-      this.router.navigate(['/']);
+    if (this.newPasswordForm.value.password !== this.newPasswordForm.value.confirmPassword) {
+      console.log(this.newPasswordForm.value.password);
+      console.log(this.newPasswordForm.value.confirmPassword);
+      alert('Password and confirm password must match!');
+    }
+   else if (this.newPasswordForm.valid ){
       // @ts-ignore
-    }, err => {
-      console.log(user);
-    });
+      const user = this.setNewUser();
+      // @ts-ignore
+      this.userService.newPassword(user, this.currentUser.userId).subscribe(() => {
+        alert('Đổi mật khẩu thành công');
+        this.newPasswordForm.reset();
+        this.router.navigate(['/']);
+        // @ts-ignore
+      }, err => {
+        console.log(user);
+      });
+    }  else {
+      alert('this.newFormUser.invalid');
+    }
   }
   // tslint:disable-next-line:typedef
   private setNewUser() {
