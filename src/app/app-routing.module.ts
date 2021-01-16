@@ -42,7 +42,7 @@ const routes: Routes = [
     component: UserUpdateComponent
   },
   {
-    path: 'house-view',
+    path: 'house-view/:id',
     component: HouseDetailViewComponent
   },
   {
