@@ -54,10 +54,10 @@ import { StatisticsComponent } from './modules/statistics/statistics.component';
 import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
 import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-// import {environment} from "./environments/environment";
+// import {environment} from "../environments/environment";
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 
 // import {UserUpdateComponent} from "./modules/page-content/user/update/user-update/user-update.component";
 // =======
@@ -108,7 +108,8 @@ UserUpdateComponent,
     FormsModule,
     HttpClientModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
