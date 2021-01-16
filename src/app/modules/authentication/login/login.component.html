@@ -1,5 +1,11 @@
+<br><br><br><br> <br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"/>
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<!--<meta name="google-signin-client_id" content="360187321088-pphmdafbluqev38ctadkfvj02v7n346p.apps.googleusercontent.com.apps.googleusercontent.com">-->
+<body>
 
-<br><br><br><br>
 <div class="title">
   <h1 class="w3ls">Welcome to AirBnB</h1>
 </div>
@@ -21,10 +27,11 @@
           <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
           <div class="login-form">
             <div class="sign-up-htm">
-              <form  [formGroup]="newFormUser" (ngSubmit)="createNewUser()">
+              <form [formGroup]="newFormUser" (ngSubmit)="createNewUser()">
                 <div class="group">
                   <input type="text" id="username" formControlName="username" placeholder="Username"
-                         title="Please enter your First Name" required="" class="input" [ngClass]="{'is-invalid': newFormUser.get('username').touched && newFormUser.get('username').invalid}"/>
+                         title="Please enter your First Name" required="" class="input"
+                         [ngClass]="{'is-invalid': newFormUser.get('username').touched && newFormUser.get('username').invalid}"/>
                   <div class="invalid-feedback">
                     <div>*Username is required</div>
                   </div>
@@ -32,7 +39,8 @@
 
                 <div class="group">
                   <input type="text" class="lock" formControlName="phone" placeholder="Phone" id="phone" required=""
-                         class="input" [ngClass]="{'is-invalid': newFormUser.get('phone').touched && newFormUser.get('phone').invalid}"/>
+                         class="input"
+                         [ngClass]="{'is-invalid': newFormUser.get('phone').touched && newFormUser.get('phone').invalid}"/>
                   <div class="invalid-feedback">
                     <div>*Phone number is required</div>
                   </div>
@@ -40,50 +48,35 @@
 
                 <div class="group">
                   <input type="password" name="password" formControlName="password" placeholder="Password..."
-                         id="password1" required minlength="6" class="input" [ngClass]="{'is-invalid': newFormUser.get('password').touched && newFormUser.get('password').invalid}"/>
-                  <div  class="invalid-feedback">
+                         id="password1" required minlength="6" class="input"
+                         [ngClass]="{'is-invalid': newFormUser.get('password').touched && newFormUser.get('password').invalid}"/>
+                  <div class="invalid-feedback">
                     <div *ngIf="newFormUser.get('password').errors.required">*Password is required</div>
-                    <div *ngIf="newFormUser.get('password').errors.minlength">*Password must be at least 6 character</div>
-                    <div *ngIf="newFormUser.get('password').errors.mustMatch">*Password and Confirm password must match!</div>
+                    <div *ngIf="newFormUser.get('password').errors.minlength">*Password must be at least 6 character
+                    </div>
+                    <div *ngIf="newFormUser.get('password').errors.mustMatch">*Password and Confirm password must
+                      match!
+                    </div>
                   </div>
                 </div>
 
                 <div class="group">
-                  <input type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Confirm password..."
-                         id="password2" required minlength="6" class="input" [ngClass]="{'is-invalid': newFormUser.get('confirmPassword').touched && newFormUser.get('confirmPassword').invalid}"/>
-                  <div  class="invalid-feedback">
+                  <input type="password" name="confirm-password" formControlName="confirmPassword"
+                         placeholder="Confirm password..."
+                         id="password2" required minlength="6" class="input"
+                         [ngClass]="{'is-invalid': newFormUser.get('confirmPassword').touched && newFormUser.get('confirmPassword').invalid}"/>
+                  <div class="invalid-feedback">
                     <div *ngIf="newFormUser.get('confirmPassword').errors.required">*Confirm password is required</div>
-                    <div *ngIf="newFormUser.get('confirmPassword').errors.mustMatch">*Password and Confirm password must match!</div>
+                    <div *ngIf="newFormUser.get('confirmPassword').errors.mustMatch">*Password and Confirm password must
+                      match!
+                    </div>
                   </div>
                 </div>
 
                 <div class="group">
                   <input type="submit" class="button" value="Register">
                 </div>
-                <div id="toast"></div>
 
-                <script>
-                  function toast({title ='',
-                                 message='',
-                                 type='info',
-                                 duration=2000
-                                 }) {
-                    const main = document.getElementById('toast');
-                    if (main) {
-                      const toast = document.createElement('div');
-                      toast.classList.add('toast');
-                      toast.innerHTML = `
-                      `
-                    }
-                  }
-
-                  toast({
-                    title: 'Success',
-                    message: 'You successfully registered!',
-                    type: 'success',
-                    duration: 2000
-                  })
-                </script>
               </form>
 
             </div>
@@ -122,3 +115,7 @@
       href="https://w3layouts.com/" target="_blank">W3layouts</a></p>
   </div>
 </div>
+<<<<<<< HEAD
+=======
+</body>
+>>>>>>> 4ecbfece9f5a9c1423e2df45fbcc0528d5c4f446
