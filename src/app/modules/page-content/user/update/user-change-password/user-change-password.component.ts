@@ -87,7 +87,8 @@ export class UserChangePasswordComponent implements OnInit {
       this.userService.newPassword(user, this.currentUser.userId).subscribe(() => {
         alert('Đổi mật khẩu thành công');
         this.newPasswordForm.reset();
-        this.router.navigate(['/']);
+        // @ts-ignore
+        this.router.navigate(['/change-password'], this.currentUser.userId);
         // @ts-ignore
       }, err => {
         console.log(user);
