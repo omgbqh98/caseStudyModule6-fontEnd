@@ -10,7 +10,7 @@ export class HouseService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUser(): Observable<any> {
+  getAllHouse(): Observable<any> {
     return this.http.get(API_URL + '/houses');
   }
 }
