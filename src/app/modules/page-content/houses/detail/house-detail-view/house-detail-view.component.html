@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-md-12 col-lg-8">
         <div class="title-single-box">
-          <h1 class="title-single">304 Blaster Up</h1>
-          <span class="color-text-a">Chicago, IL 606543</span>
+          <h1 class="title-single">{{house.houseName}}</h1>
+          <span class="color-text-a">{{house.address}}</span>
         </div>
       </div>
       <div class="col-md-12 col-lg-4">
@@ -15,10 +15,10 @@
               <a [routerLink]="''">Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a [routerLink]="'/property-grid'">Properties</a>
+              <a [routerLink]="'/property-grid'">Places to stay</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-              304 Blaster Up
+              House Detail
             </li>
           </ol>
         </nav>
@@ -52,7 +52,7 @@
                   <span class="ion-money">$</span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h5 class="title-c">15000</h5>
+                  <h5 class="title-c">{{house.price}}</h5>
                 </div>
               </div>
             </div>
@@ -68,11 +68,11 @@
                 <ul class="list">
                   <li class="d-flex justify-content-between">
                     <strong>Property ID:</strong>
-                    <span>1134</span>
+                    <span>{{house.houseId}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Location:</strong>
-                    <span>Chicago, IL 606543</span>
+                    <span>{{house.address}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Property Type:</strong>

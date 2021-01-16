@@ -13,4 +13,8 @@ export class HouseService {
   getAllHouse(): Observable<any> {
     return this.http.get(API_URL + '/houses');
   }
+
+  getDetailHouse(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses' + `/${id}`);
+  }
 }
