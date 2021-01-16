@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user-service/user.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../model/user-model/user';
 import {FormBuilder} from '@angular/forms';
 import {AuthService} from "../../service/authen-service/auth.service";
+
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
   }
+
   ngOnInit(): void {
     // @ts-ignore
     this.currentUser = JSON.parse(localStorage.getItem('user'));
@@ -42,9 +44,10 @@ export class HeaderComponent implements OnInit {
     this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
     console.log(this.user);
   }
+
   // tslint:disable-next-line:typedef
-    logout() {
-      this.authService.logout();
-      this.router.navigate(['/login']);
-    }
+  logout() {
+    this.authService.logout();
+    window.location.href = '/login';
+  }
 }

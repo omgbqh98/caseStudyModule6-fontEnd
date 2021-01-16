@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserToken} from '../../../model/user-model/user-token';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   returnUrl = '';
   // @ts-ignore
   message: string;
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private authService: AuthService,
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     // @ts-ignore
     this.authService.currentUser.subscribe(value => this.currentUser = value);
   }
+
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.newFormUser = this.formBuilder.group({
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
     });
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
   }
+
   // tslint:disable-next-line:typedef
   login() {
     // tslint:disable-next-line:prefer-const
@@ -53,20 +56,23 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
           console.log('thành công');
           this.router.navigate(['']); // navigate sau khi login
+          window.location.href = '';
         }, error => {
           this.message = 'Incorrect username or password';
           console.log('unauthorized');
         }
       );
   }
+
   // tslint:disable-next-line:typedef
   get f() { // @ts-ignore
     return this.newFromUser.controls;
   }
+
   // tslint:disable-next-line:typedef
   createNewUser() {
     // tslint:disable-next-line:triple-equals
-    if (this.newFormUser.value.password != this.newFormUser.value.confirmPassword){
+    if (this.newFormUser.value.password != this.newFormUser.value.confirmPassword) {
       alert('Password and confirm password must match!');
     }
       // this.submitted = true;
@@ -82,8 +88,8 @@ export class LoginComponent implements OnInit {
           alert('Thêm thành công');
         }
       );
-    }
-    else {
+
+    } else {
       alert('this.newFormUser.invalid');
     }
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.newFormUser.value));

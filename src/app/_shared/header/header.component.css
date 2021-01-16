@@ -1,3 +1,8 @@
+#d {
+  position: relative;
+  left: 50px;
+}
+
 #b {
   position: relative;
   left: 50px;
@@ -5,6 +10,7 @@
   background-position: top center;
   border-radius: 50%;
 }
+
 #a {
   width: 45px;
   height: 45px;
