@@ -51,18 +51,17 @@ export class UserUpdateComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   updateUser() {
-    this.user.userId = this.updateUserForm.value.id;
-    this.user.username = this.updateUserForm.value.username;
-    this.user.fullName = this.updateUserForm.value.fullName;
-    this.user.phone = this.updateUserForm.value.phone;
-    this.user.email = this.updateUserForm.value.email;
-    this.user.address = this.updateUserForm.value.address;
-    this.userService.updateUser(this.user).subscribe(() => {
-      alert('Cập nhật User thành công!');
-      this.router.navigate(['/user-update', this.currentUser.username]);
-    }, error => {
-      alert('Lỗi!');
-    });
+      this.user.userId = this.updateUserForm.value.id;
+      this.user.username = this.updateUserForm.value.username;
+      this.user.fullName = this.updateUserForm.value.fullName;
+      this.user.phone = this.updateUserForm.value.phone;
+      this.user.email = this.updateUserForm.value.email;
+      this.user.address = this.updateUserForm.value.address;
+      this.userService.updateUser(this.user).subscribe(() => {
+        alert('Cập nhật User thành công!');
+        this.router.navigate(['/user-update', this.currentUser.username]);
+      }, error => {
+        alert('Lỗi!');
+      });
   }
-
 }
