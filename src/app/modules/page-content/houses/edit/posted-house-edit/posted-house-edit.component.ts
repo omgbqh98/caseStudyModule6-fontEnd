@@ -49,7 +49,7 @@ export class PostedHouseEditComponent implements OnInit {
       };
       this.houseService.updateHouse(data).subscribe(result => {
           alert('Update successfully!');
-          // this.router.navigate(['listBook']);
+          this.router.navigate(['user-ownHouse',this.house.houseId]);
         }, error => {
           console.log(error);
         }
