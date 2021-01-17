@@ -26,4 +26,8 @@ export class HouseService {
   getOwnedHouse(id: number): Observable<any>{
     return this.http.get(API_URL  + '/users' + `/${id}` + '/ownHouses');
   }
+
+  updateHouse(house: House): Observable<any> {
+    return this.http.put<House>(API_URL + '/houses' + `/${house.houseId}`, house);
+  }
 }
