@@ -27,14 +27,14 @@
             <div class="card-overlay-a-content">
               <div class="card-header-a">
                 <h2 class="card-title-a">
-                  <a [routerLink]="['/house-view',house.houseId]">{{house.houseName}}</a>
+                  <a [routerLink]="['/user-ownHouse',house.houseId]">{{house.houseName}}</a>
                 </h2>
               </div>
               <div class="card-body-a">
                 <div class="price-box d-flex">
                   <span class="price-a">rent | $ {{house.price}}</span>
                 </div>
-                <a [routerLink]="['/house-view',house.houseId]">Click here to view
+                <a [routerLink]="['/user-ownHouse',house.houseId]">Click here to view
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
               </div>
