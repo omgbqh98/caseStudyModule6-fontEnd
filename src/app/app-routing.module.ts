@@ -13,10 +13,8 @@ import {AuthGuard} from './helper/auth-guard';
 import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
 import {ListRentedHousesComponent} from './modules/page-content/booking/list/list-rented-houses/list-rented-houses.component';
 import {CreateHouseComponent} from './modules/page-content/houses/create/create-house/create-house.component';
-
-import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
-
 import {HouseDetailPostedComponent} from './modules/page-content/houses/detail/house-detail-posted/house-detail-posted.component';
+import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
 import {PostedHouseEditComponent} from './modules/page-content/houses/edit/posted-house-edit/posted-house-edit.component';
 
 
