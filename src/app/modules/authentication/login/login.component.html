@@ -24,18 +24,32 @@
               <form [formGroup]="newFormUser" (ngSubmit)="createNewUser()">
                 <div class="group">
                   <input type="text" id="username" formControlName="username" placeholder="Username"
-                         title="Please enter your First Name" required="" class="input">
+                         title="Please enter your First Name" required="" class="input" [ngClass]="{'is-invalid': newFormUser.get('username').touched && newFormUser.get('username').invalid}"/>
+                  <div class="invalid-feedback">
+                    <div>*Username is required</div>
+                  </div>
                 </div>
 
                 <div class="group">
-                  <input type="text" class="lock" formControlName="phone" placeholder="Phone" id="phone" required=""
-                         class="input">
+                  <input type="text" formControlName="phone" placeholder="Phone" id="phone" required=""
+                         class="input" [ngClass]="{'is-invalid': newFormUser.get('phone').touched && newFormUser.get('phone').invalid}"/>
+                  <div class="invalid-feedback">
+                    <div>*Phone number is required</div>
+                  </div>
                 </div>
 
                 <div class="group">
                   <input type="password" name="password" formControlName="password" placeholder="Password..."
-                         id="password1" required=""
-                         class="input">
+                         id="password1" required minlength="6"
+                         class="input" [ngClass]="{'is-invalid': newFormUser.get('password').touched && newFormUser.get('password').invalid}"/>
+                  <div class="invalid-feedback">
+                    <div *ngIf="newFormUser.get('password').errors.required">*Password is required</div>
+                    <div *ngIf="newFormUser.get('password').errors.minlength">*Password must be at least 6 character
+                    </div>
+                    <div *ngIf="newFormUser.get('password').errors.mustMatch">*Password and Confirm password must
+                      match!
+                    </div>
+                  </div>
                 </div>
 
                 <div class="group">

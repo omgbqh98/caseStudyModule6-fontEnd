@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginUser)
       .pipe(first())
       .subscribe(data => {
-          console.log('thành công');
+          console.log('Signed in!');
           this.router.navigate(['']); // navigate sau khi login
           window.location.href = '';
         }, error => {
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
       console.log(this.newFormUser);
       console.log(newUserName.username);
       this.authService.signup(newUserName).subscribe(() => {
-          alert('Thêm thành công');
+          alert('Registered successfully!');
         }
       );
 
