@@ -23,8 +23,6 @@ export class UserUpdateComponent implements OnInit {
   // @ts-ignore
   fb;
   // @ts-ignore
-  downloadURL: Observable<string>;
-  // @ts-ignore
   user: User;
   // @ts-ignore
   currentUser: UserToken;

@@ -15,9 +15,9 @@ export class UserChangePasswordComponent implements OnInit {
   // @ts-ignore
   private userId: number;
   // @ts-ignore
-  private currentUser: User;
+  private user: User;
   // @ts-ignore
-  currentUserToken: UserToken;
+  currentUser: UserToken;
   userFullName = '';
   userPhone = '';
   userEmail = '';
@@ -38,13 +38,13 @@ export class UserChangePasswordComponent implements OnInit {
       // @ts-ignore
       currentUser => {
         // @ts-ignore
-        this.currentUserToken = currentUser;
+        this.currentUser = currentUser;
       }
     );
   }
 
   ngOnInit(): void {
-    this.currentUser = {
+    this.user = {
       fullName: '',
       username: '',
       userId: 1,
@@ -52,7 +52,13 @@ export class UserChangePasswordComponent implements OnInit {
       // confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     };
     this.getUserProfile();
-  }
+    this.authService.currentUser.subscribe(value => {
+      this.currentUser = value;
+      this.userService.getUserByUsername(value.username).subscribe(value1 => {
+        this.user = value1;
+        });
+      });
+    }
   // tslint:disable-next-line:typedef
   getUserProfile() {
     // @ts-ignore
@@ -67,7 +73,7 @@ export class UserChangePasswordComponent implements OnInit {
   private getUserProfileById(id: string) {
     // @ts-ignore
     this.userService.getUserProfileById(id).subscribe(value => {
-      this.currentUser = value;
+      this.user = value;
       console.log(value);
     }, () => {
       console.log('Lỗi!');
@@ -78,17 +84,18 @@ export class UserChangePasswordComponent implements OnInit {
     if (this.newPasswordForm.value.password !== this.newPasswordForm.value.confirmPassword) {
       console.log(this.newPasswordForm.value.password);
       console.log(this.newPasswordForm.value.confirmPassword);
+      // console.log(this.password);
       alert('Password and confirm password must match!');
     }
    else if (this.newPasswordForm.valid ){
       // @ts-ignore
       const user = this.setNewUser();
       // @ts-ignore
-      this.userService.newPassword(user, this.currentUser.userId).subscribe(() => {
+      this.userService.newPassword(user, this.user.userId).subscribe(() => {
         alert('Đổi mật khẩu thành công');
         this.newPasswordForm.reset();
         // @ts-ignore
-        this.router.navigate(['/change-password'], this.currentUser.userId);
+        this.router.navigate(['/change-password'], this.user.userId);
         // @ts-ignore
       }, err => {
         console.log(user);
@@ -100,7 +107,7 @@ export class UserChangePasswordComponent implements OnInit {
   // tslint:disable-next-line:typedef
   private setNewUser() {
     const user: User = {
-      username: this.currentUserToken.username,
+      username: this.currentUser.username,
       password: this.newPasswordForm.value.password,
       // confirmPassword: this.newPasswordForm.value.confirmPassword,
       fullName: this.userFullName,
