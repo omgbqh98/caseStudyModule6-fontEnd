@@ -1,1 +1,30 @@
-<p>history-booking works!</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">checkin</th>
+    <th scope="col">checkout</th>
+    <th scope="col">total</th>
+    <th scope="col">created at</th>
+    <!--    <td>delete</td>-->
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let booking of listBooking">
+    <td>{{booking.bookingId}}</td>
+    <td><a [routerLink]="['detail',booking.checkIn]">{{booking.checkIn}}</a></td>
+    <td>{{booking.checkOut}}</td>
+    <td>{{booking.total}}</td>
+    <td>{{booking.createdAt}}</td>
+  </tr>
+  </tbody>
+</table>
+
+

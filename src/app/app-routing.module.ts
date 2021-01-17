@@ -11,8 +11,9 @@ import {HomeContentComponent} from './modules/home-content/home-content.componen
 import {LoginComponent} from './modules/authentication/login/login.component';
 import {AuthGuard} from './helper/auth-guard';
 import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
-import {ListRentedHousesComponent} from "./modules/page-content/booking/list/list-rented-houses/list-rented-houses.component";
+import {ListRentedHousesComponent} from './modules/page-content/booking/list/list-rented-houses/list-rented-houses.component';
 import {CreateHouseComponent} from './modules/page-content/houses/create/create-house/create-house.component';
+import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'houses-create',
     component: CreateHouseComponent
+  },
+  {
+    path: 'history-booking/:id',
+    component: HistoryBookingComponent
   }
 ];
 
