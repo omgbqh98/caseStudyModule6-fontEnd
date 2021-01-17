@@ -17,7 +17,6 @@ import {HouseDetailPostedComponent} from './modules/page-content/houses/detail/h
 import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
 import {PostedHouseEditComponent} from './modules/page-content/houses/edit/posted-house-edit/posted-house-edit.component';
 
-
 const routes: Routes = [
   {
     path: 'login',
