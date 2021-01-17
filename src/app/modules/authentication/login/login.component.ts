@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
       );
 
     } else {
-      alert('this.newFormUser.invalid');
+      alert('Invalid input!');
     }
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.newFormUser.value));
   }

@@ -55,7 +55,13 @@
                 <div class="group">
                   <input type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Confirm password..."
                          id="password2"
-                         required="" class="input">
+                         required minlength="6"  class="input" [ngClass]="{'is-invalid': newFormUser.get('confirmPassword').touched && newFormUser.get('confirmPassword').invalid}"/>
+                  <div class="invalid-feedback">
+                    <div *ngIf="newFormUser.get('confirmPassword').errors.required">*Confirm password is required</div>
+                    <div *ngIf="newFormUser.get('confirmPassword').errors.mustMatch">*Password and Confirm password must
+                      match!
+                    </div>
+                  </div>
                 </div>
 
                 <div class="group">
