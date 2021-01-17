@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {House} from '../../model/house-model/house';
+import {Booking} from '../../model/booking-model/booking';
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class HouseService {
 
   updateHouse(house: House): Observable<any> {
     return this.http.put<House>(API_URL + '/houses' + `/${house.houseId}`, house);
+  }
+
+  getBookingByHouse(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses' + `/${id}` + '/bookings');
   }
 }
