@@ -28,7 +28,7 @@ export class CreateHouseComponent implements OnInit {
   ngOnInit(): void {
     this.createHouseForm = this.fb.group({
       houseName: ['', Validators.required],
-      type: ['Choose house type', Validators.required],
+      type: ['', Validators.required],
       address: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
