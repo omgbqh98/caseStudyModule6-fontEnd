@@ -10,6 +10,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 export class ListRentHousesByTimeComponent implements OnInit {
   id: any;
   bookingList: any;
+  total = 0;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) { }
 
@@ -18,6 +19,9 @@ export class ListRentHousesByTimeComponent implements OnInit {
       this.id = paramMap.get('id');
       this.houseService.getBookingByHouse(this.id).subscribe((bookings) => {
           this.bookingList = bookings;
+          for (const booking of bookings){
+            this.total += booking.total;
+          }
         });
       });
   }
