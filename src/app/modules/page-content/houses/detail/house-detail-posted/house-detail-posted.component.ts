@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {HouseService} from '../../../../../service/house-service/house.service';
 
 @Component({
   selector: 'app-house-detail-posted',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./house-detail-posted.component.css']
 })
 export class HouseDetailPostedComponent implements OnInit {
-
-  constructor() { }
+  house: any;
+  id: any;
+  constructor(private houseService: HouseService,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = paramMap.get('id');
+      this.houseService.getDetailHouse(this.id).subscribe((result) => {
+        this.house = result;
+      });
+    });
   }
 
 }
