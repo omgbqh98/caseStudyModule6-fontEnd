@@ -24,10 +24,17 @@ import {LoginComponent} from './modules/authentication/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
-import {StatisticsComponent} from './modules/statistics/statistics.component';
-import {ListRentHousesByTimeComponent} from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
-import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
+// <<<<<<< HEAD
+// <<<<<<< HEAD
+import { HistoryBookingComponent } from './modules/history-booking/history-booking.component';
+import { StatisticsComponent } from './modules/statistics/statistics.component';
+import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
+import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+// import {environment} from "../environments/environment";
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -61,7 +68,10 @@ import {UserUpdateComponent} from './modules/page-content/user/update/user-updat
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
