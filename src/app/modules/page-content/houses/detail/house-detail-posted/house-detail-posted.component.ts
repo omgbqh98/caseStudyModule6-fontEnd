@@ -10,7 +10,6 @@ import {HouseService} from '../../../../../service/house-service/house.service';
 export class HouseDetailPostedComponent implements OnInit {
   house: any;
   id: any;
-  bookingList: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) {}
 
@@ -19,9 +18,6 @@ export class HouseDetailPostedComponent implements OnInit {
       this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
-        this.houseService.getBookingByHouse(this.id).subscribe((bookings) => {
-          this.bookingList = bookings;
-        });
       });
     });
   }

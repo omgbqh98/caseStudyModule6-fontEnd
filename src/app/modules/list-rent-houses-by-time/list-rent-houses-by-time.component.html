@@ -1,1 +1,49 @@
-<p>list-rent-houses-by-time works!</p>
+<div class="wrapper">
+  <table class="table table-bordered cart_summary">
+    <thead>
+    <tr>
+      <th>Booking date</th>
+      <th>Booking ID</th>
+      <th>Customer</th>
+      <th>Check in</th>
+      <th>Check out</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let booking of bookingList">
+      <td>
+        <p>{{booking.createdAt}}</p>
+      </td>
+      <td class="cart_avail"><span class="label label-success">{{booking.bookingId}}</span>
+      </td>
+      <td class="cart_description">
+        <p class="product-name">{{booking.userId.username}}</p>
+        <small class="cart_ref"><p>Full name : {{booking.userId.fullName}}</p></small>
+        <small><p>Phone : {{booking.userId.phone}}</p></small>
+        <small><p>Email : {{booking.userId.email}}</p></small>
+      </td>
+
+      <td><span>{{booking.checkIn}}</span></td>
+      <td><span>{{booking.checkOut}}</span></td>
+      <td>
+        <span>{{booking.total}}</span>
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="2" rowspan="2"></td>
+      <td colspan="3">Total products (tax incl.)</td>
+      <td colspan="2">122.38 €</td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Total</strong>
+      </td>
+      <td colspan="2"><strong>122.38 €</strong>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+
