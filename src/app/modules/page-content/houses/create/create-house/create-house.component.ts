@@ -43,12 +43,12 @@ export class CreateHouseComponent implements OnInit {
     this.authService.currentUser.subscribe(value => {
       this.userService.getUserByUsername(value.username).subscribe(value1 => {
         this.user = value1;
+        house.ownerId = this.user;
+        this.houseService.create(house).subscribe(() => {
+          console.log(house.houseName);
+          alert('Create successfully!');
+        });
       });
-    });
-    house.ownerId = this.user;
-    this.houseService.create(house).subscribe(() => {
-      console.log(house.houseName);
-      alert('Create successfully!');
     });
   }
 
