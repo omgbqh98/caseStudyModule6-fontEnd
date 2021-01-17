@@ -20,6 +20,6 @@ export class HouseService {
   }
 
   create(house: House): Observable<any> {
-    return this.http.post<House>(API_URL, house);
+    return this.http.post<House>(API_URL + '/houses', house);
   }
 }
