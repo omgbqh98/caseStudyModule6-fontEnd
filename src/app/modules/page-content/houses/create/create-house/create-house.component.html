@@ -59,7 +59,7 @@
               <div class="col-xs-6">
                 <label for="houseName"><h4>House name</h4></label>
                 <input type="text" formControlName="houseName" class="form-control" name="houseName" id="houseName"
-                       placeholder="enter house name">
+                       placeholder="enter house name" required>
               </div>
             </div>
 
@@ -74,48 +74,62 @@
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="description"><h4>Description</h4></label>
-                <input type="text" formControlName="description" class="form-control" name="description"
-                       id="description" placeholder="enter description">
+                <textarea type="text" formControlName="description" class="form-control" name="description"
+                          id="description" placeholder="enter description"></textarea>
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="bathroom"><h4>Bathrooms</h4></label>
-                <input type="number" formControlName="bathroom" class="form-control" name="bathroom" id="bathroom"
-                       placeholder="enter bathroom">
+            <div class="form-row">
+              <div class="form-group" style="margin-right: 30px">
+                <div class="col-xs-4">
+                  <label for="bathroom"><h4>Bathrooms</h4></label>
+                  <input type="number" formControlName="bathroom" class="form-control" name="bathroom" id="bathroom"
+                         placeholder="enter bathroom">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-right: 30px">
+                <div class="col-xs-4">
+                  <label for="bedroom"><h4>Bedrooms</h4></label>
+                  <input type="number" formControlName="bedroom" class="form-control" name="bedroom" id="bedroom"
+                         placeholder="enter bedroom">
+                </div>
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="bedroom"><h4>Bedrooms</h4></label>
-                <input type="number" formControlName="bedroom" class="form-control" name="bedroom" id="bedroom"
-                       placeholder="enter bedroom">
+            <div class="form-row">
+              <div class="form-group" style="margin-right: 30px">
+                <div class="col-xs-4">
+                  <label for="price"><h4>Price</h4></label>
+                  <input type="number" formControlName="price" class="form-control" name="price" id="price"
+                         placeholder="enter price">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <!--              thêm drop down-->
+                <label><h4>Type</h4></label>
+                <select class="custom-select" formControlName="type">
+                  <option selected>Choose house type</option>
+                  <option value="0">Single</option>
+                  <option value="1">Double</option>
+                  <option value="2">President</option>
+                  <option value="3">VIP</option>
+                  <option value="4">Luxury</option>
+                </select>
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="price"><h4>Price</h4></label>
-                <input type="number" formControlName="price" class="form-control" name="price" id="price"
-                       placeholder="enter price">
-              </div>
-            </div>
+<!--            <div class="form-group">-->
+<!--              <div class="col-xs-6">-->
+<!--                <label for="status"><h4>Status</h4></label>-->
+<!--                <input type="number" formControlName="status" class="form-control" name="status" id="status">-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="status"><h4>Status</h4></label>
-                <input type="number" formControlName="status" class="form-control" name="status" id="status">
-              </div>
-            </div>
 
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="type"><h4>Type</h4></label>
-                <input type="number" formControlName="type" class="form-control" name="type" id="type">
-              </div>
-            </div>
+            <!--              end drop down-->
+
 
             <div class="form-group">
               <div class="col-xs-12">
