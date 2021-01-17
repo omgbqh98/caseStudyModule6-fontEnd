@@ -126,12 +126,12 @@
             data-target="#navbarTogglerDemo01" aria-expanded="false">
       <span class="fa fa-search" aria-hidden="true"></span>
     </button>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!user" id="d">
       <a [routerLink]="'login'" role="tab"><i class="icon fa fa-user fa-fw iconsmall"></i>
         Login</a>
     </li>
 
-    <div>
+    <div *ngIf="user">
       <i data-toggle="dropdown" id="b">
         <img id="a" src="{{user.avatar}}">
       </i>
@@ -140,7 +140,7 @@
            role="menuitem"><i class="icon fa fa-user fa-fw iconsmall" aria-hidden="true"
                               title="Hồ sơ"></i>Profile</a>
         <div class="dropdown-divider" role="presentation"></div>
-        <a class="dropdown-item" href="/"
+        <a class="dropdown-item" [routerLink]="'list-rented-houses'"
            role="menuitem"><i
           class="icon fa fa-tachometer fa-fw iconsmall" aria-hidden="true"
           title="Nhà của tôi"></i>History</a>
@@ -155,8 +155,8 @@
           class="icon fa fa-comment fa-fw iconsmall" aria-hidden="true" title="Tin nhắn"></i>Tin
           nhắn</a>
         <a class="dropdown-item" [routerLink]="['change-password',user.userId]"
-                      role="menuitem"><i class="icon fa fa-wrench fa-fw iconsmall"
-                                         aria-hidden="true" title="Tuỳ chọn"></i>Change password</a>
+           role="menuitem"><i class="icon fa fa-wrench fa-fw iconsmall"
+                              aria-hidden="true" title="Tuỳ chọn"></i>Change password</a>
         <div class="dropdown-divider" role="presentation"></div>
         <a (click)="logout()" class="dropdown-item"
         ><i class="icon fa fa-sign-out fa-fw iconsmall" aria-hidden="true"
