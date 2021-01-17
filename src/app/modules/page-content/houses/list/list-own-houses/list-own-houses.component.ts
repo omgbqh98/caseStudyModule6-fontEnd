@@ -9,7 +9,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./list-own-houses.component.css']
 })
 export class ListOwnHousesComponent implements OnInit {
-  house: any;
+  listHouses: House[] = [];
   id: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) { }
@@ -18,7 +18,7 @@ export class ListOwnHousesComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
       this.houseService.getOwnedHouse(this.id).subscribe((result) => {
-        this.house = result;
+        this.listHouses = result;
       });
     });
   }
