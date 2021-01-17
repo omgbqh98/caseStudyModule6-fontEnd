@@ -79,6 +79,7 @@ export class UserUpdateComponent implements OnInit {
       this.userService.updateUser(this.user).subscribe(() => {
         alert('Cập nhật User thành công!');
         this.router.navigate(['/user-update', this.currentUser.username]);
+        window.location.href = '/user-update/' + this.currentUser.username;
       }, error => {
         alert('Lỗi!');
       });
