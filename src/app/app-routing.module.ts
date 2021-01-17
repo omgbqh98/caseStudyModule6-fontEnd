@@ -14,6 +14,7 @@ import {UserUpdateComponent} from './modules/page-content/user/update/user-updat
 import {ListRentedHousesComponent} from "./modules/page-content/booking/list/list-rented-houses/list-rented-houses.component";
 import {CreateHouseComponent} from './modules/page-content/houses/create/create-house/create-house.component';
 import {HouseDetailPostedComponent} from './modules/page-content/houses/detail/house-detail-posted/house-detail-posted.component';
+import {PostedHouseEditComponent} from './modules/page-content/houses/edit/posted-house-edit/posted-house-edit.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'user-ownHouse/:id',
     component: HouseDetailPostedComponent
+  },
+  {
+    path: 'houses-update/:id',
+    component: PostedHouseEditComponent
   }
 ];
 
