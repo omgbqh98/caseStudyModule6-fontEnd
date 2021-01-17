@@ -12,6 +12,7 @@ import {LoginComponent} from './modules/authentication/login/login.component';
 import {AuthGuard} from './helper/auth-guard';
 import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
 import {ListRentedHousesComponent} from "./modules/page-content/booking/list/list-rented-houses/list-rented-houses.component";
+import {CreateHouseComponent} from './modules/page-content/houses/create/create-house/create-house.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'list-rented-houses',
     component: ListRentedHousesComponent
+  },
+  {
+    path: 'houses-create',
+    component: CreateHouseComponent
   }
 ];
 
