@@ -27,10 +27,10 @@ const routes: Routes = [
     path: 'houses',
     component: ListAllHousesComponent
   },
-  {
-    path: 'my-houses',
-    component: ListOwnHousesComponent
-  },
+  // {
+  //   path: 'my-houses',
+  //   component: ListOwnHousesComponent
+  // },
   {
     path: 'about',
     component: AboutContentComponent
