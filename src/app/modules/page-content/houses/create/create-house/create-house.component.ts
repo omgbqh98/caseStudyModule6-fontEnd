@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HouseService} from '../../../../../service/house-service/house.service';
 import {Router} from '@angular/router';
 import {House} from '../../../../../model/house-model/house';
@@ -27,14 +27,14 @@ export class CreateHouseComponent implements OnInit {
 
   ngOnInit(): void {
     this.createHouseForm = this.fb.group({
-      houseName: [''],
-      type: [''],
-      address: [''],
-      description: [''],
-      price: [''],
-      bedroom: [''],
-      bathroom: [''],
-      status: [''],
+      houseName: ['', Validators.required],
+      type: ['Choose house type', Validators.required],
+      address: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required],
+      bedroom: ['', Validators.required],
+      bathroom: ['', Validators.required],
+      status: ['', Validators.required],
     });
   }
   // tslint:disable-next-line:typedef
