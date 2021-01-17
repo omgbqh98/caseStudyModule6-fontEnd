@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {House} from '../../../../../model/house-model/house';
 import {HouseService} from '../../../../../service/house-service/house.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {User} from '../../../../../model/user-model/user';
 
 @Component({
   selector: 'app-house-detail-view',
@@ -9,7 +10,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./house-detail-view.component.css']
 })
 export class HouseDetailViewComponent implements OnInit {
-  house: House = new Object();
+  house: any;
   id: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) {}
