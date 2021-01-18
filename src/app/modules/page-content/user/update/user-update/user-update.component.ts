@@ -54,6 +54,7 @@ export class UserUpdateComponent implements OnInit {
         this.currentUser = value;
         this.userService.getUserByUsername(value.username).subscribe(value1 => {
           this.user = value1;
+          this.arrayPicture = this.user.avatar;
           console.log(this.user.username);
           this.updateUserForm.setValue({
             id: this.user.userId,

@@ -12,4 +12,5 @@ export interface House {
   status?: number;
   ownerId?: User;
   isDeleted?: boolean;
+  avatar?: string;
 }

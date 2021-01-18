@@ -44,7 +44,9 @@
     </thead>
     <tbody>
     <tr  *ngFor="let booking of listBooking">
-      <td class="cart_product">{{booking.houseId.houseId}}
+      <td class="cart_product">
+<!--        {{booking.houseId.houseId}}-->
+        <img src="{{booking.houseId.avatar}}" alt="">
       </td>
       <td class="cart_description">
         <p class="product-name">House Name: {{booking.houseId.houseName}}
