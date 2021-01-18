@@ -12,6 +12,7 @@ import {User} from '../../../../../model/user-model/user';
 export class HouseDetailViewComponent implements OnInit {
   house: any;
   id: any;
+  listRating: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) {}
 
@@ -20,6 +21,9 @@ export class HouseDetailViewComponent implements OnInit {
       this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
+      });
+      this.houseService.getRatingByHouse(this.id).subscribe((ratings) => {
+        this.listRating = ratings;
       });
     });
   }
