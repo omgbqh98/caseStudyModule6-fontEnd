@@ -63,10 +63,6 @@ const routes: Routes = [
     component: CreateHouseComponent
   },
   {
-    path: 'history-booking/:id',
-    component: HistoryBookingComponent
-  },
-  {
     path: 'user-ownHouse/:id',
     component: HouseDetailPostedComponent
   },
