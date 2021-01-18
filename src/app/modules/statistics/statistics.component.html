@@ -1,1 +1,80 @@
-<p>statistics works!</p>
+<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="container">
+  <br>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="tab-bootstrap" data-toggle="tab"
+         href="#wait"
+         role="tab" aria-controls="content-bootstrap" aria-selected="true">
+        Thống kê theo loại
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="tab-css" data-toggle="tab"
+         href="#confirm"
+         role="tab" aria-controls="content-css" aria-selected="false">
+        Hiệu quả hoạt động
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="tab-javascript" data-toggle="tab"
+         href="#cancel"
+         role="tab" aria-controls="content-javascript" aria-selected="false">
+        Thống kê theo sảm phẩm
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="wait"
+         role="tabpanel" aria-labelledby="tab-javascript">
+      <!--      <div th:if="${sumQuantity==0}">-->
+      <!--        <center><h3>Chưa bán được sản phẩm nào</h3></center>-->
+      <!--      </div>-->
+    </div>
+    <!--    <div class="tab-pane fade" id="confirm"-->
+    <!--         role="tabpanel" aria-labelledby="tab-css">-->
+    <!--&lt;!&ndash;      <div th:if="${sumOrder==0}">&ndash;&gt;-->
+    <!--&lt;!&ndash;        <center><h3>Chưa có đơn hàng nào</h3></center>&ndash;&gt;-->
+    <!--&lt;!&ndash;      </div>&ndash;&gt;-->
+    <!--      <div th:if="${sumOrder!=0}" id="piechart_5d" style="width: 900px; height: 500px;"></div>-->
+
+
+  </div>
+  <div class="tab-pane fade" id="cancel"
+       role="tabpanel" aria-labelledby="tab-bootstrap">
+    <div>
+      <!--        <div th:if="${statisticsByProducts.size()==0}">-->
+      <!--          <center><h3>Chưa bán được sản phẩm nào</h3></center>-->
+      <!--        </div>-->
+      <div>
+        <table>
+          <tr>
+            <th>Id</th>
+            <th>houseName</th>
+            <th>price</th>
+            <th>count</th>
+            <th>sumPrice</th>
+          </tr>
+          <tr *ngFor="let h of listStaticsticsByHouses">
+            <td>{{h.houseId}}</td>
+            <td>{{h.houseName}}</td>
+            <td>{{h.price}}</td>
+            <td>{{h.count}}</td>
+            <td>{{h.sumPrice}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>DFSDF</td>
+            <td>ÁAFS</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
