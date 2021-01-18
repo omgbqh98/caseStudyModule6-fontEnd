@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/user-model/user';
 import {UserToken} from '../../model/user-model/user-token';
 import {BookingService} from '../../service/booking-service/booking.service';
@@ -18,13 +18,16 @@ export class HistoryBookingComponent implements OnInit {
   // @ts-ignore
   currentUser: UserToken;
   // @ts-ignore
-  booking: Booking;
+  booking: any;
   // @ts-ignore
-  listBooking: Booking[];
+  listBooking: any;
+  total: any;
+
   constructor(private bookingService: BookingService,
               private authService: AuthService,
               private activatedRoute: ActivatedRoute,
-              private userService: UserService) { }
+              private userService: UserService) {
+  }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -35,11 +38,12 @@ export class HistoryBookingComponent implements OnInit {
         this.user = value1;
         // @ts-ignore
         this.getBooking(this.user.userId);
-        console.log( 'id' + this.user.userId);
-        console.log(  this.user.username);
+        console.log('id' + this.user.userId);
+        console.log(this.user.username);
       });
     });
   }
+
   // @ts-ignore
   getBooking(id: number): Booking[] {
     // @ts-ignore
@@ -49,5 +53,14 @@ export class HistoryBookingComponent implements OnInit {
       console.log(this.listBooking);
       return this.listBooking;
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  sum(): number {
+    let sum = 0;
+    for (let i = 0; i < this.listBooking.length; i++) {
+      sum += this.listBooking[i].total;
+    }
+    return sum;
   }
 }

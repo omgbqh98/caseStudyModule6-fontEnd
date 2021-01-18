@@ -140,7 +140,7 @@
            role="menuitem"><i class="icon fa fa-user fa-fw iconsmall" aria-hidden="true"
                               title="Hồ sơ"></i>Profile</a>
         <div class="dropdown-divider" role="presentation"></div>
-        <a class="dropdown-item" [routerLink]="'list-rented-houses'"
+        <a class="dropdown-item" [routerLink]="['list-rented-houses',user.userId]"
            role="menuitem"><i
           class="icon fa fa-tachometer fa-fw iconsmall" aria-hidden="true"
           title="Nhà của tôi"></i>History</a>
