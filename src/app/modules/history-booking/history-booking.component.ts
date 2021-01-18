@@ -58,6 +58,7 @@ export class HistoryBookingComponent implements OnInit {
   // tslint:disable-next-line:typedef
   sum(): number {
     let sum = 0;
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.listBooking.length; i++) {
       sum += this.listBooking[i].total;
     }
