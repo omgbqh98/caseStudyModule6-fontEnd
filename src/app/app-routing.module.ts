@@ -12,6 +12,7 @@ import {LoginComponent} from './modules/authentication/login/login.component';
 import {AuthGuard} from './helper/auth-guard';
 import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
 import {ListRentedHousesComponent} from "./modules/page-content/booking/list/list-rented-houses/list-rented-houses.component";
+import {StatisticsComponent} from "./modules/statistics/statistics.component";
 
 const routes: Routes = [
   {
@@ -53,6 +54,9 @@ const routes: Routes = [
   {
     path: 'list-rented-houses',
     component: ListRentedHousesComponent
+  }, {
+    path: 'statistics/:id',
+    component: StatisticsComponent
   }
 ];
 
