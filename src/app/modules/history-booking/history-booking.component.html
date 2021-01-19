@@ -37,9 +37,13 @@
       <td class="cart_avail"><span class="label label-success">{{booking.createdAt}}</span>
       </td>
       <td class="price"><span> {{booking.total}} $ </span>  </td>
-      <td  class="cart_avail"><button class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>
-      <button class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Cancel Booking</a></button>
-      <button class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Check In</a></button></td>
+      <td  class="cart_avail">
+        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>
+      <button class="btn-success" style="color: red"><a (click)="cancelBooking(booking.bookingId)">Cancel</a></button>
+      <button   [disabled]="clicked" (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn-success">Check In</button>
+<!--        <button type="button" *ngIf="booking.bookingId.status == 1" >da thue</button>-->
+      </td>
+
     </tr>
     </tbody>
     <tfoot>
