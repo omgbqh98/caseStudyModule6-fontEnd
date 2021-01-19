@@ -14,6 +14,7 @@ export class HouseDetailViewComponent implements OnInit {
   id: any;
   listParentRating: any;
   listChildRating: any;
+  sum: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) {}
 
@@ -25,6 +26,7 @@ export class HouseDetailViewComponent implements OnInit {
       });
       this.houseService.getParentRatingByHouse(this.id).subscribe((ratings) => {
         this.listParentRating = ratings;
+        this.sum = this.listParentRating.length;
       });
       this.houseService.getChildRatingByHouse(this.id).subscribe((data) => {
         console.log('thành công');
