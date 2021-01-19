@@ -12,9 +12,6 @@ import {User} from '../../../../../model/user-model/user';
 export class HouseDetailViewComponent implements OnInit {
   house: any;
   id: any;
-  listParentRating: any;
-  listChildRating: any;
-  sum: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) {}
 
