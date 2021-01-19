@@ -290,18 +290,20 @@
     <!--      End comment cha -->
 
     <!--      Các comment con -->
-      <li *ngFor="let child of listChildRating" class="comment-children">
-        <div class="comment-avatar">
-          <img src="{{child.userId.avatar}}" alt="">
-        </div>
-        <div class="comment-details">
-          <h4 class="comment-author">{{child.userId.username}}</h4>
-          <span>{{child.createdAt}}</span>
-          <p class="comment-description">
-            {{child.review}}
-          </p>
-        </div>
-      </li>
+      <ul>
+        <li *ngFor="let child of listChildRating" class="comment-children">
+          <div class="comment-avatar">
+            <img src="{{child.userId.avatar}}" alt="">
+          </div>
+          <div class="comment-details">
+            <h4 class="comment-author">{{child.userId.username}}</h4>
+            <span>{{child.createdAt}}</span>
+            <p class="comment-description">
+              {{child.review}}
+            </p>
+          </div>
+        </li>
+      </ul>
       <!--      End các comment con -->
     </ul>
   </div>
