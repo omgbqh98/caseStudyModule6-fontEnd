@@ -48,6 +48,10 @@ export class HouseService {
     return this.http.get(API_URL + '/houses' + `/${id}` + '/parentRatings');
   }
 
+  getChildRatingByHouse(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses' + `/${id}` + '/childRatings');
+  }
+
   getChildRatingByParentRating(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + '/childRatings' + `/${id}`);
   }

@@ -284,27 +284,31 @@
             {{rating.review}}
           </p>
           <button class="btn btn-outline-secondary" style="margin-right: 10px">Reply</button>
-          <button class="btn btn-outline-secondary" id="showChildRatingBtn" (click)="getAllChild(rating.ratingId)">Comments</button>
+<!--          <button class="btn btn-outline-secondary" id="showChildRatingBtn">-->
+<!--            Comments-->
+<!--          </button>-->
         </div>
+        <br>
+        <!--      Các comment con -->
+        <div style="margin-left: 50px">
+          <ul *ngFor="let child of listChildRating">
+            <li *ngIf="child.parentId === rating.ratingId" class="comment-children">
+                <div class="comment-avatar">
+                  <img src="{{child.userId.avatar}}" alt="">
+                </div>
+                <div class="comment-details">
+                  <h4 class="comment-author">{{child.userId.username}}</h4>
+                  <span>{{child.createdAt}}</span>
+                  <p class="comment-description">
+                    {{child.review}}
+                  </p>
+                </div>
+            </li>
+          </ul>
+        </div>
+        <!--      End các comment con -->
       </li>
-    <!--      End comment cha -->
-
-    <!--      Các comment con -->
-      <ul>
-        <li *ngFor="let child of listChildRating" class="comment-children">
-          <div class="comment-avatar">
-            <img src="{{child.userId.avatar}}" alt="">
-          </div>
-          <div class="comment-details">
-            <h4 class="comment-author">{{child.userId.username}}</h4>
-            <span>{{child.createdAt}}</span>
-            <p class="comment-description">
-              {{child.review}}
-            </p>
-          </div>
-        </li>
-      </ul>
-      <!--      End các comment con -->
+      <!--      End comment cha -->
     </ul>
   </div>
 </div>
