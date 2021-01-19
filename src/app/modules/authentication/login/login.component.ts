@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
       console.log(this.newFormUser);
       console.log(newUserName.username);
       this.authService.signup(newUserName).subscribe(() => {
-          alert('Thêm thành công');
+          alert('Registered Successfully!');
         }
       );
 
