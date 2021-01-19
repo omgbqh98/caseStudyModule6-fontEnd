@@ -1,1 +1,51 @@
-<p>rating-list works!</p>
+<!--Code comment và rate của customer-->
+<br>
+<div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+  <div class="container">
+    <div class="title-box-d">
+      <h3 class="title-d">Feedbacks ({{this.sum}})</h3>
+    </div>
+    <div class="box-comments">
+      <ul class="list-comments">
+        <!--      Các comment cha -->
+        <li *ngFor="let rating of listParentRating">
+          <div class="comment-avatar">
+            <img src="{{rating.userId.avatar}}" alt="">
+          </div>
+          <div class="comment-details">
+            <h4 class="comment-author">{{rating.userId.username}}</h4>
+            <span>{{rating.createdAt}}</span>
+            <p class="comment-description">
+              {{rating.review}}
+            </p>
+            <button class="btn btn-outline-secondary" style="margin-right: 10px">Reply</button>
+            <!--          <button class="btn btn-outline-secondary" id="showChildRatingBtn">-->
+            <!--            Comments-->
+            <!--          </button>-->
+          </div>
+          <br>
+          <!--      Các comment con -->
+          <div style="margin-left: 50px">
+            <ul *ngFor="let child of listChildRating">
+              <li *ngIf="child.parentId === rating.ratingId" class="comment-children">
+                <div class="comment-avatar">
+                  <img src="{{child.userId.avatar}}" alt="">
+                </div>
+                <div class="comment-details">
+                  <h4 class="comment-author">{{child.userId.username}}</h4>
+                  <span>{{child.createdAt}}</span>
+                  <p class="comment-description">
+                    {{child.review}}
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--      End các comment con -->
+        </li>
+        <!--      End comment cha -->
+      </ul>
+    </div>
+  </div>
+</div>
+

@@ -24,14 +24,6 @@ export class HouseDetailViewComponent implements OnInit {
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
       });
-      this.houseService.getParentRatingByHouse(this.id).subscribe((ratings) => {
-        this.listParentRating = ratings;
-        this.sum = this.listParentRating.length;
-      });
-      this.houseService.getChildRatingByHouse(this.id).subscribe((data) => {
-        console.log('thành công');
-        this.listChildRating = data;
-      });
     });
   }
 }
