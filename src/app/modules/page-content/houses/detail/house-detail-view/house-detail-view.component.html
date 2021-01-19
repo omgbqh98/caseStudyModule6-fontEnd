@@ -284,27 +284,22 @@
             {{rating.review}}
           </p>
           <button class="btn btn-outline-secondary" style="margin-right: 10px">Reply</button>
-          <button class="btn btn-outline-secondary" id="showChildRatingBtn" (click)="getAllChild()">Comments</button>
+          <button class="btn btn-outline-secondary" id="showChildRatingBtn" (click)="getAllChild(rating.ratingId)">Comments</button>
         </div>
       </li>
-    </ul>
     <!--      End comment cha -->
 
     <!--      Các comment con -->
-    <ul>
-      <li class="comment-children">
+      <li *ngFor="let child of listChildRating" class="comment-children">
         <div class="comment-avatar">
-          <img src="assets/img/author-1.jpg" alt="">
+          <img src="{{child.userId.avatar}}" alt="">
         </div>
         <div class="comment-details">
-          <h4 class="comment-author">Oliver Colmenares</h4>
-          <span>18 Sep 2017</span>
+          <h4 class="comment-author">{{child.userId.username}}</h4>
+          <span>{{child.createdAt}}</span>
           <p class="comment-description">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-            ipsam temporibus maiores
-            quae.
+            {{child.review}}
           </p>
-          <a href="3">Reply</a>
         </div>
       </li>
       <!--      End các comment con -->

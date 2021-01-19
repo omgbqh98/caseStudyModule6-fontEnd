@@ -13,6 +13,7 @@ export class HouseDetailViewComponent implements OnInit {
   house: any;
   id: any;
   listParentRating: any;
+  listChildRating: any;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) {}
 
@@ -25,6 +26,13 @@ export class HouseDetailViewComponent implements OnInit {
       this.houseService.getParentRatingByHouse(this.id).subscribe((ratings) => {
         this.listParentRating = ratings;
       });
+    });
+  }
+  // tslint:disable-next-line:typedef
+  getAllChild(id: number) {
+    this.houseService.getChildRatingByParentRating(id).subscribe((result) => {
+      console.log('thành công');
+      this.listChildRating = result;
     });
   }
 }
