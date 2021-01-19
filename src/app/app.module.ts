@@ -35,6 +35,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
+import { RatingCreateComponent } from './modules/rating/rating-create/rating-create.component';
+import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/data
     StatisticsComponent,
     ListRentHousesByTimeComponent,
     UserUpdateComponent,
+    RatingCreateComponent,
+    RatingListComponent,
   ],
   imports: [
     BrowserModule,
