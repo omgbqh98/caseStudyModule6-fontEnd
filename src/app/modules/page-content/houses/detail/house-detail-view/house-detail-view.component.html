@@ -284,12 +284,14 @@
             {{rating.review}}
           </p>
           <button class="btn btn-outline-secondary" style="margin-right: 10px">Reply</button>
-          <button class="btn btn-outline-secondary" id="showChildRatingBtn">Comments</button>
+          <button class="btn btn-outline-secondary" id="showChildRatingBtn" (click)="getAllChild()">Comments</button>
         </div>
       </li>
-      <!--      End comment cha -->
+    </ul>
+    <!--      End comment cha -->
 
-      <!--      Các comment con -->
+    <!--      Các comment con -->
+    <ul>
       <li class="comment-children">
         <div class="comment-avatar">
           <img src="assets/img/author-1.jpg" alt="">
