@@ -268,12 +268,12 @@
 <!--Code comment và rate của customer-->
 <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
   <div class="title-box-d">
-    <h3 class="title-d">Comments</h3>
+    <h3 class="title-d">Feedbacks</h3>
   </div>
   <div class="box-comments">
     <ul class="list-comments">
       <!--      Các comment cha -->
-      <li *ngFor="let rating of listRating">
+      <li *ngFor="let rating of listParentRating">
         <div class="comment-avatar">
           <img src="{{rating.userId.avatar}}" alt="">
         </div>
@@ -283,7 +283,8 @@
           <p class="comment-description">
             {{rating.review}}
           </p>
-          <a href="3">Reply</a>
+          <button class="btn btn-outline-secondary" style="margin-right: 10px">Reply</button>
+          <button class="btn btn-outline-secondary">Comments</button>
         </div>
       </li>
       <!--      End comment cha -->
