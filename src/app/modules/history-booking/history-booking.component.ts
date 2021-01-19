@@ -3,7 +3,7 @@ import {User} from '../../model/user-model/user';
 import {UserToken} from '../../model/user-model/user-token';
 import {BookingService} from '../../service/booking-service/booking.service';
 import {AuthService} from '../../service/authen-service/auth.service';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Booking} from '../../model/booking-model/booking';
 import {UserService} from '../../service/user-service/user.service';
 
@@ -22,11 +22,12 @@ export class HistoryBookingComponent implements OnInit {
   // @ts-ignore
   listBooking: any;
   total: any;
-
+  clicked = false;
   constructor(private bookingService: BookingService,
               private authService: AuthService,
               private activatedRoute: ActivatedRoute,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,10 +41,27 @@ export class HistoryBookingComponent implements OnInit {
         this.getBooking(this.user.userId);
         console.log('id' + this.user.userId);
         console.log(this.user.username);
+        // this.cancelBooking(this.booking.bookingId);
       });
     });
   }
-
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkIn(id ) {
+    this.bookingService.checkIn(id).subscribe();
+    alert('checkIn thành công');
+    // @ts-ignore
+    this.getBooking(this.user.userId);
+  }
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  cancelBooking(id ) {
+    this.bookingService.cancelBooking(id).subscribe();
+    alert('huy thanh cong');
+    // @ts-ignore
+    this.getBooking(this.user.userId);
+    console.log('id nhaaa' + this.user.userId);
+    }
   // @ts-ignore
   getBooking(id: number): Booking[] {
     // @ts-ignore

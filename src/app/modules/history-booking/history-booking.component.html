@@ -1,30 +1,4 @@
-<!--<br>-->
-<!--<br>-->
-<!--<br>-->
-<!--<br>-->
-<!--<br>-->
-<!--<table class="table">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th scope="col">id</th>-->
-<!--    <th scope="col">checkin</th>-->
-<!--    <th scope="col">checkout</th>-->
-<!--    <th scope="col">total</th>-->
-<!--    <th scope="col">created at</th>-->
-<!--    &lt;!&ndash;    <td>delete</td>&ndash;&gt;-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let booking of listBooking">-->
-<!--    <td>{{booking.bookingId}}</td>-->
-<!--&lt;!&ndash;    <td>{{booking.houseId.houseName}}</td>&ndash;&gt;-->
-<!--    <td><a [routerLink]="['detail',booking.checkIn]">{{booking.checkIn}}</a></td>-->
-<!--    <td>{{booking.checkOut}}</td>-->
-<!--    <td>{{booking.total}}</td>-->
-<!--    <td>{{booking.createdAt}}</td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
+
 <br><br><br><br>
 <div class="wrapper">
   <table class="table table-bordered cart_summary">
@@ -63,7 +37,13 @@
       <td class="cart_avail"><span class="label label-success">{{booking.createdAt}}</span>
       </td>
       <td class="price"><span> {{booking.total}} $ </span>  </td>
-      <td  class="cart_avail"><button class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button></td>
+      <td  class="cart_avail">
+        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>
+      <button class="btn-success" style="color: red"><a (click)="cancelBooking(booking.bookingId)">Cancel</a></button>
+      <button   [disabled]="clicked" (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn-success">Check In</button>
+<!--        <button type="button" *ngIf="booking.bookingId.status == 1" >da thue</button>-->
+      </td>
+
     </tr>
     </tbody>
     <tfoot>

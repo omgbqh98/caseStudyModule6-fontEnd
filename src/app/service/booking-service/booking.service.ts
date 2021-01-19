@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Booking} from '../../model/booking-model/booking';
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,16 @@ export class BookingService {
 
   getDetailHouse(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + `/${id}`);
+  }
+
+  cancelBooking(id: number): Observable<Booking> {
+    return this.http.delete(API_URL + '/houses/cancel' + `/${id}`);
+  }
+
+  checkIn(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses/checkIn/' + `${id}`);
+  }
+  finById(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses/getBooking' + `${id}`);
   }
 }

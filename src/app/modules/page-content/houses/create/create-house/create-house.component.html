@@ -15,6 +15,11 @@
       <div class="text-center">
         <img src="{{arrayPicture}}" *ngIf="arrayPicture" class="avatar img-circle img-thumbnail"
              alt="avatar">
+        <div class="text-center" *ngIf="!arrayPicture">
+          <img src="https://plantationhomes.com.au/cms_uploads/images/15861_six-stages-of-building-a-home.jpg" class="avatar img-circle img-thumbnail" alt="avatar" >
+          <!--        <h6>Upload a different photo...</h6>-->
+          <!--        <input type="file" class="text-center center-block file-upload">-->
+        </div>
         <h5>Select Image</h5>
         <div class="up_button">
         <label class="fileContainer" for="up_button">
