@@ -80,4 +80,7 @@ export class RatingListComponent implements OnInit {
   hideCommentBox() {
     this.isShow = false;
   }
+  // tslint:disable-next-line:typedef
+  createComment(id: number) {
+  }
 }
