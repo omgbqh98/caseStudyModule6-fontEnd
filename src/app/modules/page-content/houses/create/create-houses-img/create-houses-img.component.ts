@@ -19,6 +19,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./create-houses-img.component.css']
 })
 export class CreateHousesImgComponent implements OnInit {
+
   id: any;
   // @ts-ignore
   houses: House;
@@ -110,9 +111,4 @@ export class CreateHousesImgComponent implements OnInit {
         }
       });
   }
-
-  // @ts-ignore
-  // getAllHouses(): HousesImg[] {
-  //   return this.Img;
-  // }
 }
