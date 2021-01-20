@@ -23,6 +23,7 @@ export class HistoryBookingComponent implements OnInit {
   listBooking: any;
   total: any;
   clicked = false;
+
   constructor(private bookingService: BookingService,
               private authService: AuthService,
               private activatedRoute: ActivatedRoute,
@@ -45,23 +46,30 @@ export class HistoryBookingComponent implements OnInit {
       });
     });
   }
+
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  checkIn(id ) {
+  checkIn(id) {
     this.bookingService.checkIn(id).subscribe();
     alert('checkIn thành công');
     // @ts-ignore
     this.getBooking(this.user.userId);
   }
+
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  cancelBooking(id ) {
-    this.bookingService.cancelBooking(id).subscribe();
-    alert('huy thanh cong');
+  cancelBooking(id) {
+    this.bookingService.cancelBooking(id).subscribe(() => {
+      alert('huy thanh cong');
+      // @ts-ignore
+      this.getBooking(this.user.userId);
+    }, error => {
+      alert('Bạn không thể hủy =)))))');
+      console.log(error);
+    });
     // @ts-ignore
-    this.getBooking(this.user.userId);
-    console.log('id nhaaa' + this.user.userId);
-    }
+  }
+
   // @ts-ignore
   getBooking(id: number): Booking[] {
     // @ts-ignore

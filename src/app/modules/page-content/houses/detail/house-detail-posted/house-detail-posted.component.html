@@ -132,19 +132,34 @@
               </ul>
             </div>
             <br><br><br>
-            <div style="float: right">
+
+            <div class="dropdown">
+              <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Updating...
+              </button> <button *ngIf="house.status == 0" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Available
+              </button> <button *ngIf="house.status == 1" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Booked
+              </button> <button *ngIf="house.status == 2" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Checked In
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a [routerLink]="['/user-ownHouse', house.houseId]"  (click)="upgrade(house.houseId)" class="dropdown-item" href="#">Updating...</a>
+                <a class="dropdown-item" [routerLink]="['/user-ownHouse', house.houseId]" (click)="hired(house.houseId)">Booked</a>
+                <a class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="empty(house.houseId)">Available</a>
+                <a class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="checkedIn(house.houseId)">Checked In</a>
+              </div>
+            </div>
+
+
+            <div style="float: right;margin-top: -50px">
               <a type="button" class="btn btn-outline-secondary"
                  [routerLink]="['/houses-update',house.houseId]">Update</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!--/ Property Single End /-->
-<div class="container">
+<div class="container" style="width: 100%">
   <!--  Tiêu để-->
   <div class="col-md-12">
     <div class="row section-t3">
