@@ -107,6 +107,7 @@ export class RatingListComponent implements OnInit {
     feedback.rate = 0;
     feedback.review = this.createNewCommentForm.value.review;
     feedback.parentId = parent;
+    console.log('feedback' + feedback);
     this.ratingService.createNewRating(feedback).subscribe(value => {
       alert('Create successfully!');
       console.log('kết quả thêm comment' + value);
