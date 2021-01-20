@@ -25,4 +25,12 @@ export class RatingService {
   getChildRatingByParentRating(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + '/childRatings' + `/${id}`);
   }
+
+  getCheckedOutAndRatedUserByHouse(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses' + `/${id}` + '/checkedOutRatedUser');
+  }
+
+  getCheckedOutUserByHouse(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses' + `/${id}` + '/checkedOutUser');
+  }
 }
