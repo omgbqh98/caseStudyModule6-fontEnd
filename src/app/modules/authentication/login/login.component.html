@@ -27,14 +27,15 @@
                          placeholder="Username"
                          title="Please enter your First Name"
                          required=""
-                         class="input" [ngClass]="{'is-invalid': newFormUser.get('username')!.touched && newFormUser.get('username')!.invalid}"/>
+                         class="input"
+                         [ngClass]="{'is-invalid': newFormUser.get('username')!.touched && newFormUser.get('username')!.invalid}"/>
                   <div class="invalid-feedback">
 
                     <div>*Username is required</div>
                   </div>
-<!--                  <div style="color: red;" *ngIf="existUsername">-->
-<!--                    {{existUsername}}-->
-<!--                  </div>-->
+                  <!--                  <div style="color: red;" *ngIf="existUsername">-->
+                  <!--                    {{existUsername}}-->
+                  <!--                  </div>-->
                 </div>
 
                 <div class="group">
@@ -58,7 +59,7 @@
                          formControlName="password"
                          placeholder="Password..."
                          id="password1"
-                         required = ""
+                         required=""
                          class="input"
                          [ngClass]="{'is-invalid': newFormUser.get('password')!.touched && newFormUser.get('password')!.invalid}"/>
                   <div class="invalid-feedback">
@@ -79,12 +80,14 @@
                          formControlName="confirmPassword"
                          placeholder="Confirm password..."
                          id="password2"
-                         required =""
+                         required=""
                          class="input"
                          [ngClass]="{'is-invalid': newFormUser.get('confirmPassword')!.touched && newFormUser.get('confirmPassword')!.invalid}"/>
                   <div class="invalid-feedback">
-                    <div *ngIf="newFormUser.get('confirmPassword')!.errors!.required">*Confirm password is required</div>
-                    <div *ngIf="newFormUser.get('confirmPassword')!.errors!.mustMatch">*Password and Confirm password must
+                    <div *ngIf="newFormUser.get('confirmPassword')!.errors!.required">*Confirm password is required
+                    </div>
+                    <div *ngIf="newFormUser.get('confirmPassword')!.errors!.mustMatch">*Password and Confirm password
+                      must
                       match!
                     </div>
                   </div>
@@ -104,7 +107,8 @@
               <form [formGroup]="newFormLogin" (ngSubmit)="login()">
                 <div class="group">
                   <!--                <label for="user" class="label">Username</label>-->
-                  <input id="user" type="text" class="input" formControlName="username" placeholder="Enter username..." [ngClass]="{ 'is-invalid': submitted && f.username!.errors }" />
+                  <input id="user" type="text" class="input" formControlName="username" placeholder="Enter username..."
+                         [ngClass]="{ 'is-invalid': submitted && f.username!.errors }"/>
                   <div *ngIf="submitted && f.username!.errors" class="invalid-feedback">
                     <div *ngIf="f.username!.errors!.required">*Username is required</div>
                   </div>
@@ -112,7 +116,7 @@
                 <div class="group">
                   <!--                <label for="pass" class="label">Password</label>-->
                   <input id="pass" type="password" class="input" data-type="password" formControlName="password"
-                         placeholder="Enter password..." [ngClass]="{ 'is-invalid': submitted && f.password!.errors }" />
+                         placeholder="Enter password..." [ngClass]="{ 'is-invalid': submitted && f.password!.errors }"/>
                   <div *ngIf="submitted && f.password!.errors" class="invalid-feedback">
                     <div *ngIf="f.password!.errors!.required">*Password is required</div>
                   </div>
@@ -141,26 +145,6 @@
       href="https://w3layouts.com/" target="_blank">W3layouts</a></p>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--<br><br><br><br>-->

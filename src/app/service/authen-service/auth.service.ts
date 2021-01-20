@@ -50,4 +50,8 @@ export class AuthService {
   signup(user: User): Observable<User> {
     return this.http.post<User>(API_URL + '/signup', user);
   }
+
+  googleSignIn(token: any): Observable<any> {
+    return this.http.post<User>(API_URL + '/googleSignIn', token);
+  }
 }

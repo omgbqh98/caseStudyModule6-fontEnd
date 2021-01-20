@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
     // tslint:disable-next-line:prefer-const
     let loginUser: User;
     loginUser = this.newFormLogin.value;
+    console.log('loginuser' + this);
     this.authService.login(loginUser)
       .pipe(first())
       .subscribe(data => {
@@ -96,10 +97,11 @@ export class LoginComponent implements OnInit {
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.newFormUser.value));
   }
 
+  // tslint:disable-next-line:typedef
   onSignIn(googleUser: any) {
     console.log('Login thành công');
     const id_token = googleUser.getAuthResponse().id_token;
     console.log(id_token);
+    this.authService.googleSignIn(id_token);
   }
-
 }
