@@ -32,6 +32,7 @@ export class CreateHousesImgComponent implements OnInit {
   selectedFile: File = null;
   // @ts-ignore
   downloadURL: Observable<string>;
+  Img: HousesImg[] = [];
 
   // tslint:disable-next-line:max-line-length
   constructor(private activate: ActivatedRoute, private housesImgService: HousesImgService, private formBuilder: FormBuilder, private authService: AuthService, private  userService: UserService, private  housesService: HouseService, private storage: AngularFireStorage) {
@@ -39,10 +40,9 @@ export class CreateHousesImgComponent implements OnInit {
       this.id = paramMap.get('id');
       // @ts-ignore
       this.housesService.getOwnedHouse(this.id).subscribe(result => {
-        this.houses = result;
+        this.houses = result[0];
         console.log(this.houses);
         console.log(this.houses.houseId);
-        // this.newFromHouses.patchValue({});
       });
     });
   }
@@ -59,7 +59,7 @@ export class CreateHousesImgComponent implements OnInit {
 
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  onFileSelected(event,id) {
+  onFileSelected(event, id) {
     const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -70,19 +70,34 @@ export class CreateHousesImgComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
+          console.log('Anh: ');
           console.log(this.downloadURL);
           this.downloadURL.subscribe(async (url) => {
             console.log(this.downloadURL);
             if (url) {
               console.log(url);
               this.fb = url;
-              const house =  await this.getHouse(id);
+              this.Img.push(this.fb);
+              console.log(this.Img)
+              if (this.Img.length == 3) {
+                console.log(this.Img[0]);
+                this.Img[0] = this.Img[2];
+                this.Img.splice(2);
+              }
+              console.log(this.Img);
+              const house = await this.getHouse(id);
+              console.log(house[0]);
               let houseImgs: HousesImg = {};
-              houseImgs.houseId = house;
+              houseImgs.houseId = house[0];
               houseImgs.isAvatar = false;
               houseImgs.link = url;
-              this.housesImgService.createHouses(houseImgs).subscribe(() =>{
-                alert("oke")
+              console.log('nha');
+              console.log(houseImgs);
+              this.housesImgService.createHouses(houseImgs).subscribe(() => {
+                alert('oke');
+              }, error => {
+                console.log('Lỗi: ');
+                console.log(error);
               });
             }
             console.log(this.fb);
@@ -95,4 +110,9 @@ export class CreateHousesImgComponent implements OnInit {
         }
       });
   }
+
+  // @ts-ignore
+  // getAllHouses(): HousesImg[] {
+  //   return this.Img;
+  // }
 }

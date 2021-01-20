@@ -21,5 +21,4 @@ export class HouseDetailPostedComponent implements OnInit {
       });
     });
   }
-
 }

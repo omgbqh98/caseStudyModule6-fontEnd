@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {House} from '../../model/house-model/house';
 import {Booking} from '../../model/booking-model/booking';
+import {HousesImg} from '../../model/house-model/housesImg';
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,8 @@ export class HouseService {
 
   getChildRatingByParentRating(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + '/childRatings' + `/${id}`);
+  }
+  getAllHouseImg(id : number) : Observable<HousesImg>{
+    return this.http.get<HousesImg>(API_URL + '/housesImg' + '/detail/'+ id)
   }
 }

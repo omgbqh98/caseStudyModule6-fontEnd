@@ -1,6 +1,6 @@
 import {House} from './house';
 
-export  interface HousesImg{
+export interface HousesImg{
   // houseImg: House;
   imageId?: any;
   houseId?: House;

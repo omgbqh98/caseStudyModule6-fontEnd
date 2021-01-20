@@ -22,6 +22,7 @@ import {ListRentedHousesComponent} from './modules/page-content/booking/list/lis
 import {StatisticsComponent} from './modules/statistics/statistics.component';
 
 
+
 const routes: Routes = [
   {
     path: 'login',
