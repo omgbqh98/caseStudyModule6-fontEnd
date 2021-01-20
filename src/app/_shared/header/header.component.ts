@@ -7,6 +7,7 @@ import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../service/authen-service/auth.service';
 import {UserToken} from '../../model/user-model/user-token';
 import th from '@mobiscroll/angular/dist/js/i18n/th';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -15,6 +16,7 @@ import th from '@mobiscroll/angular/dist/js/i18n/th';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  closeResult = '';
   // @ts-ignore
   currentUser: UserToken;
   // @ts-ignore
@@ -33,7 +35,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     // private db: AngularFireDatabase,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private modalService: NgbModal
   ) {
   }
 
@@ -52,5 +55,25 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     window.location.href = '/login';
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
