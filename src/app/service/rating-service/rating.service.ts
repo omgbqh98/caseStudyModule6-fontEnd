@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {Rating} from '../../model/rating-model/rating';
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,10 @@ export class RatingService {
 
   getCheckedOutUserByHouse(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + `/${id}` + '/checkedOutUser');
+  }
+
+  createNewRating(rating: Rating): Observable<any> {
+    // @ts-ignore
+    return this.http.post<Rating>(API_URL + '/houses' + `/${id}` + '/createRating');
   }
 }

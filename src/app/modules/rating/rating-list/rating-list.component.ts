@@ -6,6 +6,9 @@ import {AuthService} from '../../../service/authen-service/auth.service';
 import {UserToken} from '../../../model/user-model/user-token';
 import {User} from '../../../model/user-model/user';
 import {UserService} from '../../../service/user-service/user.service';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {House} from '../../../model/house-model/house';
+import {Rating} from '../../../model/rating-model/rating';
 
 @Component({
   selector: 'app-rating-list',
@@ -26,11 +29,14 @@ export class RatingListComponent implements OnInit {
   currentHouse: any;
   owner: any;
   parentRatingTag: any;
+  createNewCommentForm : FormGroup;
 
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
               private ratingService: RatingService,
-              private userService: UserService) {
+              private userService: UserService,
+              private fb: FormBuilder,
+              private reactiveForm: ReactiveFormsModule) {
   }
 
   ngOnInit(): void {
@@ -44,6 +50,10 @@ export class RatingListComponent implements OnInit {
         console.log('thành công');
         this.listChildRating = data;
       });
+    });
+
+    this.createNewCommentForm = this.fb.group({
+      review: ['', Validators.required],
     });
   }
 
@@ -81,6 +91,15 @@ export class RatingListComponent implements OnInit {
     this.isShow = false;
   }
   // tslint:disable-next-line:typedef
-  createComment(id: number) {
+  createComment(gotParentId: any) {
+    const rating: Rating = this.createNewCommentForm.value;
+    rating.houseId = this.currentHouse.houseId;
+    rating.userId = this.user.userId;
+    rating.parentId = gotParentId;
+    rating.rate = 0;
+    this.ratingService.createNewRating(rating).subscribe(value => {
+          alert('Create successfully!');
+          this.isShow = false;
+      });
   }
 }
