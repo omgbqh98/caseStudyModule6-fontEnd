@@ -25,8 +25,6 @@ import {LoginComponent} from './modules/authentication/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-// <<<<<<< HEAD
-// <<<<<<< HEAD
 import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
 import {StatisticsComponent} from './modules/statistics/statistics.component';
 import {ListRentHousesByTimeComponent} from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
@@ -71,6 +69,7 @@ import {CreateHousesImgComponent} from './modules/page-content/houses/create/cre
     RatingCreateComponent,
     RatingListComponent,
     CreateHousesImgComponent,
+    SearchComponent
   ],
   imports: [
     MbscModule,
