@@ -55,15 +55,11 @@
             <div *ngIf="isShow && parentRatingTag === rating.ratingId">
               <!--              <app-comment-create></app-comment-create>-->
               <div class="bg-light p-2" style="margin-left: 45px; margin-bottom: 20px">
-                <form class="form" [formGroup]="createNewCommentForm" (ngSubmit)="createComment(rating.ratingId)" method="post"
-                      id="registrationForm">
-                  <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                                      src="{{user.avatar}}"
-                                                                      width="40"><textarea
-                    class="form-control ml-1 shadow-none textarea" style="height: 100px"></textarea></div>
+                <form class="form" [formGroup]="createNewCommentForm" (ngSubmit)="createComment(rating.ratingId)" id="registrationForm">
+                  <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="{{user.avatar}}" width="40">
+                    <textarea class="form-control ml-1 shadow-none textarea" style="height: 100px" formControlName="review"></textarea></div>
                   <div class="mt-2 text-right">
-                    <button class="btn btn-success btn-sm shadow-none" type="button"
-                            (click)="createComment(rating.ratingId">Post comment
+                    <button class="btn btn-success btn-sm shadow-none" type="submit">Post comment
                     </button>
                     <button class="btn btn-outline-success btn-sm ml-1 shadow-none" type="button"
                             (click)="hideCommentBox()">Cancel

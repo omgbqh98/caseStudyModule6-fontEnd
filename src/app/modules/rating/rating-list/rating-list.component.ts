@@ -9,6 +9,7 @@ import {UserService} from '../../../service/user-service/user.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {House} from '../../../model/house-model/house';
 import {Rating} from '../../../model/rating-model/rating';
+import {Timestamp} from 'rxjs';
 
 @Component({
   selector: 'app-rating-list',
@@ -29,19 +30,25 @@ export class RatingListComponent implements OnInit {
   currentHouse: any;
   owner: any;
   parentRatingTag: any;
-  createNewCommentForm : FormGroup;
+  // @ts-ignore
+  createNewCommentForm: FormGroup;
+
+  // newComment: Rating;
 
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
               private ratingService: RatingService,
               private userService: UserService,
-              private fb: FormBuilder,
-              private reactiveForm: ReactiveFormsModule) {
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.getCurrentUser();
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
+      this.houseService.getDetailHouse(this.id).subscribe((house) => {
+        this.currentHouse = house;
+      });
       this.ratingService.getParentRatingByHouse(this.id).subscribe((ratings) => {
         this.listParentRating = ratings;
         this.sum = this.listParentRating.length;
@@ -51,9 +58,12 @@ export class RatingListComponent implements OnInit {
         this.listChildRating = data;
       });
     });
-
     this.createNewCommentForm = this.fb.group({
-      review: ['', Validators.required],
+      userId: [''],
+      houseId: [''],
+      rate: [''],
+      review: [''],
+      parentId: [''],
     });
   }
 
@@ -71,35 +81,36 @@ export class RatingListComponent implements OnInit {
     this.ratingService.getCheckedOutUserByHouse(this.id).subscribe((users) => {
       this.checkedOutList = users;
       console.log('danh sách thằng checkout:' + this.checkedOutList);
-      this.getCurrentUser(); // lấy thằng user hiện tại vào biến user
-      this.houseService.getDetailHouse(this.id).subscribe((house) => {
-        this.currentHouse = house;
-        this.owner = this.currentHouse.ownerId;
-        console.log('Thông tin nhà hiện tại:' + this.currentHouse);
-        console.log('thằng chủ' + this.owner);
-        if (this.checkedOutList.includes(this.user) || this.owner.userId === this.user.userId) {
-          console.log('kết quả check là checkout hoặc chủ');
-          this.isShow = true;
-        } else {
-          this.isShowAlert = true;
-        }
-      });
+      // this.getCurrentUser(); // lấy thằng user hiện tại vào biến user
+      this.owner = this.currentHouse.ownerId;
+      // console.log('Thông tin nhà hiện tại:' + this.currentHouse);
+      // console.log('thằng chủ' + this.owner);
+      if (this.checkedOutList.includes(this.user) || this.owner.userId === this.user.userId) {
+        console.log('kết quả check là checkout hoặc chủ');
+        this.isShow = true;
+      } else {
+        this.isShowAlert = true;
+      }
     });
   }
 
+  // tslint:disable-next-line:typedef
   hideCommentBox() {
     this.isShow = false;
   }
+
   // tslint:disable-next-line:typedef
-  createComment(gotParentId: any) {
-    const rating: Rating = this.createNewCommentForm.value;
-    rating.houseId = this.currentHouse.houseId;
-    rating.userId = this.user.userId;
-    rating.parentId = gotParentId;
-    rating.rate = 0;
-    this.ratingService.createNewRating(rating).subscribe(value => {
-          alert('Create successfully!');
-          this.isShow = false;
-      });
+  createComment(parent: number) {
+    const feedback = this.createNewCommentForm.value;
+    feedback.userId = this.user;
+    feedback.houseId = this.currentHouse;
+    feedback.rate = 0;
+    feedback.review = this.createNewCommentForm.value.review;
+    feedback.parentId = parent;
+    this.ratingService.createNewRating(feedback).subscribe(value => {
+      alert('Create successfully!');
+      console.log('kết quả thêm comment' + value);
+      this.isShow = false;
+    });
   }
 }
