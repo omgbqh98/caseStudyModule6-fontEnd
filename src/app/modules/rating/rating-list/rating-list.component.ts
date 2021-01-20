@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HouseService} from '../../../service/house-service/house.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {RatingService} from '../../../service/rating-service/rating.service';
@@ -22,10 +22,14 @@ export class RatingListComponent implements OnInit {
   user: any;
   checkedOutList: Array<User> = [];
   isShow = false;
+  currentHouse: any;
+  owner: any;
+
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
               private ratingService: RatingService,
-              private userService: UserService) {}
+              private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -40,11 +44,11 @@ export class RatingListComponent implements OnInit {
       });
     });
   }
+
   // tslint:disable-next-line:typedef
   getCurrentUser() {
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
     // @ts-ignore
-    console.log(this.currentUser);
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
     // @ts-ignore
     this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
   }
@@ -52,11 +56,23 @@ export class RatingListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   replyBtnClicked() {
     this.ratingService.getCheckedOutUserByHouse(this.id).subscribe((users) => {
-      this.getCurrentUser();
       this.checkedOutList = users;
-      if (this.checkedOutList.includes(this.user)) {
+      console.log('danh sách thằng checkout:' + this.checkedOutList);
+    });
+    this.getCurrentUser(); // lấy thằng user hiện tại vào biến user
+    this.houseService.getDetailHouse(this.id).subscribe((house) => {
+      this.currentHouse = house;
+      this.owner = this.currentHouse.ownerId;
+      console.log('Thông tin nhà hiện tại:' + this.currentHouse);
+      console.log('thằng chủ' + this.owner);
+      if (this.checkedOutList.includes(this.user) || this.owner.userId === this.user.userId) {
+        console.log('kết quả check là checkout hoặc chủ');
         this.isShow = true;
       }
     });
+  }
+
+  hideCommentBox() {
+    this.isShow = false;
   }
 }
