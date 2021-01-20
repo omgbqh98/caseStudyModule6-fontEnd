@@ -16,9 +16,11 @@ import {CreateHouseComponent} from './modules/page-content/houses/create/create-
 import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
 import {HouseDetailPostedComponent} from './modules/page-content/houses/detail/house-detail-posted/house-detail-posted.component';
 import {PostedHouseEditComponent} from './modules/page-content/houses/edit/posted-house-edit/posted-house-edit.component';
+import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
 
 import {ListRentedHousesComponent} from './modules/page-content/booking/list/list-rented-houses/list-rented-houses.component';
 import {StatisticsComponent} from './modules/statistics/statistics.component';
+
 
 
 const routes: Routes = [
@@ -79,6 +81,10 @@ const routes: Routes = [
   }, {
     path: 'statistics/:id',
     component: StatisticsComponent
+  },
+  {
+    path: 'houses-img/:id',
+    component: CreateHousesImgComponent
   }
 ];
 

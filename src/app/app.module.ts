@@ -37,6 +37,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 import { RatingCreateComponent } from './modules/rating/rating-create/rating-create.component';
 import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
+import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { RatingListComponent } from './modules/rating/rating-list/rating-list.co
     UserUpdateComponent,
     RatingCreateComponent,
     RatingListComponent,
+    CreateHousesImgComponent,
   ],
   imports: [
     BrowserModule,

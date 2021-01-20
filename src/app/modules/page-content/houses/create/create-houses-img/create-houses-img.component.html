@@ -1,0 +1,101 @@
+<br>
+<br>
+<br>
+<br>
+<hr>
+<!--<table>-->
+<!--  <tr><td>{{houses.houseId}}</td></tr>-->
+<!--  <tr><td>{{houses.houseName}}</td></tr>-->
+<!--  <tr><td>{{houses.description}}</td></tr>-->
+<!--</table>-->
+<!--  <div>-->
+<!--    <input type="file"-->
+<!--           (change)="onFileSelected($event,id)">-->
+<!--  </div>-->
+<!--&lt;!&ndash;<div *ngIf="fb" class="list">&ndash;&gt;-->
+<!--&lt;!&ndash;  <img src="{{ fb }}" alt="" />&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--  <div>-->
+<!--    <input type="file"-->
+<!--           (change)="onFileSelected($event,id)">-->
+<!--  </div>-->
+<!--&lt;!&ndash;<div *ngIf="fb" class="list">&ndash;&gt;-->
+<!--&lt;!&ndash;  <img src="{{ fb }}" alt="" />&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--  <div>-->
+<!--    <input type="file"-->
+<!--           (change)="onFileSelected($event,id)">-->
+<!--  </div>-->
+<!--&lt;!&ndash;<div *ngIf="fb" class="list">&ndash;&gt;-->
+<!--&lt;!&ndash;  <img src="{{ fb }}" alt="" />&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div class="col-md-4" *ngFor="let img of Img"></div>-->
+<!--<div class="img-box-a">-->
+<!--  <img src="{{Img[0]}}" alt="" class="img-a img-fluid">-->
+<!--</div>-->
+<!--<div class="img-box-a">-->
+<!--  <img src="{{Img[1]}}" alt="" class="img-a img-fluid">-->
+<!--</div>-->
+<!--<div class="img-box-a">-->
+<!--  <img src="{{Img[2]}}" alt="" class="img-a img-fluid">-->
+<!--</div>-->
+<hr>
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-10"><h1>{{this.houses.houseName}}</h1></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="text-center">
+        <img src="{{this.houses.avatar}}" style="width: 250px;height: 250px;object-fit: cover">
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>{{this.houses.status}}</strong></span>
+          125
+        </li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>{{this.houses.address}}</strong></span>
+          13
+        </li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>{{this.houses.price}}</strong></span> 37
+        </li>
+      </ul>
+      <div class="panel panel-default">
+        <div class="panel-heading">Social Media</div>
+        <div class="panel-body">
+          <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i
+          class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+        </div>
+      </div>
+    </div><!--/col-3-->
+    <div class="carousel-item-b" style="left: 500px">
+      <div class="card-box-a card-shadow">
+<!--        <div class="img-box-a">-->
+<!--          <img src="{{this.Img[0]}}" alt="" class="img-a img-fluid" style="width: 300px; height: 300px;object-fit: cover">-->
+<!--        </div>-->
+<!--        <div class="img-box-a">-->
+<!--          <img src="{{this.Img[1]}}" alt="" class="img-a img-fluid" style="width: 300px; height: 300px;object-fit: cover">-->
+<!--        </div>-->
+        <img src="{{this.Img[0]}}" [width]="300" >
+        <img src="{{this.Img[1]}}"  [width]="300">
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="tab-content">
+        <div class="tab-pane active" id="home">
+          <div class="form-group">
+            <div class="col-xs-6">
+              <input type="file" (change)="onFileSelected($event,id)" class="form-control">
+            </div>
+<!--            <img src="{{this.Img[0]}}" >-->
+            <div class="col-xs-6">
+              <input type="file" (change)="onFileSelected($event,id)" class="form-control">
+
+            </div>
+<!--            <img src="{{this.Img[1]}}" >-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

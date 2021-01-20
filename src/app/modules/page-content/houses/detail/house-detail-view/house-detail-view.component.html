@@ -166,6 +166,13 @@
           </div>
         </div>
       </div>
+        <div *ngFor="let houImg of this.houseImg"class="carousel-item-b" style="left: 500px">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img [src]="houImg.link" alt="" class="img-a img-fluid" style="width: 300px; height: 300px;object-fit: cover">
+            </div>
+          </div>
+      </div>
       <div class="col-md-12">
         <div class="row section-t3">
           <div class="col-sm-12">
@@ -174,6 +181,7 @@
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-6 col-lg-4">
             <img src="{{house.ownerId.avatar}}" alt="" class="img-fluid">
