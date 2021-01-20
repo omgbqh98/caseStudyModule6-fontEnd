@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {RatingService} from './service/rating-service/rating.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  currentUser: any;
+  user: any;
   title = 'caseStudy-Module6';
+  isShowRateButton = false;
   // title = "cloudsSorage";
   // @ts-ignore
   selectedFile: File = null;
@@ -17,7 +21,8 @@ export class AppComponent {
   fb;
   // @ts-ignore
   downloadURL: Observable<string>;
-  constructor( private storage: AngularFireStorage) {}
+  constructor( private storage: AngularFireStorage,
+               private ratingService: RatingService) {}
   // @ts-ignore
   // tslint:disable-next-line:typedef
   onFileSelected(event) {
@@ -44,5 +49,15 @@ export class AppComponent {
           console.log(url);
         }
       });
+  }
+  getCurrentUser() {
+    // @ts-ignore
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    // @ts-ignore
+    this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
+  }
+
+  ngOnInit(): void {
+
   }
 }
