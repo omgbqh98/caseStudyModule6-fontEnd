@@ -132,16 +132,44 @@
               </ul>
             </div>
             <br><br><br>
-            <div style="float: right">
+
+<!--            <div class="dropdown">-->
+<!--              <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                Updating...-->
+<!--              </button>-->
+<!--              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">-->
+<!--                <li><a class="dropdown-item active" href="#">Action</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                <li><hr class="dropdown-divider"></li>-->
+<!--                <li><a class="dropdown-item" href="#">Separated link</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+
+            <div class="dropdown">
+              <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Updating...
+              </button> <button *ngIf="house.status == 0" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Available
+              </button> <button *ngIf="house.status == 1" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Booked
+              </button> <button *ngIf="house.status == 2" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Checked In
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a [routerLink]="['/user-ownHouse', house.houseId]"  (click)="upgrade(house.houseId)" class="dropdown-item" href="#">Updating...</a>
+                <a class="dropdown-item" [routerLink]="['/houses-update', house.houseId]">Booked</a>
+                <a class="dropdown-item" href="#">Available</a>
+                <a class="dropdown-item" href="#">Checked In</a>
+              </div>
+            </div>
+
+
+            <div style="float: right;margin-top: -50px">
               <a type="button" class="btn btn-outline-secondary"
                  [routerLink]="['/houses-update',house.houseId]">Update</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!--/ Property Single End /-->
 <div class="container">

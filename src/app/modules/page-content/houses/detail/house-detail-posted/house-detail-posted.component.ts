@@ -15,10 +15,17 @@ export class HouseDetailPostedComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = paramMap.get('id');      console.log(this.id);
+      this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
       });
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  upgrade(id: number) {
+    this.houseService.upgrade(id).subscribe();
+    alert('doi thanh cong');
+    this.houseService.getDetailHouse(this.id);
   }
 }

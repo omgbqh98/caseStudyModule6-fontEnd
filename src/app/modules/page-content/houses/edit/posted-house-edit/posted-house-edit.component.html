@@ -13,34 +13,22 @@
     <!--    Menu bên trái gồm up ảnh và các thống kê-->
     <div class="col-sm-3"><!--left col-->
       <div class="text-center">
-        <img src="{{house.avatar}}"  class="avatar img-circle img-thumbnail"
+        <img src="{{arrayPicture}}"  class="avatar img-circle img-thumbnail"
              alt="avatar">
         <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div>
-
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-        <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
-      </div>
-
-
-      <ul class="list-group">
-        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-      </ul>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Social Media</div>
-        <div class="panel-body">
-          <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i
-          class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+<!--        <input type="file" (change)="saveImg($event)" form="registrationForm"> <i class="fa fa-camera" aria-hidden="true"></i>-->
+        <div class="up_button">
+          <label class="fileContainer" for="up_button">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+          </label>
+          <p hidden><input type="file" accept="image/*" id="up_button" (change)="saveImg($event)" name="avatarFile" form="registrationForm"></p>
         </div>
       </div>
+
+
+
+
+
     </div><!--/col-3-->
     <!--    End Menu bên trái gồm up ảnh và các thống kê-->
     <!--    Phần input thông tin-->
@@ -52,7 +40,7 @@
         <div class="tab-pane active" id="home">
           <form class="form" [formGroup]="updateForm" (ngSubmit)="updateHouse()" method="post"
                 id="registrationForm">
-            <input type="file" (change)="saveImg($event)" formControlName="avatar">
+<!--            <input type="file" (change)="saveImg($event)" formControlName="avatar">-->
             <div class="form-group">
               <!--              <input formControlName="id" type="hidden">-->
               <!--              <input formControlName="username" type="hidden">-->

@@ -11,7 +11,8 @@
       <th>Check Out</th>
       <th>Created At</th>
       <th>Total</th>
-      <th>House's Detail</th>
+      <th>Cancel</th>
+      <th>Check In</th>
       <!--      <th class="action"><i class="fa fa-trash-o"></i>-->
       <!--      </th>-->
     </tr>
@@ -20,7 +21,7 @@
     <tr  *ngFor="let booking of listBooking">
       <td class="cart_product">
 <!--        {{booking.houseId.houseId}}-->
-        <img src="{{booking.houseId.avatar}}" alt="">
+        <a [routerLink]="['/house-view',booking.houseId.houseId]"> <img src="{{booking.houseId.avatar}}" alt=""></a>
       </td>
       <td class="cart_description">
         <p class="product-name">House Name: {{booking.houseId.houseName}}
@@ -38,10 +39,13 @@
       </td>
       <td class="price"><span> {{booking.total}} $ </span>  </td>
       <td  class="cart_avail">
-        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>
-      <button class="btn-success" style="color: red"><a (click)="cancelBooking(booking.bookingId)">Cancel</a></button>
-      <button   [disabled]="clicked" (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn-success">Check In</button>
-<!--        <button type="button" *ngIf="booking.bookingId.status == 1" >da thue</button>-->
+<!--        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>-->
+      <button class="btn btn-outline-warning" style="color: red"><a (click)="cancelBooking(booking.bookingId)">Cancel</a></button>
+<!--        <button type="button" *ngIf="booking.houseId.status == 1" >da thue</button>-->
+      </td>
+      <td  class="cart_avail">
+        <button  *ngIf="booking.houseId.status == 3" id="cancel"    [disabled]="clicked" (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn btn-outline-primary">Check In</button>
+        <button  *ngIf="booking.houseId.status !== 3" id="cancel"    style="color: blue; cursor: not-allowed"  class="btn btn-outline-danger disabled">Da thue</button>
       </td>
 
     </tr>
@@ -57,7 +61,7 @@
       </td>
       <td colspan="1"><strong> {{sum()}} $</strong>
       </td>
-      <td colspan="1"><strong> </strong>
+      <td colspan="2"><strong> </strong>
       </td>
     </tr>
     </tfoot>
