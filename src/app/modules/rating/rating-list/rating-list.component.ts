@@ -112,6 +112,10 @@ export class RatingListComponent implements OnInit {
       alert('Create successfully!');
       console.log('kết quả thêm comment' + value);
       this.isShow = false;
+      this.ratingService.getChildRatingByHouse(this.id).subscribe((data) => {
+        console.log('thành công');
+        this.listChildRating = data;
+      });
     });
   }
 }
