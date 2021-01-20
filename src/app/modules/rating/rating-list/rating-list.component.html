@@ -5,8 +5,17 @@
     <div class="title-box-d">
       <h3 class="title-d">Feedbacks ({{this.sum}})</h3>
     </div>
+
     <div class="box-comments">
       <ul class="list-comments">
+        <!--    Alert không thể reply -->
+        <div *ngIf="isShowAlert">
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Reply is not permitted!</h4>
+            <p>Only customers who booked and checked out from this room or the owner can reply!</p>
+          </div>
+        </div>
+        <!--  End alert không thể reply  -->
         <!--      Các comment cha -->
         <li *ngFor="let rating of listParentRating">
           <div class="comment-avatar">
@@ -52,7 +61,9 @@
                   class="form-control ml-1 shadow-none textarea" style="height: 100px"></textarea></div>
                 <div class="mt-2 text-right">
                   <button class="btn btn-success btn-sm shadow-none" type="button">Post comment</button>
-                  <button class="btn btn-outline-success btn-sm ml-1 shadow-none" type="button" (click)="hideCommentBox()">Cancel</button>
+                  <button class="btn btn-outline-success btn-sm ml-1 shadow-none" type="button"
+                          (click)="hideCommentBox()">Cancel
+                  </button>
                 </div>
                 <!--          </form>-->
                 <!--         End component tạo bình luận-->

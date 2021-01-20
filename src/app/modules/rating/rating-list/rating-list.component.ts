@@ -22,6 +22,7 @@ export class RatingListComponent implements OnInit {
   user: any;
   checkedOutList: Array<User> = [];
   isShow = false;
+  isShowAlert = false;
   currentHouse: any;
   owner: any;
 
@@ -68,6 +69,8 @@ export class RatingListComponent implements OnInit {
       if (this.checkedOutList.includes(this.user) || this.owner.userId === this.user.userId) {
         console.log('kết quả check là checkout hoặc chủ');
         this.isShow = true;
+      } else {
+        this.isShowAlert = true;
       }
     });
   }
