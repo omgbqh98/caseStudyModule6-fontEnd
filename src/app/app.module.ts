@@ -38,6 +38,7 @@ import { RatingCreateComponent } from './modules/rating/rating-create/rating-cre
 import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
 import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommentCreateComponent } from './modules/rating/comment-create/comment-create.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -71,6 +72,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RatingListComponent,
     CreateHousesImgComponent,
     SearchComponent
+    CommentCreateComponent,
   ],
   imports: [
     MbscModule,
