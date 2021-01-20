@@ -1,9 +1,65 @@
-<p>Date From :
-  <input type="text" id="TextBox1" />
-</p>
-<p>Date To :
-  <input type="text" id="TextBox2" />
-</p>
-<p>Difference :
-  <input type="text" id="TextBox3" />
-</p>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <br>
+        <h4>{{show}}</h4>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mbsc-grid mbsc-no-padding" style="width: 45% ;height:auto" id="n">
+  <br>
+  <h4>{{'$' + house.price + '/day'}}</h4>
+  <div class="mbsc-row">
+    <div class="mbsc-col-12">
+      <mbsc-datepicker [controls]="['calendar']" select="range" [min]="min" [max]="max" [pages]="2"
+                       label="Pick your date" inputStyle="outline" labelStyle="stacked"
+                       placeholder="Please select..." [(ngModel)]="date_time" (onChange)="getValue()"></mbsc-datepicker>
+    </div>
+    <div *ngIf="days">
+      <div>
+        <button style="position: relative;left: 14px;width: 92%" type="button" class="btn btn-outline-success btn-block"
+                (click)="booking()" data-toggle="modal" data-target=".bd-example-modal-lg">Reserve
+        </button>
+        <p style="position: relative;left: 130px">You won't be charged yet</p>
+      </div>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-6">{{'$' + house.price + ' x ' + days + ' days'}}</div>
+          <div class="col-md-6">
+            <div class="m">
+              <span>{{'$' + total}}</span>
+            </div>
+          </div>
+
+          <div class="col-md-6">Price discount</div>
+          <div class="col-md-6">
+            <div class="m">
+              <span>$0</span>
+            </div>
+          </div>
+          <div class="col-md-6">Service fee: $0 off</div>
+          <div class="col-md-6">
+            <div class="m">
+              <span>$0</span>
+            </div>
+          </div>
+
+          <hr>
+          <div class="col-md-6"><h4>Total:</h4></div>
+          <div class="col-md-6">
+            <div class="m">
+              <span><h4>{{'$' + total}}</h4></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

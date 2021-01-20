@@ -4,7 +4,9 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../model/user-model/user';
 import {FormBuilder} from '@angular/forms';
-import {AuthService} from "../../service/authen-service/auth.service";
+import {AuthService} from '../../service/authen-service/auth.service';
+import {UserToken} from '../../model/user-model/user-token';
+import th from '@mobiscroll/angular/dist/js/i18n/th';
 
 
 @Component({
@@ -14,7 +16,7 @@ import {AuthService} from "../../service/authen-service/auth.service";
 })
 export class HeaderComponent implements OnInit {
   // @ts-ignore
-  currentUser: User;
+  currentUser: UserToken;
   // @ts-ignore
   user: User;
   // @ts-ignore
@@ -43,6 +45,7 @@ export class HeaderComponent implements OnInit {
     // @ts-ignore
     this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
     console.log(this.user);
+    console.log(this.user.userId);
   }
 
   // tslint:disable-next-line:typedef
