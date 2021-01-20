@@ -57,10 +57,21 @@ export class HouseService {
     return this.http.get(API_URL + '/houses' + '/childRatings' + `/${id}`);
   }
 
+  hired(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses/hired/' + id);
+  }
+
+  empty(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses/empty/' + id);
+  }
+
+  checkedIn(id: number): Observable<any> {
+    return this.http.get(API_URL + '/houses/checkedIn' + `/${id}`);
+  }
   upgrade(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + '/upgrade' + `/${id}`);
   }
-  getAllHouseImg(id : number) : Observable<HousesImg>{
-    return this.http.get<HousesImg>(API_URL + '/housesImg' + '/detail/'+ id)
+  getAllHouseImg(id: number): Observable<HousesImg>{
+    return this.http.get<HousesImg>(API_URL + '/housesImg' + '/detail/' + id);
   }
 }

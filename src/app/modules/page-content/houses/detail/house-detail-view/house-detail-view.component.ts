@@ -34,6 +34,7 @@ export class HouseDetailViewComponent implements OnInit {
         console.log(this.house);
       });
       this.houseService.getAllHouseImg(this.id).subscribe(list => {
+
         this.houseImg = list;
         console.log(this.houseImg);
       });

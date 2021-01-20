@@ -133,19 +133,6 @@
             </div>
             <br><br><br>
 
-<!--            <div class="dropdown">-->
-<!--              <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                Updating...-->
-<!--              </button>-->
-<!--              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">-->
-<!--                <li><a class="dropdown-item active" href="#">Action</a></li>-->
-<!--                <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                <li><hr class="dropdown-divider"></li>-->
-<!--                <li><a class="dropdown-item" href="#">Separated link</a></li>-->
-<!--              </ul>-->
-<!--            </div>-->
-
             <div class="dropdown">
               <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Updating...
@@ -158,9 +145,9 @@
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a [routerLink]="['/user-ownHouse', house.houseId]"  (click)="upgrade(house.houseId)" class="dropdown-item" href="#">Updating...</a>
-                <a class="dropdown-item" [routerLink]="['/houses-update', house.houseId]">Booked</a>
-                <a class="dropdown-item" href="#">Available</a>
-                <a class="dropdown-item" href="#">Checked In</a>
+                <a class="dropdown-item" [routerLink]="['/user-ownHouse', house.houseId]" (click)="hired(house.houseId)">Booked</a>
+                <a class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="empty(house.houseId)">Available</a>
+                <a class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="checkedIn(house.houseId)">Checked In</a>
               </div>
             </div>
 
@@ -172,7 +159,7 @@
 
 
 <!--/ Property Single End /-->
-<div class="container">
+<div class="container" style="width: 100%">
   <!--  Tiêu để-->
   <div class="col-md-12">
     <div class="row section-t3">
