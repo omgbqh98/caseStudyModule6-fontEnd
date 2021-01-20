@@ -1,3 +1,4 @@
+import {MbscModule} from '@mobiscroll/angular';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -26,10 +27,10 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 // <<<<<<< HEAD
 // <<<<<<< HEAD
-import { HistoryBookingComponent } from './modules/history-booking/history-booking.component';
-import { StatisticsComponent } from './modules/statistics/statistics.component';
-import { ListRentHousesByTimeComponent } from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
-import { UserUpdateComponent } from './modules/page-content/user/update/user-update/user-update.component';
+import {HistoryBookingComponent} from './modules/history-booking/history-booking.component';
+import {StatisticsComponent} from './modules/statistics/statistics.component';
+import {ListRentHousesByTimeComponent} from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
+import {UserUpdateComponent} from './modules/page-content/user/update/user-update/user-update.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 // import {environment} from "../environments/environment";
 import {environment} from '../environments/environment';
@@ -39,6 +40,8 @@ import { RatingCreateComponent } from './modules/rating/rating-create/rating-cre
 import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
 import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +73,7 @@ import {CreateHousesImgComponent} from './modules/page-content/houses/create/cre
     CreateHousesImgComponent,
   ],
   imports: [
+    MbscModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

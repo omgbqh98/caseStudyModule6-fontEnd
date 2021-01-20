@@ -18,6 +18,15 @@ export class BookingService {
     return this.http.get(API_URL + '/houses' + `/${id}`);
   }
 
+  createBooking(booking: Booking): Observable<any> {
+    // @ts-ignore
+    return this.http.post('http://localhost:8080/booking-hotel', booking);
+  }
+
+  getListBookingByHouseId(id: number): Observable<any> {
+    return this.http.get(API_URL + '/list-booking-by-houseId' + `/${id}`);
+  }
+
   cancelBooking(id: number): Observable<Booking> {
     return this.http.delete(API_URL + '/houses/cancel' + `/${id}`);
   }

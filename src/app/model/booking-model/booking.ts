@@ -6,8 +6,8 @@ export interface Booking {
   bookingId?: number;
   houseId?: House;
   userId?: User;
-  checkIn?: Date;
-  checkOut?: Date;
+  checkIn?: any;
+  checkOut?: any;
   total?: number;
   createdAt?: Timestamp<any>;
 }
