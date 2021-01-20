@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, ( reason ) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
