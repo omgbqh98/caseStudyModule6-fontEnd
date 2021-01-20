@@ -27,7 +27,7 @@
             <p class="comment-description">
               {{rating.review}}
             </p>
-            <button class="btn btn-outline-secondary" style="margin-right: 10px" (click)="replyBtnClicked()">Reply
+            <button class="btn btn-outline-secondary" style="margin-right: 10px" (click)="replyBtnClicked(rating.ratingId)">Reply
             </button>
             <!--          <button class="btn btn-outline-secondary" id="showChildRatingBtn">-->
             <!--            Comments-->
@@ -50,7 +50,8 @@
                 </div>
               </li>
             </ul>
-            <div *ngIf="isShow">
+<!--            Tạo bình luận-->
+            <div *ngIf="isShow && parentRatingTag === rating.ratingId">
               <!--              <app-comment-create></app-comment-create>-->
               <div class="bg-light p-2" style="margin-left: 45px; margin-bottom: 20px">
                 <!--            &lt;!&ndash;          <form class="form" [formGroup]="createHouseForm" (ngSubmit)="createHouse()" method="post"&ndash;&gt;-->

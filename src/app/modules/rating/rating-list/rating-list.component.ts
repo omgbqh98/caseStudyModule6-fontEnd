@@ -25,6 +25,7 @@ export class RatingListComponent implements OnInit {
   isShowAlert = false;
   currentHouse: any;
   owner: any;
+  parentRatingTag: any;
 
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
@@ -55,7 +56,8 @@ export class RatingListComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  replyBtnClicked() {
+  replyBtnClicked(ratingId: number) {
+    this.parentRatingTag = ratingId;
     this.ratingService.getCheckedOutUserByHouse(this.id).subscribe((users) => {
       this.checkedOutList = users;
       console.log('danh sách thằng checkout:' + this.checkedOutList);
