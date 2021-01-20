@@ -39,6 +39,7 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/data
 import { RatingCreateComponent } from './modules/rating/rating-create/rating-create.component';
 import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
 import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
+import {SearchComponent}
 
 // @ts-ignore
 // @ts-ignore
@@ -71,6 +72,7 @@ import {CreateHousesImgComponent} from './modules/page-content/houses/create/cre
     RatingCreateComponent,
     RatingListComponent,
     CreateHousesImgComponent,
+    SearchComponent
   ],
   imports: [
     MbscModule,
