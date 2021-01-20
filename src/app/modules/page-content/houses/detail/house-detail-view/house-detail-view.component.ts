@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {User} from '../../../../../model/user-model/user';
 import {HousesImgService} from '../../../../../service/house-service/houses-img.service';
 import {HousesImg} from '../../../../../model/house-model/housesImg';
+import {$} from 'protractor';
 
 declare var $: any;
 
