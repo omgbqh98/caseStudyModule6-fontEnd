@@ -6,6 +6,7 @@ import {Rating} from '../../../model/rating-model/rating';
 import {User} from '../../../model/user-model/user';
 import {House} from '../../../model/house-model/house';
 import {Timestamp} from 'rxjs';
+import {RatingService} from '../../../service/rating-service/rating.service';
 
 @Component({
   selector: 'app-rating-create',
@@ -19,7 +20,8 @@ export class RatingCreateComponent implements OnInit {
   rateForm: FormGroup;
   // isShow = true;
   constructor(private userService: UserService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private ratingService: RatingService) { }
   ngOnInit(): void {
     this.rateForm = this.fb.group({
       userId: [''],
@@ -28,6 +30,10 @@ export class RatingCreateComponent implements OnInit {
       review: [''],
       bookingId: [''],
     });
+    this.checkIfNotRated();
+  }
+  // tslint:disable-next-line:typedef
+  checkIfNotRated() {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     console.log('Current user' + this.currentUser);
     // @ts-ignore
@@ -42,6 +48,7 @@ export class RatingCreateComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:typedef
   createRate() {
     const newRate = this.rateForm.value;
     newRate.review = this.rateForm.value.review;
@@ -49,17 +56,11 @@ export class RatingCreateComponent implements OnInit {
     newRate.userId = this.user;
     newRate.houseId = this.rateForm.value.houseId;
     newRate.bookingId = this.rateForm.value.bookingId;
-    console.log(newRate.review);
-    alert('Thank you for your feedback!');
-    // this.userService.getUserProfile(this.currentUser.username).subscribe(value => {
-    //   this.user = value;
-    //   if (this.user) {
-    //     this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
-    //       this.notRatedBookingList = data;
-    //       console.log('list chưa rate' + this.notRatedBookingList);
-    //     });
-    //   }
-    // });
+    this.ratingService.createNewRating(newRate).subscribe((data) => {
+      console.log('Kết quả' + data);
+      alert('Thank you for your feedback!');
+      this.checkIfNotRated();
+    });
   }
 
   // hideRateForm() {

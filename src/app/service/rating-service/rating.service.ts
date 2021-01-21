@@ -39,4 +39,8 @@ export class RatingService {
     // @ts-ignore
     return this.http.post<Rating>(API_URL + '/houses' + '/createComment', rating);
   }
+
+  createNewRating(rating: Rating): Observable<any> {
+    return this.http.post<Rating>(API_URL + '/houses' + '/createRating', rating);
+  }
 }
