@@ -37,6 +37,7 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/data
 import { RatingCreateComponent } from './modules/rating/rating-create/rating-create.component';
 import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
 import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // @ts-ignore
 // @ts-ignore
@@ -80,7 +81,8 @@ import {CreateHousesImgComponent} from './modules/page-content/houses/create/cre
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NgbModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
