@@ -109,7 +109,6 @@ export class RatingListComponent implements OnInit {
     feedback.parentId = parent;
     console.log('feedback' + feedback);
     this.ratingService.createNewRating(feedback).subscribe(value => {
-      alert('Create successfully!');
       console.log('kết quả thêm comment' + value);
       this.isShow = false;
       this.ratingService.getChildRatingByHouse(this.id).subscribe((data) => {
