@@ -3,16 +3,14 @@ import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {RatingService} from './service/rating-service/rating.service';
-import {UserService} from './service/user-service/user.service';
+// import {UserService} from './service/user-service/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  currentUser: any;
-  user: any;
+export class AppComponent {
   title = 'caseStudy-Module6';
   isShowRateButton = false;
   // title = "cloudsSorage";
@@ -22,14 +20,13 @@ export class AppComponent implements OnInit {
   fb;
   // @ts-ignore
   downloadURL: Observable<string>;
-  notRatedBookingList: any;
+
   constructor( private storage: AngularFireStorage,
-               private ratingService: RatingService,
-               private userService: UserService) {}
+               private ratingService: RatingService) {}
   // @ts-ignore
   // tslint:disable-next-line:typedef
   onFileSelected(event) {
-    var n = Date.now();
+    const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
     const fileRef = this.storage.ref(filePath);
@@ -53,19 +50,6 @@ export class AppComponent implements OnInit {
         }
       });
   }
-  getCurrentUser() {
-    // @ts-ignore
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
-    // @ts-ignore
-    this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
-  }
 
-  ngOnInit(): void {
-    this.getCurrentUser();
-    if (this.user) {
-      this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
-        this.notRatedBookingList = data;
-      });
-    }
-  }
+
 }
