@@ -1,3 +1,17 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <br>
+        <h4 style="color: red">{{show}}</h4>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <br><br><br><br>
 <div class="wrapper">
@@ -40,14 +54,13 @@
       <td class="price"><span> {{booking.total}} $ </span>  </td>
       <td  class="cart_avail">
 <!--        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>-->
-      <button class="btn btn-outline-warning" style="color: red"><a (click)="cancelBooking(booking.bookingId)">Cancel</a></button>
+      <button class="btn btn-outline-warning" style="color: red"><a (click)="cancelBooking(booking.bookingId)"  data-toggle="modal" data-target=".bd-example-modal-lg">Cancel</a></button>
 <!--        <button type="button" *ngIf="booking.houseId.status == 1" >da thue</button>-->
       </td>
       <td  class="cart_avail">
-        <button  *ngIf="booking.houseId.status == 3" id="cancel"    [disabled]="clicked" (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn btn-outline-primary">Check In</button>
+        <button  *ngIf="booking.houseId.status == 3" id="cancel"    (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn btn-outline-primary">Check In</button>
         <button  *ngIf="booking.houseId.status !== 3" id="cancel"    style="color: blue; cursor: not-allowed"  class="btn btn-outline-danger disabled">Checked</button>
       </td>
-
     </tr>
     </tbody>
     <tfoot>

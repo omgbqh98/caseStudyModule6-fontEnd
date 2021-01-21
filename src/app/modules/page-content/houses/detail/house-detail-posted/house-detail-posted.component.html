@@ -1,3 +1,16 @@
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <br>
+        <h4 style="color: #005cbf">{{show}}</h4>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--/ Intro Single star /-->
 <section class="intro-single">
   <div class="container">
@@ -132,7 +145,7 @@
             <br><br><br>
 
             <div class="dropdown col-md-6">
-              <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                 Updating...
               </button> <button *ngIf="house.status == 0" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Available
@@ -142,10 +155,10 @@
               Checked In
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a [routerLink]="['/user-ownHouse', house.houseId]"  (click)="upgrade(house.houseId)" class="dropdown-item" href="#">Updating...</a>
-                <a class="dropdown-item" [routerLink]="['/user-ownHouse', house.houseId]" (click)="hired(house.houseId)">Booked</a>
-                <a class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="empty(house.houseId)">Available</a>
-                <a class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="checkedIn(house.houseId)">Checked In</a>
+                <a  data-toggle="modal" data-target=".bd-example-modal-lg" [routerLink]="['/user-ownHouse', house.houseId]"  (click)="upgrade(house.houseId)" class="dropdown-item" href="#">Updating...</a>
+                <a  data-toggle="modal" data-target=".bd-example-modal-lg" class="dropdown-item" [routerLink]="['/user-ownHouse', house.houseId]" (click)="hired(house.houseId)">Booked</a>
+                <a  data-toggle="modal" data-target=".bd-example-modal-lg" class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="empty(house.houseId)">Available</a>
+                <a  data-toggle="modal" data-target=".bd-example-modal-lg" class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="checkedIn(house.houseId)">Checked In</a>
               </div>
             </div>
 

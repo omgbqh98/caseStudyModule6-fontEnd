@@ -23,6 +23,9 @@ export class HistoryBookingComponent implements OnInit {
   listBooking: any;
   total: any;
   clicked = false;
+  // @ts-ignore
+  show = '';
+  showCancelSuccess = '';
 
   constructor(private bookingService: BookingService,
               private authService: AuthService,
@@ -51,7 +54,8 @@ export class HistoryBookingComponent implements OnInit {
   // tslint:disable-next-line:typedef
   checkIn(id) {
     this.bookingService.checkIn(id).subscribe();
-    alert('checkIn thành công');
+    // this.show = 'Check In successfully!';
+    alert('Check In successfully!');
     // @ts-ignore
     this.getBooking(this.user.userId);
   }
@@ -60,11 +64,15 @@ export class HistoryBookingComponent implements OnInit {
   // tslint:disable-next-line:typedef
   cancelBooking(id) {
     this.bookingService.cancelBooking(id).subscribe(() => {
-      alert('huy thanh cong');
+      // alert('huy thanh cong');
+      // @ts-ignore
+      this.show = 'Canceled successfully!';
       // @ts-ignore
       this.getBooking(this.user.userId);
     }, error => {
-      alert('Bạn không thể hủy =)))))');
+      // alert('Bạn không thể hủy =)))))');
+      // @ts-ignore
+      this.show = 'Expired cancellation !';
       console.log(error);
       // @ts-ignore
       this.getBooking(this.user.userId);

@@ -13,6 +13,7 @@ export class HouseDetailPostedComponent implements OnInit {
   house: any;
   id: any;
   houseImg: HousesImg[] = [];
+  show = '';
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}
@@ -117,7 +118,8 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
   // tslint:disable-next-line:typedef
   upgrade(id: number) {
     this.houseService.upgrade(id).subscribe();
-    alert('changed successfully');
+    // alert('changed successfully');
+    this.show = 'changed successfully';
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
@@ -136,7 +138,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
         this.house = result;
       });
     });
-    alert('changed successfully');
+    this.show = 'changed successfully';
     // window.location.href = '/user-ownHouse/' + this.house.houseId;
     }
   // tslint:disable-next-line:typedef
@@ -148,7 +150,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
         this.house = result;
       });
     });
-    alert('changed successfully');
+    this.show = 'changed successfully';
     // window.location.href = '/user-ownHouse/' + this.house.houseId;
   }
 
@@ -161,7 +163,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
         this.house = result;
       });
     });
-    alert('changed successfully');
+    this.show = 'changed successfully';
     // window.location.href = '/user-ownHouse/' + this.house.houseId;
   }
 }
