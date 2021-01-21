@@ -8,6 +8,7 @@ import {House} from '../../../model/house-model/house';
 import {Timestamp} from 'rxjs';
 import {RatingService} from '../../../service/rating-service/rating.service';
 import {Booking} from '../../../model/booking-model/booking';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-rating-create',
@@ -18,12 +19,13 @@ export class RatingCreateComponent implements OnInit {
   currentUser: any;
   user: any;
   notRatedBookingList: any;
-  rateForm: FormGroup;
+  rateForm: FormGroup | undefined;
 
   // isShow = true;
   constructor(private userService: UserService,
               private fb: FormBuilder,
-              private ratingService: RatingService) {
+              private ratingService: RatingService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -63,10 +65,11 @@ export class RatingCreateComponent implements OnInit {
     newRate.bookingId = booking;
     this.ratingService.createNewRating(newRate).subscribe((data) => {
       alert('Thank you for your feedback!');
-      this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
-        this.notRatedBookingList = data;
-        console.log('list chưa rate' + this.notRatedBookingList);
-      });
+      // this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
+      //   this.notRatedBookingList = data;
+      //   console.log('list chưa rate' + this.notRatedBookingList);
+      // });
+      this.router.navigate("/");
     });
   }
 
