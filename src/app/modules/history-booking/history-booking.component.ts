@@ -66,6 +66,8 @@ export class HistoryBookingComponent implements OnInit {
     }, error => {
       alert('Bạn không thể hủy =)))))');
       console.log(error);
+      // @ts-ignore
+      this.getBooking(this.user.userId);
     });
     // @ts-ignore
   }

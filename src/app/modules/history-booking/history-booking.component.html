@@ -45,7 +45,7 @@
       </td>
       <td  class="cart_avail">
         <button  *ngIf="booking.houseId.status == 3" id="cancel"    [disabled]="clicked" (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn btn-outline-primary">Check In</button>
-        <button  *ngIf="booking.houseId.status !== 3" id="cancel"    style="color: blue; cursor: not-allowed"  class="btn btn-outline-danger disabled">Booked</button>
+        <button  *ngIf="booking.houseId.status !== 3" id="cancel"    style="color: blue; cursor: not-allowed"  class="btn btn-outline-danger disabled">Checked</button>
       </td>
 
     </tr>

@@ -13,7 +13,6 @@ export class HomeContentComponent implements OnInit {
   listHouses: House[] = [];
   constructor(private houseService: HouseService) {
   }
-
   ngOnInit(): void {
     this.getAllHouses();
     // tslint:disable-next-line:only-arrow-function
@@ -23,6 +22,7 @@ export class HomeContentComponent implements OnInit {
     this.houseService.getAllNewHouse().subscribe((result) => {
       this.listHouses = result;
       setTimeout(() => {
+        // tslint:disable-next-line:only-arrow-functions typedef
         $(function() {
           $('#carousel').owlCarousel({
             loop: true,
@@ -34,13 +34,14 @@ export class HomeContentComponent implements OnInit {
             autoplayTimeout: 3000,
             autoplayHoverPause: true
           });
-          // tslint:disable-next-line:only-arrow-functions
+          // tslint:disable-next-line:only-arrow-functions typedef
           $('.intro-carousel').on('translate.owl.carousel', function() {
             $('.intro-content .intro-title').removeClass('zoomIn animated').hide();
             $('.intro-content .intro-price').removeClass('fadeInUp animated').hide();
             $('.intro-content .intro-title-top, .intro-content .spacial').removeClass('fadeIn animated').hide();
           });
 
+          // tslint:disable-next-line:only-arrow-functions typedef
           $('.intro-carousel').on('translated.owl.carousel', function() {
             $('.intro-content .intro-title').addClass('zoomIn animated').show();
             $('.intro-content .intro-price').addClass('fadeInUp animated').show();

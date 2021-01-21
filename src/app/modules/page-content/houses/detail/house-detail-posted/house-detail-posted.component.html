@@ -34,15 +34,9 @@
     <div class="row">
       <div class="col-sm-12">
         <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-          <div class="carousel-item-b">
-            <img src="assets/img/slide-2.jpg" alt="">
-          </div>
-          <div class="carousel-item-b">
-            <img src="assets/img/slide-3.jpg" alt="">
-          </div>
-          <div class="carousel-item-b">
-            <img src="assets/img/slide-1.jpg" alt="">
-          </div>
+            <div class="carousel-item-b" *ngFor ="let house of houseImg" >
+              <img src="{{house.link}}" alt=""  style="width: 1200px !important; height: 601px !important;">
+            </div>
         </div>
         <div class="row justify-content-between">
           <div class="col-md-5 col-lg-4">
@@ -133,7 +127,7 @@
             </div>
             <br><br><br>
 
-            <div class="dropdown">
+            <div class="dropdown col-md-6">
               <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Updating...
               </button> <button *ngIf="house.status == 0" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -151,27 +145,39 @@
               </div>
             </div>
 
+            <div style=" margin-top: -40px; margin-left: 300px">
+              <a type="button" class="btn btn-outline-secondary"
+                 [routerLink]="['/list-rent-houses-by-time',house.houseId]">ListBooking</a>
+            </div>
 
-            <div style="float: right;margin-top: -50px">
+            <div style="float: right;margin-top: -40px">
               <a type="button" class="btn btn-outline-secondary"
                  [routerLink]="['/houses-update',house.houseId]">Update</a>
             </div>
-
-
-<!--/ Property Single End /-->
-<div class="container" style="width: 100%">
-  <!--  Tiêu để-->
-  <div class="col-md-12">
-    <div class="row section-t3">
-      <div class="col-sm-12">
-        <div class="title-box-d">
-          <h3 class="title-d">List booking</h3>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <!--  Tiêu để-->
-  <app-list-rent-houses-by-time></app-list-rent-houses-by-time>
-</div>
+</section>
+
+
+<div  style="width: 100%">
+<!--/ Property Single End /-->
+<!--<div class="container">-->
+<!--  &lt;!&ndash;  Tiêu để&ndash;&gt;-->
+<!--  <div class="col-md-12">-->
+<!--    <div class="row section-t3">-->
+<!--      <div class="col-sm-12">-->
+<!--        <div class="title-box-d">-->
+<!--          <h3 class="title-d">List booking</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash;  Tiêu để&ndash;&gt;-->
+<!--  <app-list-rent-houses-by-time></app-list-rent-houses-by-time>-->
+<!--</div>-->
 <app-rating-list></app-rating-list>
+</div>
 
