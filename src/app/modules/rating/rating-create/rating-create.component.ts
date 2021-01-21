@@ -25,7 +25,8 @@ export class RatingCreateComponent implements OnInit {
       userId: [''],
       houseId: [''],
       rate: [''],
-      review: ['']
+      review: [''],
+      bookingId: [''],
     });
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     console.log('Current user' + this.currentUser);
@@ -47,6 +48,7 @@ export class RatingCreateComponent implements OnInit {
     newRate.rate = this.rateForm.value.review;
     newRate.userId = this.user;
     newRate.houseId = this.rateForm.value.houseId;
+    newRate.bookingId = this.rateForm.value.bookingId;
     console.log(newRate.review);
     alert('Thank you for your feedback!');
     // this.userService.getUserProfile(this.currentUser.username).subscribe(value => {
