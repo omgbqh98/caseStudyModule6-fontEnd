@@ -1,33 +1,35 @@
-<div *ngFor="let booking of notRatedBookingList">
-  <button type="button" id="fixedbutton" class="btn btn-danger" data-toggle="modal" data-target="#form"> Review your
-    stay here!
-  </button>
-  <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="text-right cross"><i class="fa fa-times mr-2"></i></div>
-        <div class="card-body text-center"><img src=" https://i.imgur.com/d2dKtI7.png" height="100" width="100">
-          <div class="comment-box text-center">
-            <h6>We would like to thank you for choosing our {{booking.houseId.houseName}} as your accommodation. <br>Please tell us about your experience!</h6>
-            <form [formGroup]="rateForm" (ngSubmit)="createRate()">
-              <div class=" rating">
-                <input type="radio" formControlName="rate" value="5" id="5"><label for="5">☆</label>
-                <input type="radio" formControlName="rate" value="4" id="4"><label for="4">☆</label>
-                <input type="radio" formControlName="rate" value="3" id="3"><label for="3">☆</label>
-                <input type="radio" formControlName="rate" value="2" id="2"><label for="2">☆</label>
-                <input type="radio" formControlName="rate" value="1" id="1"><label for="1">☆</label>
-              </div>
-              <div class="comment-area">
-                <textarea class="form-control" formControlName="review" placeholder="Tell us about your experience" rows="4"></textarea>
-              </div>
-              <div class="text-center mt-4">
-                <button class="btn btn-success send px-5">Send feedback <i class="fa fa-long-arrow-right ml-1"></i></button>
-              </div>
-            </form>
+
+  <div *ngFor="let booking of notRatedBookingList">
+    <button type="button" id="fixedbutton" class="btn btn-danger" data-toggle="modal" data-target="#form"> Review your
+      stay here!
+    </button>
+    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="text-right cross"><i class="fa fa-times mr-2"></i></div>
+          <div class="card-body text-center"><img src=" https://i.imgur.com/d2dKtI7.png" height="100" width="100">
+            <div class="comment-box text-center">
+              <h5>Thank you for choosing our <strong>{{booking.houseId.houseName}}</strong>. <br>Please tell us about your experience!</h5>
+              <form [formGroup]="rateForm" (ngSubmit)="createRate()">
+                <div class=" rating">
+                  <input type="radio" formControlName="rate" value="5" id="5"><label for="5">☆</label>
+                  <input type="radio" formControlName="rate" value="4" id="4"><label for="4">☆</label>
+                  <input type="radio" formControlName="rate" value="3" id="3"><label for="3">☆</label>
+                  <input type="radio" formControlName="rate" value="2" id="2"><label for="2">☆</label>
+                  <input type="radio" formControlName="rate" value="1" id="1"><label for="1">☆</label>
+                </div>
+                <div class="comment-area">
+                  <textarea class="form-control" formControlName="review" placeholder="Tell us about your experience" rows="4"></textarea>
+                </div>
+                <input type="hidden" formControlName="houseId" value="{{booking.houseId}}">
+                <div class="text-center mt-4">
+                  <button class="btn btn-success send px-5" type="submit">Send feedback <i class="fa fa-long-arrow-right ml-1"></i></button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
