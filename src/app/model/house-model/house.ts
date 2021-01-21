@@ -13,4 +13,5 @@ export interface House {
   ownerId?: User;
   isDeleted?: boolean;
   avatar?: string;
+  avgRate?: number;
 }

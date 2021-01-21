@@ -41,7 +41,7 @@ export class RatingCreateComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   checkIfNotRated() {
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.currentUser = JSON.parse(localStorage.getItem('user') || '{}');
     console.log('Current user' + this.currentUser);
     // @ts-ignore
     this.userService.getUserProfile(this.currentUser.username).subscribe(value => {
