@@ -35,8 +35,8 @@ export class RatingService {
     return this.http.get(API_URL + '/houses' + `/${id}` + '/checkedOutUser');
   }
 
-  createNewRating(rating: Rating): Observable<any> {
+  createNewComment(rating: Rating): Observable<any> {
     // @ts-ignore
-    return this.http.post<Rating>(API_URL + '/houses' + '/createRating', rating);
+    return this.http.post<Rating>(API_URL + '/houses' + '/createComment', rating);
   }
 }
