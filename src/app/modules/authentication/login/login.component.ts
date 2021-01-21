@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder) {
     // @ts-ignore
     this.authService.currentUser.subscribe(value => this.currentUser = value);
-    window['onSignIn'] = this.onSignIn;
+    // window['onSignIn'] = this.onSignIn;
   }
 
   // tslint:disable-next-line:typedef
