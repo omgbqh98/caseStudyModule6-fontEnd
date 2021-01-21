@@ -57,9 +57,9 @@ export class RatingCreateComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   createRate(booking: Booking, houseId: House) {
-    const newRate = this.rateForm.value;
-    newRate.review = this.rateForm.value.review;
-    newRate.rate = this.rateForm.value.rate;
+    const newRate = this.rateForm?.value;
+    newRate.review = this.rateForm?.value.review;
+    newRate.rate = this.rateForm?.value.rate;
     newRate.userId = this.user;
     newRate.houseId = houseId;
     newRate.bookingId = booking;
@@ -69,7 +69,7 @@ export class RatingCreateComponent implements OnInit {
       //   this.notRatedBookingList = data;
       //   console.log('list chưa rate' + this.notRatedBookingList);
       // });
-      this.router.navigate("/");
+      this.router.navigate(['/']);
     });
   }
 
