@@ -10,4 +10,5 @@ export interface Booking {
   checkOut?: any;
   total?: number;
   createdAt?: Timestamp<any>;
+  isRated?: boolean;
 }

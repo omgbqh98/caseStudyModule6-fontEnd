@@ -52,15 +52,16 @@ export class RatingCreateComponent implements OnInit {
   createRate() {
     const newRate = this.rateForm.value;
     newRate.review = this.rateForm.value.review;
-    newRate.rate = this.rateForm.value.review;
+    newRate.rate = this.rateForm.value.rate;
     newRate.userId = this.user;
     newRate.houseId = this.rateForm.value.houseId;
     newRate.bookingId = this.rateForm.value.bookingId;
-    this.ratingService.createNewRating(newRate).subscribe((data) => {
-      console.log('Kết quả' + data);
-      alert('Thank you for your feedback!');
-      this.checkIfNotRated();
-    });
+    console.log(newRate.value);
+    // this.ratingService.createNewRating(newRate).subscribe((data) => {
+    //   console.log('Kết quả' + data);
+    //   alert('Thank you for your feedback!');
+    //   this.checkIfNotRated();
+    // });
   }
 
   // hideRateForm() {
