@@ -34,6 +34,9 @@ export class CreateHousesImgComponent implements OnInit {
   // @ts-ignore
   downloadURL: Observable<string>;
   Img: HousesImg[] = [];
+  Imgs: HousesImg[] = [];
+   // @ts-ignore
+  mess : String;
 
   // tslint:disable-next-line:max-line-length
   constructor(private activate: ActivatedRoute, private housesImgService: HousesImgService, private formBuilder: FormBuilder, private authService: AuthService, private  userService: UserService, private  housesService: HouseService, private storage: AngularFireStorage) {
@@ -78,29 +81,39 @@ export class CreateHousesImgComponent implements OnInit {
             if (url) {
               console.log(url);
               this.fb = url;
-              this.Img.push(this.fb);
-              console.log(this.Img)
-              if (this.Img.length == 3) {
-                console.log(this.Img[0]);
-                this.Img[0] = this.Img[2];
-                this.Img.splice(2);
-              }
-              console.log(this.Img);
-              const house = await this.getHouse(id);
-              console.log(house[0]);
-              let houseImgs: HousesImg = {};
-              houseImgs.houseId = house[0];
-              houseImgs.isAvatar = false;
-              houseImgs.link = url;
-              console.log('nha');
-              console.log(houseImgs);
-              this.housesImgService.createHouses(houseImgs).subscribe(() => {
-                alert('oke');
-              }, error => {
-                console.log('Lỗi: ');
-                console.log(error);
-              });
             }
+            this.Img.push(this.fb);
+            // if (Img[0].length == 1) {
+            //
+            //   this.Img[0] = this.fb;
+            //
+            // }
+            // if (Img[1].length == 1 && Img[0].length == 1) {
+            //   this.Img[1] = this.fb;
+            // }
+            // if(Img[1].length == 1 && Img[0].length == 1){
+            //   this.Img.push("1");
+            //   this.Img.push(this.fb);
+            // }
+            // if (Img[1].length == 1 && Img[0].length == null) {
+            //   this.Img[0] = "";
+            //   this.Img[1] = this.fb;
+            // }
+            // // if(Img[1] && Img[0])
+            // if (Img[2]) {
+            //   this.Img[0] = '';
+            //   this.Img[1] = '';
+            //   Img[2] = this.fb;
+            //   this.Img[2] = Img[2];
+            //
+            // }
+            console.log(this.Img);
+            if (this.Img.length == 4) {
+              console.log(this.Img[0]);
+              this.Img[0] = this.Img[3];
+              this.Img.splice(2);
+            }
+            console.log(this.Img);
             console.log(this.fb);
           });
         })
@@ -110,5 +123,25 @@ export class CreateHousesImgComponent implements OnInit {
           console.log(url);
         }
       });
+  }
+
+  async createHousesImg() {
+    const house = await this.getHouse(this.id);
+    console.log(house[0]);
+    let houseImgs: HousesImg = {};
+    houseImgs.houseId = house[0];
+    houseImgs.isAvatar = false;
+    for (var i = 1; this.Img.length >= i; i++) {
+      houseImgs.link = this.Img[0];
+      console.log(houseImgs);
+      this.housesImgService.createHouses(houseImgs).subscribe(() => {
+        this.mess ="Bạn đã thêm thành công"
+        this.Img.splice(0);
+      }, error => {
+        console.log('Lỗi: ');
+        console.log(error);
+      });
+    }
+
   }
 }
