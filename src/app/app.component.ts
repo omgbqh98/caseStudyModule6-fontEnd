@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {RatingService} from './service/rating-service/rating.service';
+import {UserService} from './service/user-service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,10 @@ export class AppComponent implements OnInit {
   fb;
   // @ts-ignore
   downloadURL: Observable<string>;
+  notRatedBookingList: any;
   constructor( private storage: AngularFireStorage,
-               private ratingService: RatingService) {}
+               private ratingService: RatingService,
+               private userService: UserService) {}
   // @ts-ignore
   // tslint:disable-next-line:typedef
   onFileSelected(event) {
@@ -58,6 +61,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getCurrentUser();
+    if (this.user) {
+      this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
+        this.notRatedBookingList = data;
+      });
+    }
   }
 }
