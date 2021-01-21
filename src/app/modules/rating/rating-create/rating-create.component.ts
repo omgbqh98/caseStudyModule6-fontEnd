@@ -65,11 +65,11 @@ export class RatingCreateComponent implements OnInit {
     newRate.bookingId = booking;
     this.ratingService.createNewRating(newRate).subscribe((data) => {
       alert('Thank you for your feedback!');
-      // this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
-      //   this.notRatedBookingList = data;
-      //   console.log('list chưa rate' + this.notRatedBookingList);
-      // });
-      this.router.navigate(['/']);
+      this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
+        this.notRatedBookingList = data;
+        console.log('list chưa rate' + this.notRatedBookingList);
+        window.location.reload();
+      });
     });
   }
 

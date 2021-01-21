@@ -9,7 +9,7 @@ body {
   display: grid;
   place-items: center;
   font-family: 'Manrope', sans-serif;
-  background: #000
+  background: transparent;
 }
 
 .cross {

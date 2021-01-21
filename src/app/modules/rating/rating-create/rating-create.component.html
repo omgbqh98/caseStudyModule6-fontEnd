@@ -2,7 +2,7 @@
   <button type="button" id="fixedbutton" class="btn btn-danger" data-toggle="modal" data-target="#form"> Review your
     stay here!
   </button>
-  <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="text-right cross"><i class="fa fa-times mr-2"></i></div>
@@ -22,8 +22,6 @@
                 <textarea class="form-control" formControlName="review" placeholder="Tell us about your experience"
                           rows="4"></textarea>
               </div>
-<!--              <input type="hidden" formControlName="houseId" value="{{booking.houseId}}">-->
-<!--              <input type="hidden" formControlName="bookingId" value="{{booking}}">-->
               <div class="text-center mt-4">
                 <button class="btn btn-success send px-5" type="submit">Send feedback <i
                   class="fa fa-long-arrow-right ml-1"></i></button>
