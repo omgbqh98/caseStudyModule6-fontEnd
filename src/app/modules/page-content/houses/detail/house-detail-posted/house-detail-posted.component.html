@@ -5,7 +5,11 @@
       <div class="col-md-12 col-lg-8">
         <div class="title-single-box">
           <h1 class="title-single">{{house.houseName}}</h1>
-          <span class="color-text-a">{{house.address}}</span>
+          <span class="color-text-a">{{house.address}}</span> <br>
+          <span >
+            <a type="button" class="btn btn-outline-secondary"
+               [routerLink]="['/houses-img',house.houseId]">Upload House Image</a>
+          </span>
         </div>
       </div>
       <div class="col-md-12 col-lg-4">
