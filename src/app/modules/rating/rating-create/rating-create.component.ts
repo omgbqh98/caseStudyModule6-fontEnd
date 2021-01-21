@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {UserService} from '../../../service/user-service/user.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -7,6 +7,7 @@ import {User} from '../../../model/user-model/user';
 import {House} from '../../../model/house-model/house';
 import {Timestamp} from 'rxjs';
 import {RatingService} from '../../../service/rating-service/rating.service';
+import {Booking} from '../../../model/booking-model/booking';
 
 @Component({
   selector: 'app-rating-create',
@@ -18,10 +19,13 @@ export class RatingCreateComponent implements OnInit {
   user: any;
   notRatedBookingList: any;
   rateForm: FormGroup;
+
   // isShow = true;
   constructor(private userService: UserService,
               private fb: FormBuilder,
-              private ratingService: RatingService) { }
+              private ratingService: RatingService) {
+  }
+
   ngOnInit(): void {
     this.rateForm = this.fb.group({
       userId: [''],
@@ -32,6 +36,7 @@ export class RatingCreateComponent implements OnInit {
     });
     this.checkIfNotRated();
   }
+
   // tslint:disable-next-line:typedef
   checkIfNotRated() {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
@@ -49,19 +54,20 @@ export class RatingCreateComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  createRate() {
+  createRate(booking: Booking, houseId: House) {
     const newRate = this.rateForm.value;
     newRate.review = this.rateForm.value.review;
     newRate.rate = this.rateForm.value.rate;
     newRate.userId = this.user;
-    newRate.houseId = this.rateForm.value.houseId;
-    newRate.bookingId = this.rateForm.value.bookingId;
-    console.log(newRate.value);
-    // this.ratingService.createNewRating(newRate).subscribe((data) => {
-    //   console.log('Kết quả' + data);
-    //   alert('Thank you for your feedback!');
-    //   this.checkIfNotRated();
-    // });
+    newRate.houseId = houseId;
+    newRate.bookingId = booking;
+    this.ratingService.createNewRating(newRate).subscribe((data) => {
+      alert('Thank you for your feedback!');
+      this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
+        this.notRatedBookingList = data;
+        console.log('list chưa rate' + this.notRatedBookingList);
+      });
+    });
   }
 
   // hideRateForm() {
