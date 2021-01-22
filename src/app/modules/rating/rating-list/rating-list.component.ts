@@ -55,14 +55,6 @@ export class RatingListComponent implements OnInit {
         this.listParentRating = ratings;
         this.sum = this.listParentRating.length;
         console.log('tổng bình luận' + this.sum);
-        // Code tính trung bình
-        // for (let i = 0; i < this.sum; i++) {
-        //   // this.sumRate += ratings.value.rate;
-        //   console.log('giá trị chuỗi ratings' + this.listChildRating.rate);
-        //   console.log(this.sumRate);
-        // }
-        // this.avgRate = this.sumRate / this.sum;
-        // Code tính trung bình
       });
       this.ratingService.getChildRatingByHouse(this.id).subscribe((data) => {
         console.log('thành công');

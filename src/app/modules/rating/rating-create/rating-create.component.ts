@@ -18,7 +18,7 @@ import {Router} from '@angular/router';
 export class RatingCreateComponent implements OnInit {
   currentUser: any;
   user: any;
-  notRatedBookingList: any;
+  notRatedBookingList: Booking[] | undefined;
   // @ts-ignore
   rateForm: FormGroup;
 
@@ -64,8 +64,10 @@ export class RatingCreateComponent implements OnInit {
     newRate.userId = this.user;
     newRate.houseId = houseId;
     newRate.bookingId = booking;
+    console.log('newRate' + newRate);
     this.ratingService.createNewRating(newRate).subscribe((data) => {
-      alert('Thank you for your feedback!');
+      // alert('Thank you for your feedback!');
+      // tslint:disable-next-line:no-shadowed-variable
       this.userService.findNotRatedBookingByUser(this.user.userId).subscribe((data) => {
         this.notRatedBookingList = data;
         console.log('list chưa rate' + this.notRatedBookingList);
