@@ -87,17 +87,13 @@ export class RatingListComponent implements OnInit {
     this.ratingService.getCheckedOutUserByHouse(this.id).subscribe((users) => {
       this.checkedOutList = users;
       console.log('danh sách thằng checkout:' + this.checkedOutList);
-      // this.getCurrentUser(); // lấy thằng user hiện tại vào biến user
       this.owner = this.currentHouse.ownerId;
-      // console.log('Thông tin nhà hiện tại:' + this.currentHouse);
-      // console.log('thằng chủ' + this.owner);
       const contains = this.checkedOutList.some(elem => {
         return JSON.stringify(this.user) === JSON.stringify(elem);
       });
       if (this.user == null) {
         this.isShowAlert = true;
-      }
-      if (contains || this.owner.userId === this.user.userId) {
+      } else if (contains || this.owner.userId === this.user.userId) {
         console.log('kết quả check là checkout hoặc chủ');
         this.isShow = true;
       } else {
