@@ -41,4 +41,8 @@ export class BookingService {
   checkout(): Observable<any> {
     return this.http.get(API_URL + '/checkout');
   }
+
+  checkHired(): Observable<any> {
+    return this.http.get(API_URL + '/checkHired');
+  }
 }

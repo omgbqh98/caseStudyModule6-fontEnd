@@ -36,6 +36,8 @@ export class HistoryBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.bookingService.checkHired().subscribe(() => {
+    });
     this.bookingService.checkout().subscribe(() => {
       // alert('nhà bạn thuê đã hết hạn');
       // tslint:disable-next-line:no-shadowed-variable
