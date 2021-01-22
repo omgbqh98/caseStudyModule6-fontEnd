@@ -52,6 +52,9 @@ export class RatingListComponent implements OnInit {
         this.currentHouse = house;
       });
       this.ratingService.getParentRatingsByHouse(this.id).subscribe((ratings) => {
+        if (typeof ratings === undefined){
+          this.sum = 0;
+        }
         this.listParentRating = ratings;
         this.sum = this.listParentRating.length;
         console.log('tổng bình luận' + this.sum);
@@ -73,7 +76,7 @@ export class RatingListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getCurrentUser() {
     // @ts-ignore
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.currentUser = JSON.parse(localStorage.getItem('user') || '{}');
     // @ts-ignore
     this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
   }
