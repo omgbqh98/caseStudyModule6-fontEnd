@@ -183,6 +183,9 @@
     </div>
     <div id="property-carousel" class="owl-carousel owl-theme">
       <div *ngFor="let house of listHouses" class="carousel-item-b">
+<!--        <div>-->
+<!--          <h5>{{house.avgRate}} &nbsp;<i class="fa fa-star star" aria-hidden="true"></i></h5>-->
+<!--        </div>-->
         <div class="card-box-a card-shadow">
           <div class="img-box-a">
             <img [src]="house.avatar" alt="" class="img-a img-fluid"
@@ -190,10 +193,10 @@
           </div>
           <div class="card-overlay">
             <div class="card-overlay-a-content">
+
               <div class="card-header-a">
-                <h2 class="card-title-a">
-                  <a [routerLink]="'/house-view'">{{ house.houseName }}</a>
-                </h2>
+                <h4 class="card-title-a"> <a [routerLink]="'/house-view'">{{ house.houseName }} </a>
+                  </h4>
               </div>
               <div class="card-body-a">
                 <div class="price-box d-flex">
@@ -205,12 +208,10 @@
               </div>
               <div class="card-footer-a">
                 <ul class="card-info d-flex justify-content-around">
-                  <li>
-                    <h4 class="card-info-title">Area</h4>
-                    <span>340m
-                        <sup>2</sup>
-                      </span>
-                  </li>
+<!--                  <li>-->
+<!--                    <h4 class="card-info-title">Rate</h4>-->
+<!--                    <h5>{{house.avgRate}}<i class="fa fa-star star" aria-hidden="true"></i></h5>-->
+<!--                  </li>-->
                   <li>
                     <h4 class="card-info-title">Bed</h4>
                     <span>{{house.bedroom}}</span>
@@ -219,10 +220,14 @@
                     <h4 class="card-info-title">Bath</h4>
                     <span>{{house.bathroom}}</span>
                   </li>
+
                 </ul>
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <h6>({{house.avgRate}}<i class="fa fa-star star" aria-hidden="true"></i>) {{house.address}}</h6>
         </div>
       </div>
       <!---->
@@ -334,6 +339,7 @@
     </div>
     <div id="new-carousel" class="owl-carousel owl-theme">
       <div *ngFor="let house of listBestHouses" class="carousel-item-b">
+
         <div class="card-box-a card-shadow">
           <div class="img-box-a">
             <img [src]="house.avatar" alt="" class="img-a img-fluid"
@@ -368,6 +374,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <h6>({{house.avgRate}}<i class="fa fa-star star" aria-hidden="true"></i>) {{house.address}}</h6>
         </div>
       </div>
       <!--      <div *ngFor="let house of listBestHouses" class="carousel-item-c">-->
