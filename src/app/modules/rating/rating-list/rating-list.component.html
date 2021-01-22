@@ -3,7 +3,7 @@
 <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
   <div class="container">
     <div class="title-box-d">
-      <h3 class="title-d">Feedbacks ({{this.sum}}) Rate: {{this.currentHouse.avgRate}} </h3>
+      <h5 class="title-d">{{this.currentHouse.avgRate}} <i class="fa fa-star star" aria-hidden="true"></i> ( {{this.sum}} reviews)  </h5>
     </div>
 
     <div class="box-comments">
@@ -23,7 +23,7 @@
           </div>
           <div class="comment-details">
             <div class = "row">
-              <h4 class="comment-author">{{rating.userId.username}} </h4><span style="margin-top: 5px">&nbsp; &nbsp; rated it {{rating.rate}} </span>
+              <h4 class="comment-author">{{rating.userId.username}} </h4><span style="margin-top: 5px">&nbsp; &nbsp; rated it {{rating.rate}} <i class="fa fa-star star" aria-hidden="true"></i></span>
             </div>
             <span>{{rating.createdAt}}</span>
             <p class="comment-description">
