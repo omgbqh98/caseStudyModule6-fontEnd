@@ -37,4 +37,8 @@ export class BookingService {
   finById(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses/getBooking' + `${id}`);
   }
+
+  checkout(): Observable<any> {
+    return this.http.get(API_URL + '/checkout');
+  }
 }

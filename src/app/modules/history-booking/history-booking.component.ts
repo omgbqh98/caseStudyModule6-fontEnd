@@ -6,6 +6,7 @@ import {AuthService} from '../../service/authen-service/auth.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Booking} from '../../model/booking-model/booking';
 import {UserService} from '../../service/user-service/user.service';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-history-booking',
@@ -35,6 +36,12 @@ export class HistoryBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.bookingService.checkout().subscribe(() => {
+      // alert('nhà bạn thuê đã hết hạn');
+      // tslint:disable-next-line:no-shadowed-variable
+    }, error => {
+      alert('bạn cần book lại');
+    });
     // @ts-ignore
     this.authService.currentUser.subscribe(value => {
       this.currentUser = value;
@@ -53,11 +60,14 @@ export class HistoryBookingComponent implements OnInit {
   // @ts-ignore
   // tslint:disable-next-line:typedef
   checkIn(id) {
-    this.bookingService.checkIn(id).subscribe();
-    // this.show = 'Check In successfully!';
-    alert('Check In successfully!');
-    // @ts-ignore
-    this.getBooking(this.user.userId);
+    this.bookingService.checkIn(id).subscribe(() => {
+      // this.show = 'Check In successfully!';
+      alert('Check In successfully!');
+      // @ts-ignore
+      this.getBooking(this.user.userId);
+    }, error1 => {
+      alert('bạn đã hết hạn, hãy đặt lại phòng');
+    });
   }
 
   // @ts-ignore
@@ -69,8 +79,8 @@ export class HistoryBookingComponent implements OnInit {
       this.show = 'Canceled successfully!';
       // @ts-ignore
       this.getBooking(this.user.userId);
+      // tslint:disable-next-line:no-shadowed-variable
     }, error => {
-      // alert('Bạn không thể hủy =)))))');
       // @ts-ignore
       this.show = 'Expired cancellation !';
       console.log(error);
