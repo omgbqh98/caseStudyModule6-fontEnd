@@ -18,7 +18,7 @@ import {Router} from '@angular/router';
 export class RatingCreateComponent implements OnInit {
   currentUser: any;
   user: any;
-  notRatedBookingList: Booking[] | undefined;
+  notRatedBookingList: any;
   // @ts-ignore
   rateForm: FormGroup;
 
