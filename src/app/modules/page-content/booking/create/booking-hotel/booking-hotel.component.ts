@@ -89,9 +89,7 @@ export class BookingHotelComponent implements OnInit {
     }
   }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = paramMap.get('id');

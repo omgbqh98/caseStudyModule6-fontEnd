@@ -19,6 +19,7 @@ export class StatisticsComponent implements OnInit {
   currentUser: UserToken;
   // @ts-ignore
   user: User;
+  p = 1;
 
   // @ts-ignore
 

@@ -5,9 +5,10 @@ import {House} from '../../../../../model/house-model/house';
 @Component({
   selector: 'app-list-all-houses',
   templateUrl: './list-all-houses.component.html',
-  styleUrls: ['./list-all-houses.component.css']
+  styleUrls: ['./list-all-houses.component.css'],
 })
 export class ListAllHousesComponent implements OnInit {
+  p = 1;
   listHouses: House[] = [];
   constructor(private houseService: HouseService) {
   }

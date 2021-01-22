@@ -11,6 +11,7 @@ export class ListRentHousesByTimeComponent implements OnInit {
   id: any;
   bookingList: any;
   total = 0;
+  p = 1;
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute) { }
 

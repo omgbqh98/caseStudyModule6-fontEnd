@@ -1,3 +1,18 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <br>
+        <h4 style="color: red">{{show}}</h4>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="container">
   <br><br>
   <div class="row">
@@ -8,86 +23,73 @@
     </div>
   </div>
 
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="container">
-          <br>
-          <h4 style="color: red">{{show}}</h4>
-          <br>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="wrapper">
-    <table class="table table-bordered cart_summary">
-      <thead>
-      <tr>
-        <!--      <th class="cart_product">Image House</th>-->
-        <th>House Image</th>
-        <th>House's Description </th>
-        <th>Check In</th>
-        <th>Check Out</th>
-        <th>Created At</th>
-        <th>Total</th>
-        <th>Cancel</th>
-        <th>Check In</th>
-        <!--      <th class="action"><i class="fa fa-trash-o"></i>-->
-        <!--      </th>-->
-      </tr>
-      </thead>
-      <tbody>
-      <tr  *ngFor="let booking of listBooking">
-        <td class="cart_product">
-          <!--        {{booking.houseId.houseId}}-->
-          <a [routerLink]="['/house-view',booking.houseId.houseId]"> <img src="{{booking.houseId.avatar}}" alt=""></a>
-        </td>
-        <td class="cart_description">
-          <p class="product-name">House Name: {{booking.houseId.houseName}}
-          </p>
-          <small class="cart_ref">Bathroom: {{booking.houseId.bathroom}}</small>
-          <br>
-          <small><a href="#">BedRoom : {{booking.houseId.bedroom}}</a></small>
-          <br>
-          <small><a href="#">Price : {{booking.houseId.price}} $</a></small>
-        </td>
-        <td class="cart_avail"><span class="label label-success">{{booking.checkIn}}</span>
-        <td class="cart_avail"><span class="label label-success">{{booking.checkOut}}</span>
-        </td>
-        <td class="cart_avail"><span class="label label-success">{{booking.createdAt}}</span>
-        </td>
-        <td class="price"><span> {{booking.total}} $ </span>  </td>
-        <td  class="cart_avail">
-          <!--        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>-->
-          <button class="btn btn-outline-warning" style="color: red"><a (click)="cancelBooking(booking.bookingId)"  data-toggle="modal" data-target=".bd-example-modal-lg">Cancel</a></button>
-          <!--        <button type="button" *ngIf="booking.houseId.status == 1" >da thue</button>-->
-        </td>
-        <td  class="cart_avail">
-          <button  *ngIf="booking.houseId.status !== 1" id="cancel"    (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn btn-outline-primary">Check In</button>
-          <button  *ngIf="booking.houseId.status == 1" id="cancel"    style="color: blue; cursor: not-allowed"  class="btn btn-outline-danger disabled">Checked</button>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <td colspan="2" rowspan="2"></td>
-        <!--      <td colspan="3">Total products (tax incl.)</td>-->
-        <!--      <td colspan="2">122.38 €</td>-->
-      </tr>
-      <tr>
-        <td colspan="3"><strong>Total Money</strong>
-        </td>
-        <td colspan="1"><strong> {{sum()}} $</strong>
-        </td>
-        <td colspan="2"><strong> </strong>
-        </td>
-      </tr>
-      </tfoot>
-    </table>
-    <!--  <div class="cart_navigation ">-->
-    <!--    <a class="prev-btn" href="#">Continue shopping</a>-->
-    <!--    <a class="next-btn" href="#">Proceed to checkout</a>-->
-    <!--  </div>-->
-  </div>
-</div>
+<div class="wrapper">
+  <table class="table table-bordered cart_summary">
+    <thead>
+    <tr>
+      <!--      <th class="cart_product">Image House</th>-->
+      <th>House Image</th>
+      <th>House's Description </th>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Created At</th>
+      <th>Total</th>
+      <th>Cancel</th>
+      <th>Check In</th>
+      <!--      <th class="action"><i class="fa fa-trash-o"></i>-->
+      <!--      </th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor="let booking of listBooking | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
+      <td class="cart_product">
+<!--        {{booking.houseId.houseId}}-->
+        <a [routerLink]="['/house-view',booking.houseId.houseId]"> <img src="{{booking.houseId.avatar}}" alt=""></a>
+      </td>
+      <td class="cart_description">
+        <p class="product-name">House Name: {{booking.houseId.houseName}}
+        </p>
+        <small class="cart_ref">Bathroom: {{booking.houseId.bathroom}}</small>
+        <br>
+        <small><a href="#">BedRoom : {{booking.houseId.bedroom}}</a></small>
+        <br>
+        <small><a href="#">Price : {{booking.houseId.price}} $</a></small>
+      </td>
+      <td class="cart_avail"><span class="label label-success">{{booking.checkIn}}</span>
+      <td class="cart_avail"><span class="label label-success">{{booking.checkOut}}</span>
+      </td>
+      <td class="cart_avail"><span class="label label-success">{{booking.createdAt}}</span>
+      </td>
+      <td class="price"><span> {{booking.total}} $ </span>  </td>
+      <td  class="cart_avail">
+<!--        <button style="color: whitesmoke" class="btn-success"><a [routerLink]="['/house-view',booking.houseId.houseId]">Detail</a></button>-->
+      <button class="btn btn-outline-warning" style="color: red"><a (click)="cancelBooking(booking.bookingId)"  data-toggle="modal" data-target=".bd-example-modal-lg">Cancel</a></button>
+<!--        <button type="button" *ngIf="booking.houseId.status == 1" >da thue</button>-->
+      </td>
+      <td  class="cart_avail">
+        <button  *ngIf="booking.houseId.status !== 1" id="cancel"    (click)="checkIn(booking.bookingId); clicked = true;" style="color: blue"  class="btn btn-outline-primary">Check In</button>
+        <button  *ngIf="booking.houseId.status == 1" id="cancel"    style="color: blue; cursor: not-allowed"  class="btn btn-outline-danger disabled">Checked</button>
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="2" rowspan="2"></td>
+      <!--      <td colspan="3">Total products (tax incl.)</td>-->
+      <!--      <td colspan="2">122.38 €</td>-->
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Total Money</strong>
+      </td>
+      <td colspan="1"><strong> {{sum()}} $</strong>
+      </td>
+      <td colspan="2"><strong> </strong>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+  <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
 
+
+</div>
+</div>
