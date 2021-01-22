@@ -65,11 +65,13 @@ export class HistoryBookingComponent implements OnInit {
   checkIn(id) {
     this.bookingService.checkIn(id).subscribe(() => {
       // this.show = 'Check In successfully!';
-      alert('Check In successfully!');
+      // alert('Check In successfully!');
+      this.show = 'Check In successfully!';
       // @ts-ignore
       this.getBooking(this.user.userId);
     }, error1 => {
-      alert('bạn đã hết hạn, hãy đặt lại phòng');
+      // alert('House has expired, book now !');
+      this.show = 'House has expired, book now !';
     });
   }
 

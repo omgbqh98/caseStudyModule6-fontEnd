@@ -29,6 +29,7 @@ export class UserUpdateComponent implements OnInit {
   // @ts-ignore
   updateUserForm: FormGroup;
   arrayPicture = '';
+  show = '';
   constructor(
     private storage: AngularFireStorage,
     private userService: UserService,
@@ -79,9 +80,10 @@ export class UserUpdateComponent implements OnInit {
       // this.user.avatar = this.updateUserForm.value.avatar;
       this.user.avatar = this.arrayPicture;
       this.userService.updateUser(this.user).subscribe(() => {
-        alert('Cập nhật User thành công!');
+        // alert('Cập nhật User thành công!');
+        this.show = 'Update Successful!';
         this.router.navigate(['/user-update', this.currentUser.username]);
-        window.location.href = '/user-update/' + this.currentUser.username;
+        // window.location.href = '/user-update/' + this.currentUser.username;
       }, error => {
         alert('Lỗi!');
       });

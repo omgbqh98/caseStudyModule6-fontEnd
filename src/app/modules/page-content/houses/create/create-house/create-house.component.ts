@@ -20,6 +20,7 @@ export class CreateHouseComponent implements OnInit {
   user: any;
   // @ts-ignore
   currentUser: UserToken;
+  show = '';
   arrayPicture = '';
   constructor(private fb: FormBuilder,
               private houseService: HouseService,
@@ -50,7 +51,8 @@ export class CreateHouseComponent implements OnInit {
         house.ownerId = this.user;
         this.houseService.create(house).subscribe(() => {
           console.log(house.houseName);
-          alert('Create successfully!');
+          // alert('Create successfully!');
+          this.show = 'Create successfully!';
         });
       });
     });
