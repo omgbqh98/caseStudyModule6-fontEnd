@@ -96,7 +96,10 @@ export class RatingListComponent implements OnInit {
       this.owner = this.currentHouse.ownerId;
       // console.log('Thông tin nhà hiện tại:' + this.currentHouse);
       // console.log('thằng chủ' + this.owner);
-      if (this.checkedOutList.includes(this.user) || this.owner.userId === this.user.userId) {
+      const contains = this.checkedOutList.some(elem => {
+        return JSON.stringify(this.user) === JSON.stringify(elem);
+      });
+      if (contains || this.owner.userId === this.user.userId) {
         console.log('kết quả check là checkout hoặc chủ');
         this.isShow = true;
       } else {

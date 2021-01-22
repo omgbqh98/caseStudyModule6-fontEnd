@@ -19,7 +19,8 @@ export class RatingCreateComponent implements OnInit {
   currentUser: any;
   user: any;
   notRatedBookingList: any;
-  rateForm: FormGroup | undefined;
+  // @ts-ignore
+  rateForm: FormGroup;
 
   // isShow = true;
   constructor(private userService: UserService,
