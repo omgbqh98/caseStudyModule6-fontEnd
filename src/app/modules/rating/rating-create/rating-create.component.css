@@ -14,7 +14,7 @@ body {
 
 .cross {
   padding: 10px;
-  color: #d6312d;
+  color: white;
   cursor: pointer;
   font-size: 23px
 }
@@ -30,7 +30,7 @@ body {
 
 .comment-area textarea {
   resize: none;
-  border: 1px solid #ff0000
+  border: 1px solid #2eca6a
 }
 
 .form-control:focus {
@@ -38,19 +38,19 @@ body {
   background-color: #fff;
   border-color: #ffffff;
   outline: 0;
-  box-shadow: 0 0 0 1px rgb(255, 0, 0) !important
+  box-shadow: 0 0 0 1px #2eca6a !important
 }
 
 .send {
   color: #fff;
-  background-color: #ff0000;
-  border-color: #ff0000
+  background-color:#2eca6a;
+  border-color: #2eca6a
 }
 
 .send:hover {
   color: #fff;
-  background-color: #f50202;
-  border-color: #f50202
+  background-color: green;
+  border-color: green
 }
 
 .rating {

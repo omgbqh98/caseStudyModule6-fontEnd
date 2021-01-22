@@ -6,9 +6,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="text-right cross"><i class="fa fa-times mr-2"></i></div>
-        <div class="card-body text-center"><img src=" https://i.imgur.com/d2dKtI7.png" height="100" width="100">
+        <div class="card-body text-center"><img src=" https://cdn0.iconfinder.com/data/icons/advertising-39/512/advertising_recommendation-512.png" height="100" width="100">
           <div class="comment-box text-center">
-            <h5>Thank you for choosing our <strong>{{booking.houseId.houseName}}</strong>. <br>Please tell us about your
+            <h5>Thank you for choosing our <strong>{{booking.houseId.houseName}}</strong> to stay form {{booking.checkIn}} to {{booking.checkOut}} !
+              <br><br>Please tell us about your
               experience!</h5>
             <form [formGroup]="rateForm" (ngSubmit)="createRate(booking,booking.houseId )">
               <div class=" rating">
