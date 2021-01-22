@@ -20,6 +20,8 @@ export class StatisticsComponent implements OnInit {
   // @ts-ignore
   user: User;
 
+  // @ts-ignore
+
   constructor(
     private authService: AuthService,
     private userService: UserService,
@@ -35,24 +37,35 @@ export class StatisticsComponent implements OnInit {
         this.user = value1;
         // @ts-ignore
         this.getBooking(this.user.userId);
-        // @ts-ignore
-        console.log('id' + this.user.userId);
-        console.log(this.user.userId);
-        console.log(this.user.username);
       });
     });
   }
 
   // @ts-ignore
-  getBooking(id: number): StaticsticsByHouses[] {
+  getBooking(id: number): void {
     // @ts-ignore
     this.staticsticsByHousesService.staticsticsByHouses(id).subscribe((data) => {
       console.log(data);
       this.listStaticsticsByHouses = data;
-      console.log(this.listStaticsticsByHouses);
-      console.log(this.user.userId);
-      return this.listStaticsticsByHouses;
     });
   }
 
+  // @ts-ignore
+  sumTimes(): number {
+    let sum = 0;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.listStaticsticsByHouses.length; i++) {
+      sum += this.listStaticsticsByHouses[i].count;
+    }
+    return sum;
+  }
+
+  sumRevenue(): number {
+    let sum = 0;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.listStaticsticsByHouses.length; i++) {
+      sum += this.listStaticsticsByHouses[i].sumPrice;
+    }
+    return sum;
+  }
 }

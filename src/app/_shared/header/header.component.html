@@ -68,7 +68,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <select class="form-control" required name="bedroom" [(ngModel)]="search.bedroomQuantity">
-                          <option value="" selected hidden>Bed room. . .</option>
+                          <option value="-1" selected hidden>Bed room. . .</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -80,7 +80,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <select class="form-control" required name="bathroom" [(ngModel)]="search.bathroomQuantity">
-                          <option value="" selected hidden>Bath room. . .</option>
+                          <option value="-1" selected hidden>Bath room. . .</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -92,7 +92,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <select class="form-control" required name="idPrice" [(ngModel)]="search.idPrice">
-                          <option value="" selected hidden>Price. . .</option>
+                          <option value="-1" selected hidden>Price. . .</option>
                           <option value="1">0 ~ 50$</option>
                           <option value="2">50 ~ 100$</option>
                           <option value="3">100 ~ 500$</option>

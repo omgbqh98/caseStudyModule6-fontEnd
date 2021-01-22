@@ -1,5 +1,5 @@
 <br><br><br><br>
-<br><br>
+<br>
 
 <div class="container">
   <br>
@@ -8,14 +8,14 @@
       <a class="nav-link active" id="tab-bootstrap" data-toggle="tab"
          href="#byHouse"
          role="tab" aria-controls="content-bootstrap" aria-selected="true">
-        Thống kê theo nhà
+        Statistics by house
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="tab-javascript" data-toggle="tab"
          href="#byMonth"
          role="tab" aria-controls="content-javascript" aria-selected="false">
-        Thống kê theo tháng
+        Statistics by month
       </a>
     </li>
   </ul>
@@ -27,10 +27,10 @@
         <table>
           <tr>
             <th>Id</th>
-            <th>houseName</th>
-            <th>price</th>
-            <th>count</th>
-            <th>sumPrice</th>
+            <th>House Name</th>
+            <th>Price</th>
+            <th width="20%">Times</th>
+            <th width="25%">Revenue($)</th>
           </tr>
           <tr *ngFor="let h of listStaticsticsByHouses">
             <td>{{h.houseId}}</td>
@@ -43,8 +43,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>DFSDF</td>
-            <td>ÁAFS</td>
+            <td><b>{{sumTimes()}}:Sum Times</b></td>
+            <td><b>{{sumRevenue()}} :Sum Revenue</b></td>
           </tr>
         </table>
       </div>
