@@ -27,6 +27,7 @@ export class HistoryBookingComponent implements OnInit {
   // @ts-ignore
   show = '';
   showCancelSuccess = '';
+  p = 1;
 
   constructor(private bookingService: BookingService,
               private authService: AuthService,

@@ -44,9 +44,12 @@
       <!--        </div>-->
       <!--      </div>-->
       <!--      End phần sort nhà-->
+<!--      <tr *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: p }; let i  = index">-->
+
 
 <!--      Danh sách các nhà-->
-      <div class="col-md-4" *ngFor="let house of listHouses">
+      <div class="col-md-4" *ngFor="let house of listHouses | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
+<!--        <div scope="row">{{ i + 1}}</div>-->
         <div class="card-box-a card-shadow">
           <div class="img-box-a">
             <img src="{{house.avatar}}" alt="" class="img-a img-fluid"  style="width: 350px !important; height: 250px !important;">
@@ -85,35 +88,10 @@
       <!--     End danh sách các nhà-->
     </div>
     <!--    End phần list nhà -->
+    <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <nav class="pagination-a">
-          <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">
-                <span class="ion-ios-arrow-back"></span>
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item next">
-              <a class="page-link" href="#">
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
   </div>
 </section>
 <!--/ Property Grid End /-->
+
 

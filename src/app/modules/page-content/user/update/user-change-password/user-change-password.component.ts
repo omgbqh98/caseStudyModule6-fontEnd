@@ -22,6 +22,7 @@ export class UserChangePasswordComponent implements OnInit {
   userPhone = '';
   userEmail = '';
   userAddress = '';
+  show = '';
   newPasswordForm: FormGroup = new FormGroup({
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)])
@@ -85,14 +86,16 @@ export class UserChangePasswordComponent implements OnInit {
       console.log(this.newPasswordForm.value.password);
       console.log(this.newPasswordForm.value.confirmPassword);
       // console.log(this.password);
-      alert('Password and confirm password must match!');
+      this.show = 'Password and confirm password must match!';
+      // alert('Password and confirm password must match!');
     }
    else if (this.newPasswordForm.valid ){
       // @ts-ignore
       const user = this.setNewUser();
       // @ts-ignore
       this.userService.newPassword(user, this.user.userId).subscribe(() => {
-        alert('Đổi mật khẩu thành công');
+        // alert('Đổi mật khẩu thành công');
+        this.show = 'Password Changed Successfully!';
         this.newPasswordForm.reset();
         // @ts-ignore
         this.router.navigate(['/change-password'], this.user.userId);

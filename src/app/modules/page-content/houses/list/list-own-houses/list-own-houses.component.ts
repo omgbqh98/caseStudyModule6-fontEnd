@@ -14,6 +14,7 @@ export class ListOwnHousesComponent implements OnInit {
   listHouses: House[] = [];
   id: any;
   user: any;
+  p = 1;
 
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,

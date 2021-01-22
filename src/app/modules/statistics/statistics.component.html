@@ -39,7 +39,7 @@
             <th width="20%">Times</th>
             <th width="25%">Revenue($)</th>
           </tr>
-          <tr *ngFor="let h of listStaticsticsByHouses">
+          <tr *ngFor="let h of listStaticsticsByHouses  | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
             <td>{{h.houseId}}</td>
             <td>{{h.houseName}}</td>
             <td>{{h.price}}</td>
@@ -54,13 +54,14 @@
             <td><b>{{sumRevenue()}} :Sum Revenue</b></td>
           </tr>
         </table>
+        <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
     <div class="tab-pane fade" id="byMonth"
          role="tabpanel" aria-labelledby="tab-css">
       <h3>haljlfsjldf</h3>
-
     </div>
   </div>
+
 
 </div>

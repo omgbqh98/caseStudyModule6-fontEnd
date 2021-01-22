@@ -38,6 +38,8 @@ import { RatingCreateComponent } from './modules/rating/rating-create/rating-cre
 import { RatingListComponent } from './modules/rating/rating-list/rating-list.component';
 import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgxPaginationModule} from "ngx-pagination";
+
 import { CommentCreateComponent } from './modules/rating/comment-create/comment-create.component';
 
 // @ts-ignore
@@ -84,7 +86,8 @@ import { CommentCreateComponent } from './modules/rating/comment-create/comment-
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
