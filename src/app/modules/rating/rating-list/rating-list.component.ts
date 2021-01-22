@@ -21,7 +21,7 @@ export class RatingListComponent implements OnInit {
   id: any;
   listParentRating: any;
   listChildRating: any;
-  sum: any;
+  sum = 0;
   currentUser: any;
   user: any;
   checkedOutList: Array<User> = [];
@@ -32,8 +32,8 @@ export class RatingListComponent implements OnInit {
   parentRatingTag: any;
   // @ts-ignore
   createNewCommentForm: FormGroup;
-  sumRate: any;
-  avgRate: any;
+  sumRate = 0;
+  avgRate = 0;
 
   // newComment: Rating;
 

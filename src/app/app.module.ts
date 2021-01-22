@@ -72,7 +72,7 @@ import { CommentCreateComponent } from './modules/rating/comment-create/comment-
     RatingListComponent,
     CreateHousesImgComponent,
     SearchComponent,
-    CommentCreateComponent,
+    // CommentCreateComponent,
   ],
   imports: [
     MbscModule,
