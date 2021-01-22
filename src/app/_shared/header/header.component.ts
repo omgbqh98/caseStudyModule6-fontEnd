@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
   // @ts-ignore
   ngOnInit(private houseService: HouseService): void {
     // @ts-ignore
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.currentUser = JSON.parse(localStorage.getItem('user') || '{}');
     // @ts-ignore
     console.log(this.currentUser);
     // @ts-ignore
@@ -96,6 +96,7 @@ export class HeaderComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   searchHouse() {
+    console.log('kết quả tìm ' + this.search);
     this.houseService.search_House(this.search)
       .subscribe((result) => {
         this.listHouseSearch = result;
