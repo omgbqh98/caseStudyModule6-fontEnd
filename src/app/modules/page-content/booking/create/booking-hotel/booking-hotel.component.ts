@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 // @ts-ignore
 import {Datepicker} from '@mobiscroll/angular';
 import {HouseService} from '../../../../../service/house-service/house.service';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {House} from '../../../../../model/house-model/house';
 import {BookingService} from '../../../../../service/booking-service/booking.service';
 import {Booking} from '../../../../../model/booking-model/booking';
@@ -36,7 +36,8 @@ export class BookingHotelComponent implements OnInit {
     ,
               private authService: AuthService
     ,
-              private userService: UserService
+              private userService: UserService,
+              private router: Router
   ) {
   }
 
@@ -91,12 +92,6 @@ export class BookingHotelComponent implements OnInit {
   ngOnInit()
     :
     void {
-    // @ts-ignore
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
-    // @ts-ignore
-    console.log(this.currentUser);
-    // @ts-ignore
-    this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = paramMap.get('id');
@@ -105,36 +100,44 @@ export class BookingHotelComponent implements OnInit {
         this.house = result;
       });
     });
+    // @ts-ignore
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    // @ts-ignore
+    this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
   }
 
   booking(): void {
-    // @ts-ignore
-    this.bookingService.getListBookingByHouseId(this.house.houseId).subscribe((result) => {
-      this.arrayBooked = result;
+    if (this.user == null) {
+      this.router.navigate(['/login']);
+    } else {
       // @ts-ignore
-      this.bookingNow.userId = this.user;
-      // @ts-ignore
-      this.bookingNow.houseId = this.house;
-      this.startString = this.date_time[0].toLocaleDateString();
-      this.endString = this.date_time[1].toLocaleDateString();
-      this.arrayStart = this.startString.split('/');
-      console.log(this.startString);
-      this.arrayEnd = this.endString.split('/');
-      this.bookingNow.checkIn = this.arrayStart[2] + '-0' + this.arrayStart[0] + '-' + this.arrayStart[1];
-      this.bookingNow.checkOut = this.arrayEnd[2] + '-0' + this.arrayEnd[0] + '-' + this.arrayEnd[1];
-      // @ts-ignore
-      this.bookingNow.total = this.days * this.house.price;
-      if (this.arrayBooked != null) {
-        if (this.checkBooking(this.arrayStart, this.arrayEnd, this.arrayBooked) === 'ok') {
+      this.bookingService.getListBookingByHouseId(this.house.houseId).subscribe((result) => {
+        this.arrayBooked = result;
+        // @ts-ignore
+        this.bookingNow.userId = this.user;
+        // @ts-ignore
+        this.bookingNow.houseId = this.house;
+        this.startString = this.date_time[0].toLocaleDateString();
+        this.endString = this.date_time[1].toLocaleDateString();
+        this.arrayStart = this.startString.split('/');
+        console.log(this.startString);
+        this.arrayEnd = this.endString.split('/');
+        this.bookingNow.checkIn = this.arrayStart[2] + '-0' + this.arrayStart[0] + '-' + this.arrayStart[1];
+        this.bookingNow.checkOut = this.arrayEnd[2] + '-0' + this.arrayEnd[0] + '-' + this.arrayEnd[1];
+        // @ts-ignore
+        this.bookingNow.total = this.days * this.house.price;
+        if (this.arrayBooked != null) {
+          if (this.checkBooking(this.arrayStart, this.arrayEnd, this.arrayBooked) === 'ok') {
+            this.bookingService.createBooking(this.bookingNow).subscribe(() => {
+            });
+          }
+        } else {
           this.bookingService.createBooking(this.bookingNow).subscribe(() => {
+            this.show = 'Congratulation! You booked successfully!';
           });
         }
-      } else {
-        this.bookingService.createBooking(this.bookingNow).subscribe(() => {
-          this.show = 'Congratulation! You booked successfully!';
-        });
-      }
-    });
+      });
+    }
   }
 
   checkBooking(arrayStart: string[], arrayEnd: string[], arrayBooked: Booking []): any {

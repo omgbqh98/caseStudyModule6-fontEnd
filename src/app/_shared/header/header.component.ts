@@ -7,7 +7,11 @@ import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../service/authen-service/auth.service';
 import {UserToken} from '../../model/user-model/user-token';
 import th from '@mobiscroll/angular/dist/js/i18n/th';
+// @ts-ignore
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Search} from '../../model/search-house/search';
+import {HouseService} from '../../service/house-service/house.service';
+import {House} from '../../model/house-model/house';
 
 
 @Component({
@@ -28,8 +32,18 @@ export class HeaderComponent implements OnInit {
   userPhone = '';
   userEmail = '1';
   arrayPicture = '';
+  search: Search = {
+    bedroomQuantity: -1,
+    bathroomQuantity: -1,
+    address: '',
+    idPrice: -1,
+    checkIn: '',
+    checkOut: ''
+  };
+  listHouseSearch: House[] = [];
 
   constructor(
+    private houseService: HouseService,
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
@@ -40,7 +54,8 @@ export class HeaderComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  // @ts-ignore
+  ngOnInit(private houseService: HouseService): void {
     // @ts-ignore
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     // @ts-ignore
@@ -60,9 +75,11 @@ export class HeaderComponent implements OnInit {
   // @ts-ignore
   // tslint:disable-next-line:typedef
   open(content) {
+    // @ts-ignore
+    // @ts-ignore
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-    }, ( reason ) => {
+    }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
@@ -75,5 +92,15 @@ export class HeaderComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  // tslint:disable-next-line:typedef
+  searchHouse() {
+    this.houseService.search_House(this.search)
+      .subscribe((result) => {
+        this.listHouseSearch = result;
+        this.router.navigate(['/search']);
+        this.houseService.changeMessage(this.listHouseSearch);
+      });
   }
 }
