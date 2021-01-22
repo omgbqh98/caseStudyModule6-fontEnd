@@ -109,6 +109,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
             });
           });
         }, 1000);
+        // @ts-ignore
         this.houseImg = list;
         console.log(this.houseImg);
       });
@@ -126,7 +127,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
         this.house = result;
       });
     });
-    // window.location.href = '/user-ownHouse/' + this.house.houseId;
+    window.location.href = '/user-ownHouse/' + this.house.houseId;
   }
 
   // tslint:disable-next-line:typedef
@@ -139,7 +140,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
       });
     });
     this.show = 'changed successfully';
-    // window.location.href = '/user-ownHouse/' + this.house.houseId;
+    window.location.href = '/user-ownHouse/' + this.house.houseId;
     }
   // tslint:disable-next-line:typedef
   checkedIn(id: number) {
@@ -151,7 +152,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
       });
     });
     this.show = 'changed successfully';
-    // window.location.href = '/user-ownHouse/' + this.house.houseId;
+    window.location.href = '/user-ownHouse/' + this.house.houseId;
   }
 
   // tslint:disable-next-line:typedef
@@ -164,6 +165,6 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
       });
     });
     this.show = 'changed successfully';
-    // window.location.href = '/user-ownHouse/' + this.house.houseId;
+    window.location.href = '/user-ownHouse/' + this.house.houseId;
   }
 }
