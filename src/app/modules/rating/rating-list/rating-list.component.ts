@@ -51,7 +51,7 @@ export class RatingListComponent implements OnInit {
       this.houseService.getDetailHouse(this.id).subscribe((house) => {
         this.currentHouse = house;
       });
-      this.ratingService.getParentRatingByHouse(this.id).subscribe((ratings) => {
+      this.ratingService.getParentRatingsByHouse(this.id).subscribe((ratings) => {
         this.listParentRating = ratings;
         this.sum = this.listParentRating.length;
         console.log('tổng bình luận' + this.sum);
