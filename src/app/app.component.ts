@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {RatingService} from './service/rating-service/rating.service';
+// import {UserService} from './service/user-service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'caseStudy-Module6';
+  isShowRateButton = false;
   // title = "cloudsSorage";
   // @ts-ignore
   selectedFile: File = null;
@@ -17,11 +20,13 @@ export class AppComponent {
   fb;
   // @ts-ignore
   downloadURL: Observable<string>;
-  constructor( private storage: AngularFireStorage) {}
+
+  constructor( private storage: AngularFireStorage,
+               private ratingService: RatingService) {}
   // @ts-ignore
   // tslint:disable-next-line:typedef
   onFileSelected(event) {
-    var n = Date.now();
+    const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
     const fileRef = this.storage.ref(filePath);
@@ -45,4 +50,6 @@ export class AppComponent {
         }
       });
   }
+
+
 }

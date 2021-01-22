@@ -47,4 +47,8 @@ export class UserService {
   updateUserProfile(id: number, user: User): Observable<User> {
     return this.http.put<User>(API_URL + `/users/${id}`, user);
   }
+
+  findNotRatedBookingByUser(id: number): Observable<any> {
+    return this.http.get(API_URL + '/users' + `/${id}` + '/bookingNotRateThreeMonths');
+  }
 }

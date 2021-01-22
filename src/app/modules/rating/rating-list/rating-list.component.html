@@ -3,29 +3,42 @@
 <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
   <div class="container">
     <div class="title-box-d">
-      <h3 class="title-d">Feedbacks ({{this.sum}})</h3>
+      <h5 class="title-d">{{this.currentHouse.avgRate}} <i class="fa fa-star star" aria-hidden="true"></i> ( {{this.sum}} reviews)  </h5>
     </div>
+
     <div class="box-comments">
       <ul class="list-comments">
+        <!--    Alert không thể reply -->
+        <div *ngIf="isShowAlert">
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Reply is not permitted!</h4>
+            <p>Only customers who booked and checked out from this room or the owner can reply!</p>
+          </div>
+        </div>
+        <!--  End alert không thể reply  -->
         <!--      Các comment cha -->
         <li *ngFor="let rating of listParentRating">
           <div class="comment-avatar">
             <img src="{{rating.userId.avatar}}" alt="">
           </div>
           <div class="comment-details">
-            <h4 class="comment-author">{{rating.userId.username}}</h4>
+            <div class = "row">
+              <h4 class="comment-author">{{rating.userId.username}} </h4><span style="margin-top: 5px">&nbsp; &nbsp; rated it {{rating.rate}} <i class="fa fa-star star" aria-hidden="true"></i></span>
+            </div>
             <span>{{rating.createdAt}}</span>
             <p class="comment-description">
               {{rating.review}}
             </p>
-            <button class="btn btn-outline-secondary" style="margin-right: 10px">Reply</button>
+            <button class="btn btn-outline-secondary" style="margin-right: 10px"
+                    (click)="replyBtnClicked(rating.ratingId)">Reply
+            </button>
             <!--          <button class="btn btn-outline-secondary" id="showChildRatingBtn">-->
             <!--            Comments-->
             <!--          </button>-->
           </div>
           <br>
           <!--      Các comment con -->
-          <div style="margin-left: 50px">
+          <div style="margin-left: 60px">
             <ul *ngFor="let child of listChildRating">
               <li *ngIf="child.parentId === rating.ratingId" class="comment-children">
                 <div class="comment-avatar">
@@ -40,6 +53,25 @@
                 </div>
               </li>
             </ul>
+            <!--            Tạo bình luận-->
+            <div *ngIf="isShow && parentRatingTag === rating.ratingId">
+              <!--              <app-comment-create></app-comment-create>-->
+              <div class="bg-light p-2" style="margin-left: 45px; margin-bottom: 20px">
+                <form class="form" [formGroup]="createNewCommentForm" (ngSubmit)="createComment(rating.ratingId)" id="registrationForm">
+                  <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="{{user.avatar}}" width="40">
+                    <textarea class="form-control ml-1 shadow-none textarea" style="height: 100px" formControlName="review"></textarea></div>
+                  <div class="mt-2 text-right">
+                    <button class="btn btn-success btn-sm shadow-none" type="submit">Post comment
+                    </button>
+                    <button class="btn btn-outline-success btn-sm ml-1 shadow-none" type="button"
+                            (click)="hideCommentBox()">Cancel
+                    </button>
+                  </div>
+                </form>
+                <!--         End component tạo bình luận-->
+              </div>
+            </div>
+            <!--          Component tạo bình luận-->
           </div>
           <!--      End các comment con -->
         </li>

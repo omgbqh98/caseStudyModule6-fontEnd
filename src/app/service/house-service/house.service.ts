@@ -52,21 +52,21 @@ export class HouseService {
     return this.http.get(API_URL + '/houses/listHouseNew');
   }
 
-  getRatingByHouse(id: number): Observable<any> {
-    return this.http.get(API_URL + '/houses' + `/${id}` + '/ratings');
-  }
-
-  getParentRatingByHouse(id: number): Observable<any> {
-    return this.http.get(API_URL + '/houses' + `/${id}` + '/parentRatings');
-  }
-
-  getChildRatingByHouse(id: number): Observable<any> {
-    return this.http.get(API_URL + '/houses' + `/${id}` + '/childRatings');
-  }
-
-  getChildRatingByParentRating(id: number): Observable<any> {
-    return this.http.get(API_URL + '/houses' + '/childRatings' + `/${id}`);
-  }
+  // getRatingByHouse(id: number): Observable<any> {
+  //   return this.http.get(API_URL + '/houses' + `/${id}` + '/ratings');
+  // }
+  //
+  // getParentRatingByHouse(id: number): Observable<any> {
+  //   return this.http.get(API_URL + '/houses' + `/${id}` + '/parentRatings');
+  // }
+  //
+  // getChildRatingByHouse(id: number): Observable<any> {
+  //   return this.http.get(API_URL + '/houses' + `/${id}` + '/childRatings');
+  // }
+  //
+  // getChildRatingByParentRating(id: number): Observable<any> {
+  //   return this.http.get(API_URL + '/houses' + '/childRatings' + `/${id}`);
+  // }
 
   hired(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses/hired/' + id);
