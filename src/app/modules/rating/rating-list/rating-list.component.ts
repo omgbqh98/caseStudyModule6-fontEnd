@@ -94,6 +94,9 @@ export class RatingListComponent implements OnInit {
       const contains = this.checkedOutList.some(elem => {
         return JSON.stringify(this.user) === JSON.stringify(elem);
       });
+      if (this.user == null) {
+        this.isShowAlert = true;
+      }
       if (contains || this.owner.userId === this.user.userId) {
         console.log('kết quả check là checkout hoặc chủ');
         this.isShow = true;
