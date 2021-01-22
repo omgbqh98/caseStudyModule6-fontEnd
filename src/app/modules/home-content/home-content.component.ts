@@ -11,6 +11,7 @@ declare var $: any;
 })
 export class HomeContentComponent implements OnInit {
   listHouses: House[] = [];
+  listBestHouses: House[] = [];
   constructor(private houseService: HouseService) {
   }
   ngOnInit(): void {
@@ -109,5 +110,11 @@ export class HomeContentComponent implements OnInit {
       }, 1000);
     });
     return this.listHouses;
+  }
+
+  getBestHouses() {
+    this.houseService.getBestHouses().subscribe((data) => {
+      this.listBestHouses = data;
+    });
   }
 }

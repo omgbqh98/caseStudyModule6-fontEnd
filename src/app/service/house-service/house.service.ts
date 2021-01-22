@@ -74,4 +74,8 @@ export class HouseService {
   search_House(search: Search): Observable<any> {
     return this.http.post(API_URL + '/houses' + '/search', search);
   }
+
+  getBestHouses(): Observable<any> {
+    return this.http.get(API_URL + '/houses' + '/bestHouses');
+  }
 }
