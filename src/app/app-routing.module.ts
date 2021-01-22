@@ -20,6 +20,8 @@ import {CreateHousesImgComponent} from './modules/page-content/houses/create/cre
 
 import {ListRentedHousesComponent} from './modules/page-content/booking/list/list-rented-houses/list-rented-houses.component';
 import {StatisticsComponent} from './modules/statistics/statistics.component';
+import {ListRentHousesByTimeComponent} from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
+
 import {SearchComponent} from './_shared/search/search.component';
 
 
@@ -89,6 +91,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'list-rent-houses-by-time/:id',
+    component: ListRentHousesByTimeComponent
   }
 ];
 

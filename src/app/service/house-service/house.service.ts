@@ -8,7 +8,6 @@ import {HousesImg} from '../../model/house-model/housesImg';
 import {Search} from '../../model/search-house/search';
 
 const API_URL = environment.apiUrl;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -37,8 +36,8 @@ export class HouseService {
     return this.http.post<House>(API_URL + '/houses', house);
   }
 
-  getOwnedHouse(id: number): Observable<any> {
-    return this.http.get(API_URL + '/users' + `/${id}` + '/ownHouses');
+  getOwnedHouse(id: number): Observable<any>{
+    return this.http.get(API_URL  + '/users' + `/${id}` + '/ownHouses');
   }
 
   updateHouse(house: House): Observable<any> {
@@ -80,7 +79,6 @@ export class HouseService {
   checkedIn(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses/checkedIn' + `/${id}`);
   }
-
   upgrade(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + '/upgrade' + `/${id}`);
   }

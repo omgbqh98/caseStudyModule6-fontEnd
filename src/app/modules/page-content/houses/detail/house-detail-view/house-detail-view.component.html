@@ -1,3 +1,6 @@
+
+
+
 <!--/ Intro Single star /-->
 <section class="intro-single">
   <div class="container">
@@ -34,14 +37,8 @@
     <div class="row">
       <div class="col-sm-12">
         <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-          <div class="carousel-item-b">
-            <img src="assets/img/slide-2.jpg" alt="">
-          </div>
-          <div class="carousel-item-b">
-            <img src="assets/img/slide-3.jpg" alt="">
-          </div>
-          <div class="carousel-item-b">
-            <img src="assets/img/slide-1.jpg" alt="">
+          <div class="carousel-item-b" *ngFor ="let house of houseImg" >
+            <img src="{{house.link}}" alt=""  style="width: 1200px !important; height: 601px !important;">
           </div>
         </div>
         <div class="row justify-content-between">
@@ -169,21 +166,8 @@
           </div>
         </div>
       </div>
-        <div *ngFor="let houImg of this.houseImg"class="carousel-item-b" style="left: 500px">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img [src]="houImg.link" alt="" class="img-a img-fluid" style="width: 300px; height: 300px;object-fit: cover">
-            </div>
-          </div>
-      </div>
-      <div class="col-md-12">
-        <div class="row section-t3">
-          <div class="col-sm-12">
-            <div class="title-box-d">
-              <h3 class="title-d">Contact Agent</h3>
-            </div>
-          </div>
-        </div>
+
+
 
         <div class="row">
           <div class="col-md-6 col-lg-4">
@@ -273,7 +257,7 @@
         </div>
       </div>
     </div>
-  </div>
+<!--  </div>-->
 </section>
 <!--/ Property Single End /-->
 <app-rating-list></app-rating-list>
