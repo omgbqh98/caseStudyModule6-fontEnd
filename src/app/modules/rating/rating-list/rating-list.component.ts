@@ -21,7 +21,7 @@ export class RatingListComponent implements OnInit {
   id: any;
   listParentRating: any;
   listChildRating: any;
-  sum: any;
+  sum = 0;
   currentUser: any;
   user: any;
   checkedOutList: Array<User> = [];
@@ -32,8 +32,8 @@ export class RatingListComponent implements OnInit {
   parentRatingTag: any;
   // @ts-ignore
   createNewCommentForm: FormGroup;
-  sumRate: any;
-  avgRate: any;
+  sumRate = 0;
+  avgRate = 0;
 
   // newComment: Rating;
 
@@ -51,7 +51,10 @@ export class RatingListComponent implements OnInit {
       this.houseService.getDetailHouse(this.id).subscribe((house) => {
         this.currentHouse = house;
       });
-      this.ratingService.getParentRatingByHouse(this.id).subscribe((ratings) => {
+      this.ratingService.getParentRatingsByHouse(this.id).subscribe((ratings) => {
+        if (typeof ratings === undefined){
+          this.sum = 0;
+        }
         this.listParentRating = ratings;
         this.sum = this.listParentRating.length;
         console.log('tổng bình luận' + this.sum);
@@ -73,7 +76,7 @@ export class RatingListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getCurrentUser() {
     // @ts-ignore
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.currentUser = JSON.parse(localStorage.getItem('user') || '{}');
     // @ts-ignore
     this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
   }
@@ -84,14 +87,13 @@ export class RatingListComponent implements OnInit {
     this.ratingService.getCheckedOutUserByHouse(this.id).subscribe((users) => {
       this.checkedOutList = users;
       console.log('danh sách thằng checkout:' + this.checkedOutList);
-      // this.getCurrentUser(); // lấy thằng user hiện tại vào biến user
       this.owner = this.currentHouse.ownerId;
-      // console.log('Thông tin nhà hiện tại:' + this.currentHouse);
-      // console.log('thằng chủ' + this.owner);
       const contains = this.checkedOutList.some(elem => {
         return JSON.stringify(this.user) === JSON.stringify(elem);
       });
-      if (contains || this.owner.userId === this.user.userId) {
+      if (this.user == null) {
+        this.isShowAlert = true;
+      } else if (contains || this.owner.userId === this.user.userId) {
         console.log('kết quả check là checkout hoặc chủ');
         this.isShow = true;
       } else {

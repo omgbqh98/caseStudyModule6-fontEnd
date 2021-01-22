@@ -3,7 +3,10 @@
 <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
   <div class="container">
     <div class="title-box-d">
-      <h5 class="title-d">{{this.currentHouse.avgRate}} <i class="fa fa-star star" aria-hidden="true"></i> ( {{this.sum}} reviews)  </h5>
+      <h5 class="title-d">{{this.currentHouse.avgRate}}
+        <i class="fa fa-star star" aria-hidden="true"></i> ( {{this.sum}}
+        <span *ngIf="this.sum === 0">review</span><span *ngIf="this.sum!= 0">reviews</span>)
+      </h5>
     </div>
 
     <div class="box-comments">

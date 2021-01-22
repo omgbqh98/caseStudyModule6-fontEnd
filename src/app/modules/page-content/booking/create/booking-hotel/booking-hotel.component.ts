@@ -92,18 +92,18 @@ export class BookingHotelComponent implements OnInit {
   ngOnInit()
     :
     void {
-    // @ts-ignore
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
-    // @ts-ignore
-    console.log(this.currentUser);
-    // @ts-ignore
-    this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = paramMap.get('id');
 
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
+        // @ts-ignore
+        this.currentUser = JSON.parse(localStorage.getItem('user'));
+        // @ts-ignore
+        console.log(this.currentUser);
+        // @ts-ignore
+        this.userService.getUserProfile(this.currentUser.username).subscribe(value => this.user = value);
       });
     });
   }

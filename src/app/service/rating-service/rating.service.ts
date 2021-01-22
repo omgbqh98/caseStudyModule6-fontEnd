@@ -15,7 +15,7 @@ export class RatingService {
     return this.http.get(API_URL + '/houses' + `/${id}` + '/ratings');
   }
 
-  getParentRatingByHouse(id: number): Observable<any> {
+  getParentRatingsByHouse(id: number): Observable<any> {
     return this.http.get(API_URL + '/houses' + `/${id}` + '/parentRatings');
   }
 
