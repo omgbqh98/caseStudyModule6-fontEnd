@@ -100,6 +100,12 @@ export class HeaderComponent implements OnInit {
     this.houseService.search_House(this.search)
       .subscribe((result) => {
         this.listHouseSearch = result;
+        this.search.idPrice = -1;
+        this.search.bathroomQuantity = -1;
+        this.search.bedroomQuantity = -1;
+        this.search.checkOut = '';
+        this.search.checkIn = '';
+        this.search.address = '';
         this.router.navigate(['/search']);
         this.houseService.changeMessage(this.listHouseSearch);
       });
