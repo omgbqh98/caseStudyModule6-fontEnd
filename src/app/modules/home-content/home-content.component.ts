@@ -16,6 +16,7 @@ export class HomeContentComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllHouses();
+    this.getBestHouses();
     // tslint:disable-next-line:only-arrow-function
 
   }

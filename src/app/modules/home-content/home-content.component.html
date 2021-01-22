@@ -432,17 +432,17 @@
 </section>
 <!--/ Agents End /-->
 
-<!--/ News Star /-->
+<!--/ Best houses /-->
 <section class="section-news section-t8">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="title-wrap d-flex justify-content-between">
           <div class="title-box">
-            <h2 class="title-a">Latest News</h2>
+            <h2 class="title-a">Best houses</h2>
           </div>
           <div class="title-link">
-            <a href="blog-grid.html">All News
+            <a href="/houses">All houses
               <span class="ion-ios-arrow-forward"></span>
             </a>
           </div>
@@ -450,98 +450,65 @@
       </div>
     </div>
     <div id="new-carousel" class="owl-carousel owl-theme">
-      <div class="carousel-item-c">
-        <div class="card-box-b card-shadow news-box">
-          <div class="img-box-b">
-            <img src="assets/img/post-2.jpg" alt="" class="img-b img-fluid">
+      <div *ngFor="let house of listBestHouses" class="carousel-item-b">
+        <div class="card-box-a card-shadow">
+          <div class="img-box-a">
+            <img [src]="house.avatar" alt="" class="img-a img-fluid" style="width: 350px !important; height: 250px !important;">
           </div>
           <div class="card-overlay">
-            <div class="card-header-b">
-              <div class="card-category-b">
-                <a href="#" class="category-b">House</a>
-              </div>
-              <div class="card-title-b">
-                <h2 class="title-2">
-                  <a href="blog-single.html">House is comming
-                    <br> new</a>
+            <div class="card-overlay-a-content">
+              <div class="card-header-a">
+                <h2 class="card-title-a">
+                  <a [routerLink]="'/house-view'">{{ house.houseName }}</a>
                 </h2>
               </div>
-              <div class="card-date">
-                <span class="date-b">18 Sep. 2017</span>
+              <div class="card-body-a">
+                <div class="price-box d-flex">
+                  <span class="price-a">RENT | $ {{house.price}} </span>
+                </div>
+                <a [routerLink]="['/house-view', house.houseId]" class="link-a">Click here to view
+                  <span class="ion-ios-arrow-forward"></span>
+                </a>
+              </div>
+              <div class="card-footer-a">
+                <ul class="card-info d-flex justify-content-around">
+                  <li>
+                    <h4 class="card-info-title">Bed</h4>
+                    <span>{{house.bedroom}}</span>
+                  </li>
+                  <li>
+                    <h4 class="card-info-title">Bath</h4>
+                    <span>{{house.bathroom}}</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item-c">
-        <div class="card-box-b card-shadow news-box">
-          <div class="img-box-b">
-            <img src="assets/img/post-5.jpg" alt="" class="img-b img-fluid">
-          </div>
-          <div class="card-overlay">
-            <div class="card-header-b">
-              <div class="card-category-b">
-                <a href="#" class="category-b">Travel</a>
-              </div>
-              <div class="card-title-b">
-                <h2 class="title-2">
-                  <a href="blog-single.html">Travel is comming
-                    <br> new</a>
-                </h2>
-              </div>
-              <div class="card-date">
-                <span class="date-b">18 Sep. 2017</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item-c">
-        <div class="card-box-b card-shadow news-box">
-          <div class="img-box-b">
-            <img src="assets/img/post-7.jpg" alt="" class="img-b img-fluid">
-          </div>
-          <div class="card-overlay">
-            <div class="card-header-b">
-              <div class="card-category-b">
-                <a href="#" class="category-b">Park</a>
-              </div>
-              <div class="card-title-b">
-                <h2 class="title-2">
-                  <a href="blog-single.html">Park is comming
-                    <br> new</a>
-                </h2>
-              </div>
-              <div class="card-date">
-                <span class="date-b">18 Sep. 2017</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item-c">
-        <div class="card-box-b card-shadow news-box">
-          <div class="img-box-b">
-            <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
-          </div>
-          <div class="card-overlay">
-            <div class="card-header-b">
-              <div class="card-category-b">
-                <a href="#" class="category-b">Travel</a>
-              </div>
-              <div class="card-title-b">
-                <h2 class="title-2">
-                  <a href="#">Travel is comming
-                    <br> new</a>
-                </h2>
-              </div>
-              <div class="card-date">
-                <span class="date-b">18 Sep. 2017</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!--      <div *ngFor="let house of listBestHouses" class="carousel-item-c">-->
+<!--        <div class="card-box-b card-shadow news-box">-->
+<!--          <div class="img-box-b">-->
+<!--            <img src="{{house.avatar}}" alt="" class="img-b img-fluid">-->
+<!--          </div>-->
+<!--          <div class="card-overlay">-->
+<!--            <div class="card-header-b">-->
+<!--              <div class="card-category-b">-->
+<!--                <a href="#" class="category-b">{{house.houseName}}</a>-->
+<!--              </div>-->
+<!--              <div class="card-title-b">-->
+<!--                <h2 class="title-2">-->
+<!--                  <a href="blog-single.html">House is comming-->
+<!--                    <br> new</a>-->
+<!--                </h2>-->
+<!--              </div>-->
+<!--              <div class="card-date">-->
+<!--                <span class="date-b">18 Sep. 2017</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </section>
