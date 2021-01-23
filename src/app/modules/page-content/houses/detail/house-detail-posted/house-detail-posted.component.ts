@@ -127,7 +127,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
     this.house.status = id;
     this.houseService.updateHouse(this.house).subscribe(() => {
       this.id = id;
-      this.show = 'changed successfully';
+      this.show = 'Changed successfully!';
     });
     this.id = id;
   }
