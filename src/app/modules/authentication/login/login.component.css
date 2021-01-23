@@ -73,6 +73,9 @@ img {
 
 /*--- end reset code ---*/
 
+.s{
+  color: #f84444;
+}
 body {
   /*background:url('src/assets/img/1.jpg') no-repeat;*/
   background-attachment:fixed;

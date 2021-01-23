@@ -22,6 +22,11 @@ export class LoginComponent implements OnInit {
   returnUrl = '';
   // @ts-ignore
   message: string;
+  submitPassword = false;
+  submitConfirmPassword = false;
+  password = '';
+  messengerPassword = '';
+  messengerConfirmPassword = '';
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -104,4 +109,51 @@ export class LoginComponent implements OnInit {
     console.log(id_token);
     this.authService.googleSignIn(id_token);
   }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkPassword(input) {
+    this.password = input.target.value;
+    console.log(input.target.value);
+    // @ts-ignore
+    if ((input.target.value.length < 6 || input.target.value.length > 8) && (
+      input.target.value.length >= 1)) {
+      this.messengerPassword = '*Password must be between 6 and 8 characters';
+      this.submitPassword = false;
+    } else if (input.target.value.length < 1) {
+      this.messengerPassword = '*Please enter your password.';
+      this.submitPassword = false;
+    } else {
+      this.messengerPassword = '';
+      this.submitPassword = true;
+      this.submitConfirmPassword = false;
+    }
+
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkConfirmPassword(input2) {
+    console.log(input2.target.value);
+    // @ts-ignore
+    if (((input2.target.value === this.password)) && (
+      input2.target.value.length >= 1)) {
+      this.messengerConfirmPassword = '';
+      this.submitConfirmPassword = true;
+    } else if (input2.target.value.length < 1) {
+      this.messengerConfirmPassword = '*Please enter your password.';
+      this.submitConfirmPassword = false;
+    } else {
+      this.messengerConfirmPassword = '*Password and confirm password must match!';
+      this.submitConfirmPassword = false;
+    }
+  }
+
+  submit(): boolean {
+    if (this.submitPassword && this.submitConfirmPassword) {
+      return true;
+    }
+    return false;
+  }
+
 }
