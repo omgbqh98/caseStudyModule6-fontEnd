@@ -53,10 +53,10 @@
           <br>
           <small><a href="#">Price : {{booking.houseId.price}} $</a></small>
         </td>
-        <td class="cart_avail"><span class="label label-success">{{booking.checkIn}}</span>
-        <td class="cart_avail"><span class="label label-success">{{booking.checkOut}}</span>
+        <td class="cart_avail"><span class="label label-success">{{booking.checkIn| date:'MMM d, y'}}</span>
+        <td class="cart_avail"><span class="label label-success">{{booking.checkOut| date:'MMM d, y'}}</span>
         </td>
-        <td class="cart_avail"><span class="label label-success">{{booking.createdAt}}</span>
+        <td class="cart_avail"><span class="label label-success">{{booking.createdAt| date:'MMM d, y, h:mm:ss a'}}</span>
         </td>
         <td class="price"><span> {{booking.total}} $ </span></td>
         <td class="cart_avail">
