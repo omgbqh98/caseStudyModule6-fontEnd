@@ -10,8 +10,8 @@ declare var $: any;
   styleUrls: ['./home-content.component.css']
 })
 export class HomeContentComponent implements OnInit {
-  listHouses: House[] = [];
-  listBestHouses: House[] = [];
+  listHouses: any;
+  listBestHouses: any;
   constructor(private houseService: HouseService) {
   }
   ngOnInit(): void {
