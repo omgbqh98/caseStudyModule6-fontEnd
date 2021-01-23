@@ -1,5 +1,5 @@
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="container">
@@ -19,7 +19,7 @@
         <div class="title-single-box">
           <h1 class="title-single">{{house.houseName}}</h1>
           <span class="color-text-a">{{house.address}}</span> <br>
-          <span >
+          <span>
             <a type="button" class="btn btn-outline-secondary"
                [routerLink]="['/houses-img',house.houseId]">Upload House Image</a>
           </span>
@@ -51,9 +51,9 @@
     <div class="row">
       <div class="col-sm-12">
         <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-            <div class="carousel-item-b" *ngFor ="let house of houseImg" >
-              <img src="{{house.link}}" alt=""  style="width: 1200px !important; height: 601px !important;">
-            </div>
+          <div class="carousel-item-b" *ngFor="let house of houseImg">
+            <img src="{{house.link}}" alt="" style="width: 1200px !important; height: 601px !important;">
+          </div>
         </div>
         <div class="row justify-content-between">
           <div class="col-md-5 col-lg-4">
@@ -142,34 +142,67 @@
                 <li>Concrete Flooring</li>
               </ul>
             </div>
-            <br><br><br>
-
-            <div class="dropdown col-md-6">
-              <button *ngIf="house.status == 3" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                Updating...
-              </button> <button *ngIf="house.status == 0" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Available
-              </button> <button *ngIf="house.status == 1" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Booked
-              </button> <button *ngIf="house.status == 2" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Checked In
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a  data-toggle="modal" data-target=".bd-example-modal-lg" [routerLink]="['/user-ownHouse', house.houseId]"  (click)="upgrade(house.houseId)" class="dropdown-item" href="#">Updating...</a>
-                <a  data-toggle="modal" data-target=".bd-example-modal-lg" class="dropdown-item" [routerLink]="['/user-ownHouse', house.houseId]" (click)="hired(house.houseId)">Booked</a>
-                <a  data-toggle="modal" data-target=".bd-example-modal-lg" class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="empty(house.houseId)">Available</a>
-                <a  data-toggle="modal" data-target=".bd-example-modal-lg" class="dropdown-item"  [routerLink]="['/user-ownHouse', house.houseId]" (click)="checkedIn(house.houseId)">Checked In</a>
+            <br>
+            <div class="row">
+              <div *ngIf="house.status==3" class="col-sm-3">
+                <input checked data-toggle="modal" data-target=".bd-example-modal-lg"
+                       (click)="update(3)"
+                       id="Updating"
+                       type="radio" name="user" value="Individual">
+                <label for="Updating"><span></span>Updating</label>
+              </div>
+              <div *ngIf="house.status!=3" class="col-sm-3">
+                <input data-toggle="modal" data-target=".bd-example-modal-lg"
+                       (click)="update(3)"
+                       id="Updating1"
+                       type="radio" name="user" value="Individual">
+                <label for="Updating1"><span></span>Updating</label>
+              </div>
+              <div *ngIf="house.status==0" class="col-sm-3">
+                <input checked data-toggle="modal" data-target=".bd-example-modal-lg"
+                       (click)="update(0)" id="Booked"
+                       type="radio" name="user" value="Individual">
+                <label for="Booked"><span></span>Booked</label>
+              </div>
+              <div *ngIf="house.status!=0" class="col-sm-3">
+                <input data-toggle="modal" data-target=".bd-example-modal-lg"
+                       (click)="update(0)" id="Booked1"
+                       type="radio" name="user" value="Individual">
+                <label for="Booked1"><span></span>Booked</label>
+              </div>
+              <div *ngIf="house.status==1" class="col-sm-3">
+                <input checked data-toggle="modal" data-target=".bd-example-modal-lg" (click)="update(1)" id="Available"
+                       type="radio" name="user" value="Available">
+                <label for="Available"><span></span>Available</label>
+              </div>
+              <div *ngIf="house.status!=1" class="col-sm-3">
+                <input data-toggle="modal" data-target=".bd-example-modal-lg" (click)="update(1)" id="Available1"
+                       type="radio" name="user" value="Available">
+                <label for="Available1"><span></span>Available</label>
+              </div>
+              <div *ngIf="house.status==2" class="col-sm-3">
+                <input checked data-toggle="modal" data-target=".bd-example-modal-lg" (click)="update(2)"
+                       id="Checked-In"
+                       type="radio" name="user" value="Individual">
+                <label for="Checked-In"><span></span>Checked In</label>
+              </div>
+              <div *ngIf="house.status!=2" class="col-sm-3">
+                <input data-toggle="modal" data-target=".bd-example-modal-lg" (click)="update(2)" id="Checked-In1"
+                       type="radio" name="user" value="Individual">
+                <label for="Checked-In1"><span></span>Checked In</label>
               </div>
             </div>
-
-            <div style=" margin-top: -40px; margin-left: 300px">
-              <a type="button" class="btn btn-outline-secondary"
-                 [routerLink]="['/list-rent-houses-by-time',house.houseId]">List booking</a>
-            </div>
-
-            <div style="float: right;margin-top: -40px">
-              <a type="button" class="btn btn-outline-secondary"
-                 [routerLink]="['/houses-update',house.houseId]">Update</a>
+            <br>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <a type="button" class="btn btn-outline-secondary"
+                   [routerLink]="['/houses-update',house.houseId]">Update house</a>
+              </div>
+              <div class="col-sm-3">
+                <a type="button" class="btn btn-outline-secondary"
+                   [routerLink]="['/list-rent-houses-by-time',house.houseId]">List booking</a>
+              </div>
             </div>
           </div>
         </div>
@@ -179,22 +212,22 @@
 </section>
 
 
-<div  style="width: 100%">
-<!--/ Property Single End /-->
-<!--<div class="container">-->
-<!--  &lt;!&ndash;  Tiêu để&ndash;&gt;-->
-<!--  <div class="col-md-12">-->
-<!--    <div class="row section-t3">-->
-<!--      <div class="col-sm-12">-->
-<!--        <div class="title-box-d">-->
-<!--          <h3 class="title-d">List booking</h3>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash;  Tiêu để&ndash;&gt;-->
-<!--  <app-list-rent-houses-by-time></app-list-rent-houses-by-time>-->
-<!--</div>-->
-<app-rating-list></app-rating-list>
+<div style="width: 100%">
+  <!--/ Property Single End /-->
+  <!--<div class="container">-->
+  <!--  &lt;!&ndash;  Tiêu để&ndash;&gt;-->
+  <!--  <div class="col-md-12">-->
+  <!--    <div class="row section-t3">-->
+  <!--      <div class="col-sm-12">-->
+  <!--        <div class="title-box-d">-->
+  <!--          <h3 class="title-d">List booking</h3>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  &lt;!&ndash;  Tiêu để&ndash;&gt;-->
+  <!--  <app-list-rent-houses-by-time></app-list-rent-houses-by-time>-->
+  <!--</div>-->
+  <app-rating-list></app-rating-list>
 </div>
 
