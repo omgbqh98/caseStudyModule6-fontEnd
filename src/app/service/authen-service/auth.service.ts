@@ -7,6 +7,7 @@ import {UserToken} from '../../model/user-model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {User} from '../../model/user-model/user';
+import {GoogleToken} from '../../model/googleToken-model/GoogleToken';
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,11 @@ export class AuthService {
     return this.http.post<User>(API_URL + '/signup', user);
   }
 
-  googleSignIn(token: any): Observable<any> {
-    return this.http.post<User>(API_URL + '/googleSignIn', token);
+  // tslint:disable-next-line:typedef
+  googleSignIn(token: GoogleToken) {
+    console.log(token);
+    return this.http.post<any>(API_URL + '/googleSignIn', token).subscribe(resp => {
+      console.log(resp);
+    });
   }
 }
