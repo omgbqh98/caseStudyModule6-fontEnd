@@ -22,6 +22,7 @@ export class CreateHouseComponent implements OnInit {
   currentUser: UserToken;
   show = '';
   arrayPicture = '';
+  allCities: any;
   constructor(private fb: FormBuilder,
               private houseService: HouseService,
               private router: Router,
@@ -29,6 +30,9 @@ export class CreateHouseComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit(): void {
+    // this.houseService.getAllCities().subscribe((data) => {
+    //   this.allCities = data;
+    // });
     this.createHouseForm = this.fb.group({
       houseName: ['', Validators.required],
       type: ['', Validators.required],

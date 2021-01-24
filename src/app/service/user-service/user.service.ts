@@ -51,4 +51,8 @@ export class UserService {
   findNotRatedBookingByUser(id: number): Observable<any> {
     return this.http.get(API_URL + '/users' + `/${id}` + '/bookingNotRateThreeMonths');
   }
+
+  findAllOwner(): Observable<any> {
+    return this.http.get(API_URL + '/users/owners');
+  }
 }
