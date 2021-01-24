@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {User} from '../../../../../model/user-model/user';
 import {HousesImgService} from '../../../../../service/house-service/houses-img.service';
 import {HousesImg} from '../../../../../model/house-model/housesImg';
+import {$} from 'protractor';
 
 declare var $: any;
 
@@ -15,6 +16,7 @@ declare var $: any;
 })
 export class HouseDetailViewComponent implements OnInit {
   house: any;
+  houseImgOne: any;
   // @ts-ignore
   id: number;
   // @ts-ignore
@@ -209,5 +211,16 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
       }, 1000);
     });
     // this.getAllHouses();
+  }
+
+
+  async deleteHousesImg(id : number) {
+    const Id = id;
+    console.log(this.houseImg);
+    this.houseImgService.deleteOwnedHouseImg(Id).subscribe()
+      const deleteImgs = this.houseImg.indexOf(Id)
+      this.houseImg.splice(deleteImgs,1)
+    // this.houseImg
+     return this.houseImg;
   }
 }
