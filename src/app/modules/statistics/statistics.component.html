@@ -1,67 +1,74 @@
 <br><br>
 <div class="container">
   <br><br>
-   <div class="row">
+  <div class="row">
     <div class="col-sm-12">
       <div class="title-box-d section-t4">
         <h3 class="title-d">Your statistics</h3>
       </div>
     </div>
   </div>
-<div class="container">
+  <div class="container">
 
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="tab-bootstrap" data-toggle="tab"
-         href="#byHouse"
-         role="tab" aria-controls="content-bootstrap" aria-selected="true">
-        Statistics by house
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="tab-javascript" data-toggle="tab"
-         href="#byMonth"
-         role="tab" aria-controls="content-javascript" aria-selected="false">
-        Statistics by month
-      </a>
-    </li>
-  </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="tab-bootstrap" data-toggle="tab"
+           href="#byHouse"
+           role="tab" aria-controls="content-bootstrap" aria-selected="true">
+          Statistics by house
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab-javascript" data-toggle="tab"
+           href="#byMonth"
+           role="tab" aria-controls="content-javascript" aria-selected="false">
+          Statistics by month
+        </a>
+      </li>
+    </ul>
 
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="byHouse"
-         role="tabpanel" aria-labelledby="tab-javascript">
-      <div>
-        <table>
-          <tr>
-            <th>Id</th>
-            <th>House Name</th>
-            <th>Price</th>
-            <th width="20%">Times</th>
-            <th width="25%">Revenue($)</th>
-          </tr>
-          <tr *ngFor="let h of listStaticsticsByHouses  | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
-            <td>{{h.houseId}}</td>
-            <td>{{h.houseName}}</td>
-            <td>{{h.price}}</td>
-            <td>{{h.count}}</td>
-            <td>{{h.sumPrice}}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><b>{{sumTimes()}}:Sum Times</b></td>
-            <td><b>{{sumRevenue()}} :Sum Revenue</b></td>
-          </tr>
-        </table>
-        <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="byHouse"
+           role="tabpanel" aria-labelledby="tab-javascript">
+        <div>
+          <table>
+            <tr>
+              <th>Id</th>
+              <th>House Name</th>
+              <th>Price</th>
+              <th width="20%">Times</th>
+              <th width="25%">Revenue($)</th>
+            </tr>
+            <tr
+              *ngFor="let h of listStaticsticsByHouses  | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
+              <td>{{h.houseId}}</td>
+              <td>{{h.houseName}}</td>
+              <td>{{h.price}}</td>
+              <td>{{h.count}}</td>
+              <td>{{h.sumPrice}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><b>{{sumTimes()}}:Sum Times</b></td>
+              <td><b>{{sumRevenue()}} :Sum Revenue</b></td>
+            </tr>
+          </table>
+          <pagination-controls style="float: right; color:#2eca6a " (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="byMonth"
+           role="tabpanel" aria-labelledby="tab-css">
+        <div id="chartContainer" style="height: 500px; width: 100%;"></div>
+        <div
+          style="margin-top:16px;color:dimgrey;font-size:9px;font-family: Verdana, Arial, Helvetica, sans-serif;text-decoration:none;">
+          Source: <a href="https://canvasjs.com/javascript-charts/column-line-area-chart/" target="_blank"
+                     title="Combination of JavaScript Column, Line and Area Charts ">https://canvasjs.com/javascript-charts/column-line-area-chart/</a>
+        </div>
       </div>
     </div>
-    <div class="tab-pane fade" id="byMonth"
-         role="tabpanel" aria-labelledby="tab-css">
-      <h3>haljlfsjldf</h3>
-    </div>
+
+
   </div>
-
-
 </div>

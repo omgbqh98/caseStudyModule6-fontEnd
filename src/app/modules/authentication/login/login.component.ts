@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../service/authen-service/auth.service';
 import {User} from '../../../model/user-model/user';
 import {first} from 'rxjs/operators';
+import {UserService} from '../../../service/user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,10 @@ import {first} from 'rxjs/operators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  // @ts-ignore
+  showModal: true;
+  // @ts-ignore
+  user: User;
   // @ts-ignore
   newFormUser: FormGroup;
   // @ts-ignore
@@ -22,11 +27,23 @@ export class LoginComponent implements OnInit {
   returnUrl = '';
   // @ts-ignore
   message: string;
+  show = '';
+  password = '';
+  submitPassword = false;
+  submitConfirmPassword = false;
+  submitPhone = false;
+  submitUserName = false;
+  messengerPassword = '';
+  messengerConfirmPassword = '';
+  messengerPhone = '';
+  messengerUserName = '';
+  isVNPhoneMobile = /^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private authService: AuthService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private userService: UserService) {
     // @ts-ignore
     this.authService.currentUser.subscribe(value => this.currentUser = value);
     // window['onSignIn'] = this.onSignIn;
@@ -60,8 +77,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['']); // navigate sau khi login
           window.location.href = '';
         }, error => {
+          // @ts-ignore
           this.message = 'Incorrect username or password';
-          console.log('unauthorized');
         }
       );
   }
@@ -87,7 +104,13 @@ export class LoginComponent implements OnInit {
       console.log(this.newFormUser);
       console.log(newUserName.username);
       this.authService.signup(newUserName).subscribe(() => {
-          alert('Registered Successfully!');
+          window.location.href = '/login';
+        }, error => {
+          // @ts-ignore
+          this.showModal = false;
+          this.messengerUserName = '*Username already exists!';
+          this.submitUserName = false;
+          this.showModal = true;
         }
       );
 
@@ -104,4 +127,85 @@ export class LoginComponent implements OnInit {
     console.log(id_token);
     this.authService.googleSignIn(id_token);
   }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkPassword(input) {
+    console.log(input.target.value);
+    this.password = input.target.value;
+    // @ts-ignore
+    if ((input.target.value.length < 6 || input.target.value.length > 8) && (
+      input.target.value.length >= 1)) {
+      this.messengerPassword = '*Password must be between 6 and 8 characters!';
+      this.submitPassword = false;
+    } else if (input.target.value.length < 1) {
+      this.messengerPassword = '*Please enter your password!';
+      this.submitPassword = false;
+    } else {
+      this.messengerPassword = '';
+      this.submitPassword = true;
+      this.submitConfirmPassword = false;
+    }
+
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkConfirmPassword(input2) {
+    console.log(input2.target.value);
+    // @ts-ignore
+    if (((input2.target.value === this.password)) && (
+      input2.target.value.length >= 1)) {
+      this.messengerConfirmPassword = '';
+      this.submitConfirmPassword = true;
+    } else if (input2.target.value.length < 1) {
+      this.messengerConfirmPassword = '*Please enter your password!';
+      this.submitConfirmPassword = false;
+    } else {
+      this.messengerConfirmPassword = '*Password and confirm password must match!';
+      this.submitConfirmPassword = false;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkPhone(inputPhone) {
+    console.log(inputPhone.target.value);
+    if ((this.isVNPhoneMobile.test(inputPhone.target.value) === false) && (
+      inputPhone.target.value.length >= 1)) {
+      this.messengerPhone = '*Not valid phone number!';
+      this.submitPhone = false;
+    } else if (inputPhone.target.value.length < 1) {
+      this.messengerPhone = '*Please enter your phone number!';
+      this.submitPhone = false;
+    } else {
+      this.messengerPhone = '';
+      this.submitPhone = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkUserName(inputUserName) {
+    console.log(inputUserName.target.value);
+    if ((inputUserName.target.value.length < 4 || inputUserName.target.value.length > 12) && (
+      inputUserName.target.value.length >= 1)) {
+      this.messengerUserName = '*User name must be between 4 and 12 characters!';
+      this.submitUserName = false;
+    } else if (inputUserName.target.value.length < 1) {
+      this.messengerUserName = '*Please enter your user name!';
+      this.submitUserName = false;
+    } else {
+      this.messengerUserName = '';
+      this.submitUserName = true;
+    }
+  }
+
+  submit(): boolean {
+    if (this.submitPassword && this.submitConfirmPassword && this.submitPhone && this.submitUserName) {
+      return true;
+    }
+    return false;
+  }
+
 }

@@ -11,13 +11,13 @@
         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Home</a>
+              <a [routerLink]="''">Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="#">Agents</a>
+              <a [routerLink]="['user-show',user.userId]">Profile</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-             {{user.fullName}}
+              {{user.fullName}}
             </li>
           </ol>
         </nav>
@@ -47,7 +47,7 @@
               </div>
               <div class="agent-content mb-3">
                 <p class="content-d color-text-a">
-<!--                  User description-->
+                  <!--                  User description-->
                 </p>
                 <div class="info-agents color-a">
                   <p>
@@ -113,16 +113,16 @@
       <div class="row property-grid grid">
         <div class="col-sm-12">
           <!--          Phần sort -->
-<!--          <div class="grid-option">-->
-<!--            <form>-->
-<!--              <select class="custom-select">-->
-<!--                <option selected>All</option>-->
-<!--                <option value="1">New to Old</option>-->
-<!--                <option value="2">For Rent</option>-->
-<!--                <option value="3">For Sale</option>-->
-<!--              </select>-->
-<!--            </form>-->
-<!--          </div>-->
+          <!--          <div class="grid-option">-->
+          <!--            <form>-->
+          <!--              <select class="custom-select">-->
+          <!--                <option selected>All</option>-->
+          <!--                <option value="1">New to Old</option>-->
+          <!--                <option value="2">For Rent</option>-->
+          <!--                <option value="3">For Sale</option>-->
+          <!--              </select>-->
+          <!--            </form>-->
+          <!--          </div>-->
           <!--          End Phần sort -->
         </div>
         <app-list-own-houses></app-list-own-houses>

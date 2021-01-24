@@ -23,9 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'about'">About</a>
         </li>
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" [routerLink]="'houses-create'">Become a host</a>-->
-<!--        </li>-->
+        <!--        <li class="nav-item">-->
+        <!--          <a class="nav-link" [routerLink]="'houses-create'">Become a host</a>-->
+        <!--        </li>-->
       </ul>
     </div>
     <!--    <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"-->
@@ -104,7 +104,9 @@
                   </div>
 
                   <div class="form-btn">
-                    <button type="submit" class="submit-btn" (click)="modal.close('Save click'); searchHouse() ">Book Now</button>
+                    <button type="submit" class="submit-btn" (click)="modal.close('Save click'); searchHouse() ">Book
+                      Now
+                    </button>
                   </div>
                 </form>
               </div>
@@ -139,7 +141,7 @@
           class="icon fa fa-tachometer fa-fw iconsmall" aria-hidden="true"
           title="Nhà của tôi"></i>&nbsp;History</a>
         <a class="dropdown-item"
-           [routerLink]="['statistics',user.userId]"
+           href="/statistics/{{user.userId}}"
            role="menuitem"><i
           class="icon fa fa-table fa-fw iconsmall" aria-hidden="true"
           title="Điểm"></i>&nbsp;Statistics</a>
