@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HouseService} from '../../../../../service/house-service/house.service';
 import {Router} from '@angular/router';
@@ -20,19 +20,32 @@ export class CreateHouseComponent implements OnInit {
   user: any;
   // @ts-ignore
   currentUser: UserToken;
+  valueType = '-1';
   show = '';
   arrayPicture = '';
-  allCities: any;
+  messengerHouseName = '';
+  messengerAddress = '';
+  messengerDescription = '';
+  messengerBathrooms = '';
+  messengerBedrooms = '';
+  messengerPrice = '';
+  messengerType = '';
+  submitHouseName = false;
+  submitAddress = false;
+  submitDescription = false;
+  submitBathrooms = false;
+  submitBedrooms = false;
+  submitPrice = false;
+  submitType = false;
+
   constructor(private fb: FormBuilder,
               private houseService: HouseService,
               private router: Router,
               private authService: AuthService,
-              private userService: UserService) { }
+              private userService: UserService) {
+  }
 
   ngOnInit(): void {
-    // this.houseService.getAllCities().subscribe((data) => {
-    //   this.allCities = data;
-    // });
     this.createHouseForm = this.fb.group({
       houseName: ['', Validators.required],
       type: ['', Validators.required],
@@ -45,6 +58,7 @@ export class CreateHouseComponent implements OnInit {
       avatar: ['', Validators.required]
     });
   }
+
   // tslint:disable-next-line:typedef
   createHouse() {
     const house: House = this.createHouseForm.value;
@@ -55,12 +69,21 @@ export class CreateHouseComponent implements OnInit {
         house.ownerId = this.user;
         this.houseService.create(house).subscribe(() => {
           console.log(house.houseName);
-          // alert('Create successfully!');
           this.show = 'Create successfully!';
+          // @ts-ignore
+          this.createHouseForm.reset();
+          this.submitHouseName = false;
+          this.submitAddress = false;
+          this.submitDescription = false;
+          this.submitBathrooms = false;
+          this.submitBedrooms = false;
+          this.submitPrice = false;
+          this.submitType = false;
         });
       });
     });
   }
+
   // @ts-ignore
   // tslint:disable-next-line:typedef
   saveImg(value) {
@@ -84,5 +107,123 @@ export class CreateHouseComponent implements OnInit {
         });
       }
     );
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkHouseName(input) {
+    console.log(input.target.value);
+    // @ts-ignore
+    if ((input.target.value.length > 20)) {
+      this.messengerHouseName = '*House name less than 20 characters!';
+      this.submitHouseName = false;
+    } else if (input.target.value.length < 1) {
+      this.messengerHouseName = '*House name is required!';
+      this.submitHouseName = false;
+    } else {
+      this.messengerHouseName = '';
+      this.submitHouseName = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkAddress(inputAddress) {
+    // @ts-ignore
+    if ((inputAddress.target.value.length > 30)) {
+      this.messengerAddress = '*The address less than 30 characters!';
+      this.submitAddress = false;
+    } else if (inputAddress.target.value.length < 1) {
+      this.messengerAddress = '*The address is required!';
+      this.submitAddress = false;
+    } else {
+      this.messengerAddress = '';
+      this.submitAddress = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkDescription(inputDescription) {
+    // @ts-ignore
+    if ((inputDescription.target.value.length > 40)) {
+      this.messengerDescription = '*Description less than 40 characters!';
+      this.submitDescription = false;
+    } else if (inputDescription.target.value.length < 1) {
+      this.messengerDescription = '*Description is required!';
+      this.submitDescription = false;
+    } else {
+      this.messengerDescription = '';
+      this.submitDescription = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkBedroom(inputBedroom) {
+    // @ts-ignore
+    if ((inputBedroom.target.value < 0)) {
+      this.messengerBedrooms = '*Invalid!';
+      this.submitBedrooms = false;
+    } else if (inputBedroom.target.value.length < 1) {
+      this.messengerBedrooms = '*Bedroom is required!';
+      this.submitBedrooms = false;
+    } else {
+      this.messengerBedrooms = '';
+      this.submitBedrooms = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkBathroom(inputBathroom) {
+    // @ts-ignore
+    if ((inputBathroom.target.value < 0)) {
+      this.messengerBathrooms = '*Invalid!';
+      this.submitBathrooms = false;
+    } else if (inputBathroom.target.value.length < 1) {
+      this.messengerBathrooms = '*Bathroom is required!';
+      this.submitBathrooms = false;
+    } else {
+      this.messengerBathrooms = '';
+      this.submitBathrooms = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkPrice(inputPrice) {
+    // @ts-ignore
+    if ((inputPrice.target.value < 0)) {
+      this.messengerPrice = '*Invalid!';
+      this.submitPrice = false;
+    } else if (inputPrice.target.value.length < 1) {
+      this.messengerPrice = '*Price is required!';
+      this.submitPrice = false;
+    } else {
+      this.messengerPrice = '';
+      this.submitPrice = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkType(inputType) {
+    // @ts-ignore
+    if (inputType.target.value === '') {
+      this.messengerType = '*Type is required!';
+      this.submitType = false;
+    } else {
+      this.messengerType = '';
+      this.submitType = true;
+    }
+  }
+
+  submit(): boolean {
+    if (this.submitHouseName && this.submitAddress && this.submit && this.submitDescription
+      && this.submitBedrooms && this.submitBathrooms && this.submitPrice && this.submitType) {
+      return true;
+    }
+    return false;
   }
 }

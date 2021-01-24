@@ -38,7 +38,6 @@ export class CreateHousesImgComponent implements OnInit {
   mess: String;
 
 
-
   // tslint:disable-next-line:max-line-length
   constructor(private activate: ActivatedRoute, private housesImgService: HousesImgService, private formBuilder: FormBuilder, private authService: AuthService, private  userService: UserService, private  housesService: HouseService, private storage: AngularFireStorage) {
     this.activate.paramMap.subscribe((paramMap: ParamMap) => {
@@ -64,13 +63,14 @@ export class CreateHousesImgComponent implements OnInit {
 
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  file : any;
-  onFileSelected(event : any) {
-      this.file = event.target.files[0];
+  file: any;
+
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
     const n = Date.now();
     const filePath = `RoomsImages/${n}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`,this.file);
+    const task = this.storage.upload(`RoomsImages/${n}`, this.file);
     task
       .snapshotChanges()
       .pipe(
@@ -80,19 +80,19 @@ export class CreateHousesImgComponent implements OnInit {
           console.log(this.downloadURL);
           this.downloadURL.subscribe(async (url) => {
             console.log(this.downloadURL);
-            if(this.Img.length == 1){
-              this.Img[1]=url;
-              console.log(this.Img[1])
+            if (this.Img.length === 1) {
+              this.Img[1] = url;
+              console.log(this.Img[1]);
             }
-            if (this.Img.length == 0) {
-              this.Img[0] = url
-              console.log(this.Img[0])
+            if (this.Img.length === 0) {
+              this.Img[0] = url;
+              console.log(this.Img[0]);
             }
           });
-          if (this.Img.length == 3) {
+          if (this.Img.length === 3) {
             console.log(this.Img[0]);
             this.Img[0] = this.Img[2];
-            this.Img.splice(2,1);
+            this.Img.splice(2, 1);
           }
         })
       )
@@ -129,9 +129,9 @@ export class CreateHousesImgComponent implements OnInit {
   async deleteHousesImg(Img: []) {
     const deleteImg = Img;
     for (var i = 0; this.Img.length > i; i++) {
-      if (deleteImg == this.Img[i] ) {
-      // const deleteImgs = this.Img.indexOf(Img[i])
-        this.Img.splice(i,1)
+      if (deleteImg == this.Img[i]) {
+        // const deleteImgs = this.Img.indexOf(Img[i])
+        this.Img.splice(i, 1)
         this.mess = "Bạn Đã Xóa Thành Công"
         return
       }
