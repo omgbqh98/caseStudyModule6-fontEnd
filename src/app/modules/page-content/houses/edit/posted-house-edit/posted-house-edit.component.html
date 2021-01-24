@@ -1,8 +1,42 @@
-<br>
-<br>
-<br>
-<br>
-<hr>
+<!--/ Intro Single star /-->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Update house</h1>
+          <span class="color-text-a">Rocket Stay</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="''">Home</a>
+            <li class="breadcrumb-item" aria-current="page">
+              <a [routerLink]="['/user-ownHouse',house.houseId]">Home Detail</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Update
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <br>
+        <h4 style="color: red;position: relative;left: 260px">{{show}}</h4>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container bootstrap snippet">
   <div class="row">
     <div class="col-sm-10"><h1>Update house</h1></div>
@@ -12,27 +46,27 @@
   <div class="row">
     <!--    Menu bên trái gồm up ảnh và các thống kê-->
     <div class="col-sm-3"><!--left col-->
-      <div class="text-center">
-        <img src="{{arrayPicture}}"  class="avatar img-circle img-thumbnail"
+      <div class="text-center" style="position: relative;top:50px">
+        <img src="{{arrayPicture}}" class="avatar img-circle img-thumbnail"
              alt="avatar">
         <h6>Upload a different photo...</h6>
-<!--        <input type="file" (change)="saveImg($event)" form="registrationForm"> <i class="fa fa-camera" aria-hidden="true"></i>-->
+        <!--        <input type="file" (change)="saveImg($event)" form="registrationForm"> <i class="fa fa-camera" aria-hidden="true"></i>-->
         <div class="up_button">
           <label class="fileContainer" for="up_button">
             <i class="fa fa-camera" aria-hidden="true"></i>
           </label>
-          <p hidden><input type="file" accept="image/*" id="up_button" (change)="saveImg($event)" name="avatarFile" form="registrationForm"></p>
+          <p hidden><input type="file" accept="image/*" id="up_button" (change)="saveImg($event)" name="avatarFile"
+                           form="registrationForm"></p>
         </div>
       </div>
 
 
-
-
-
+    </div><!--/col-3-->
+    <div class="col-sm-1">
     </div><!--/col-3-->
     <!--    End Menu bên trái gồm up ảnh và các thống kê-->
     <!--    Phần input thông tin-->
-    <div class="col-sm-9">
+    <div class="col-sm-7">
       <!--      <ul class="nav nav-tabs">-->
       <!--        <li><a data-toggle="tab" href="#messages">chỉnh sửa</a></li>-->
       <!--      </ul>-->
@@ -40,89 +74,104 @@
         <div class="tab-pane active" id="home">
           <form class="form" [formGroup]="updateForm" (ngSubmit)="updateHouse()" method="post"
                 id="registrationForm">
-<!--            <input type="file" (change)="saveImg($event)" formControlName="avatar">-->
             <div class="form-group">
               <!--              <input formControlName="id" type="hidden">-->
               <!--              <input formControlName="username" type="hidden">-->
               <div class="col-xs-6">
                 <label for="houseName"><h4>House name</h4></label>
-                <input type="text" formControlName="houseName" class="form-control" name="houseName" id="houseName"
+                <input (click)="checkHouseName($event)" (keyup)="checkHouseName($event)" type="text"
+                       formControlName="houseName" class="form-control"
+                       name="houseName" id="houseName"
                        placeholder="enter house name" required>
               </div>
+              <p class="s">{{messengerHouseName}}</p>
             </div>
-
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="address"><h4>Address</h4></label>
-                <input type="text" formControlName="address" class="form-control" name="mobile" id="address"
+                <input (click)="checkAddress($event)" (keyup)="checkAddress($event)" type="text"
+                       formControlName="address" class="form-control"
+                       name="mobile" id="address"
                        placeholder="enter address">
               </div>
+              <p class="s">{{messengerAddress}}</p>
             </div>
-
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="description"><h4>Description</h4></label>
-                <textarea type="text" formControlName="description" class="form-control" name="description"
+                <textarea (click)="checkDescription($event)" (keyup)="checkDescription($event)" type="text"
+                          formControlName="description"
+                          class="form-control" name="description"
                           id="description" placeholder="enter description"></textarea>
               </div>
+              <p class="s">{{messengerDescription}}</p>
             </div>
-
-            <div class="form-row">
-              <div class="form-group" style="margin-right: 30px">
-                <div class="col-xs-4">
-                  <label for="bathroom"><h4>Bathrooms</h4></label>
-                  <input type="number" formControlName="bathroom" class="form-control" name="bathroom" id="bathroom"
-                         placeholder="enter bathroom">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div class="col-xs-4">
+                    <label for="bedroom"><h4>Bedrooms</h4></label>
+                    <input (click)="checkBedroom($event)" (keyup)="checkBedroom($event)" (change)="checkBedroom($event)"
+                           type="number"
+                           formControlName="bedroom" class="form-control" name="bedroom" id="bedroom"
+                           placeholder="enter bedroom">
+                  </div>
+                  <p class="s">{{messengerBedrooms}}</p>
                 </div>
               </div>
-
-              <div class="form-group" style="margin-right: 30px">
-                <div class="col-xs-4">
-                  <label for="bedroom"><h4>Bedrooms</h4></label>
-                  <input type="number" formControlName="bedroom" class="form-control" name="bedroom" id="bedroom"
-                         placeholder="enter bedroom">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div class="col-xs-4">
+                    <label for="bathroom"><h4>Bathrooms</h4></label>
+                    <input (click)="checkBathroom($event)" (keyup)="checkBathroom($event)"
+                           (change)="checkBathroom($event)" type="number"
+                           formControlName="bathroom" class="form-control" name="bathroom" id="bathroom"
+                           placeholder="enter bathroom">
+                  </div>
+                  <p class="s">{{messengerBathrooms}}</p>
                 </div>
               </div>
             </div>
-
-            <div class="form-row">
-              <div class="form-group" style="margin-right: 30px">
-                <div class="col-xs-4">
-                  <label for="price"><h4>Price</h4></label>
-                  <input type="number" formControlName="price" class="form-control" name="price" id="price"
-                         placeholder="enter price">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div class="col-xs-4">
+                    <label for="price"><h4>Price</h4></label>
+                    <input (click)="checkPrice($event)" (keyup)="checkPrice($event)" (change)="checkPrice($event)"
+                           type="number"
+                           formControlName="price" class="form-control" name="price" id="price"
+                           placeholder="enter price">
+                  </div>
+                  <p class="s">{{messengerPrice}}</p>
                 </div>
               </div>
-
-              <div class="form-group">
-                <!--              thêm drop down-->
-                <label><h4>Type</h4></label>
-                <select class="custom-select" formControlName="type">
-                  <option selected>Choose house type</option>
-                  <option value="0">Single</option>
-                  <option value="1">Double</option>
-                  <option value="2">President</option>
-                  <option value="3">VIP</option>
-                  <option value="4">Luxury</option>
-                </select>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="type"><h4>Type</h4></label>
+                  <select (click)="checkType($event)" formControlName="type" class="form-control" name="type" id="type">
+                    <option value="0">Single</option>
+                    <option value="1">Double</option>
+                    <option value="2">President</option>
+                    <option value="3">VIP</option>
+                    <option value="4">Luxury</option>
+                  </select>
+                  <p class="s">{{messengerType}}</p>
+                </div>
               </div>
             </div>
-
             <!--            <div class="form-group">-->
             <!--              <div class="col-xs-6">-->
             <!--                <label for="status"><h4>Status</h4></label>-->
             <!--                <input type="number" formControlName="status" class="form-control" name="status" id="status">-->
             <!--              </div>-->
             <!--            </div>-->
-
-
             <!--              end drop down-->
-
-
             <div class="form-group">
               <div class="col-xs-12">
                 <br>
-                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Update
+                <button [disabled]="!submit()" data-toggle="modal" data-target=".bd-example-modal-lg"
+                        class="btn btn-lg btn-success"
+                        type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Update
                 </button>
               </div>
             </div>
@@ -135,5 +184,3 @@
   <!-- End Các phần nội dung trang-->
 </div><!--/row-->
 <!--End phần container-->
-
-

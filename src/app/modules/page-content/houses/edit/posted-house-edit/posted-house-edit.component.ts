@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HouseService} from '../../../../../service/house-service/house.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
@@ -17,12 +17,30 @@ export class PostedHouseEditComponent implements OnInit {
   id: any;
   house: any;
   arrayPicture = '';
+  show = '';
+  messengerHouseName = '';
+  messengerAddress = '';
+  messengerDescription = '';
+  messengerBathrooms = '';
+  messengerBedrooms = '';
+  messengerPrice = '';
+  messengerType = '';
+  submitHouseName = true;
+  submitAddress = true;
+  submitDescription = true;
+  submitBathrooms = true;
+  submitBedrooms = true;
+  submitPrice = true;
+  submitType = true;
+
   constructor(private houseService: HouseService,
               private storage: AngularFireStorage,
               private ad: AngularFireDatabase,
               private fb: FormBuilder,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
+
   ngOnInit(): void {
     this.updateForm = this.fb.group({
       houseName: ['', Validators.required],
@@ -42,7 +60,7 @@ export class PostedHouseEditComponent implements OnInit {
         this.house = result;
         this.arrayPicture = this.house.avatar;
         this.updateForm.setValue({
-        houseName: this.house.houseName,
+          houseName: this.house.houseName,
           type: this.house.type,
           address: this.house.address,
           description: this.house.description,
@@ -55,6 +73,7 @@ export class PostedHouseEditComponent implements OnInit {
       });
     });
   }
+
   // tslint:disable-next-line:typedef
   updateHouse() {
     this.house.houseName = this.updateForm.value.houseName;
@@ -68,13 +87,14 @@ export class PostedHouseEditComponent implements OnInit {
     this.house.bathroom = this.updateForm.value.bathroom;
     this.house.avatar = this.arrayPicture;
     this.houseService.updateHouse(this.house).subscribe(() => {
-      alert('Cập nhật User thành công!');
-      this.router.navigate(['user-ownHouse', this.house.houseId]);
-      window.location.href = '/user-ownHouse/' + this.house.houseId;
+      this.show = 'Update successfully!';
+      // this.router.navigate(['user-ownHouse', this.house.houseId]);
+      // window.location.href = '/user-ownHouse/' + this.house.houseId;
     }, error => {
       alert('Lỗi!');
     });
   }
+
   // @ts-ignore
   // tslint:disable-next-line:typedef
   saveImg(value) {
@@ -99,4 +119,123 @@ export class PostedHouseEditComponent implements OnInit {
       }
     );
   }
+
+// @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkHouseName(input) {
+    console.log(input.target.value);
+    // @ts-ignore
+    if ((input.target.value.length > 20)) {
+      this.messengerHouseName = '*House name less than 20 characters!';
+      this.submitHouseName = false;
+    } else if (input.target.value.length < 1) {
+      this.messengerHouseName = '*House name is required!';
+      this.submitHouseName = false;
+    } else {
+      this.messengerHouseName = '';
+      this.submitHouseName = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkAddress(inputAddress) {
+    // @ts-ignore
+    if ((inputAddress.target.value.length > 30)) {
+      this.messengerAddress = '*The address less than 30 characters!';
+      this.submitAddress = false;
+    } else if (inputAddress.target.value.length < 1) {
+      this.messengerAddress = '*The address is required!';
+      this.submitAddress = false;
+    } else {
+      this.messengerAddress = '';
+      this.submitAddress = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkDescription(inputDescription) {
+    // @ts-ignore
+    if ((inputDescription.target.value.length > 40)) {
+      this.messengerDescription = '*Description less than 40 characters!';
+      this.submitDescription = false;
+    } else if (inputDescription.target.value.length < 1) {
+      this.messengerDescription = '*Description is required!';
+      this.submitDescription = false;
+    } else {
+      this.messengerDescription = '';
+      this.submitDescription = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkBedroom(inputBedroom) {
+    // @ts-ignore
+    if ((inputBedroom.target.value < 0)) {
+      this.messengerBedrooms = '*Invalid!';
+      this.submitBedrooms = false;
+    } else if (inputBedroom.target.value.length < 1) {
+      this.messengerBedrooms = '*Bedroom is required!';
+      this.submitBedrooms = false;
+    } else {
+      this.messengerBedrooms = '';
+      this.submitBedrooms = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkBathroom(inputBathroom) {
+    // @ts-ignore
+    if ((inputBathroom.target.value < 0)) {
+      this.messengerBathrooms = '*Invalid!';
+      this.submitBathrooms = false;
+    } else if (inputBathroom.target.value.length < 1) {
+      this.messengerBathrooms = '*Bathroom is required!';
+      this.submitBathrooms = false;
+    } else {
+      this.messengerBathrooms = '';
+      this.submitBathrooms = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkPrice(inputPrice) {
+    // @ts-ignore
+    if ((inputPrice.target.value < 0)) {
+      this.messengerPrice = '*Invalid!';
+      this.submitPrice = false;
+    } else if (inputPrice.target.value.length < 1) {
+      this.messengerPrice = '*Price is required!';
+      this.submitPrice = false;
+    } else {
+      this.messengerPrice = '';
+      this.submitPrice = true;
+    }
+  }
+
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  checkType(inputType) {
+    // @ts-ignore
+    if (inputType.target.value === '') {
+      this.messengerType = '*Type is required!';
+      this.submitType = false;
+    } else {
+      this.messengerType = '';
+      this.submitType = true;
+    }
+  }
+
+  submit(): boolean {
+    if (this.submitHouseName && this.submitAddress && this.submit && this.submitDescription
+      && this.submitBedrooms && this.submitBathrooms && this.submitPrice && this.submitType) {
+      return true;
+    }
+    return false;
+  }
 }
+
