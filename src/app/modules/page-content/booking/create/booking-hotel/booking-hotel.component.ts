@@ -46,7 +46,7 @@ export class BookingHotelComponent implements OnInit {
     :
     Datepicker;
   min = now;
-  max = new Date(now.getFullYear(), now.getMonth() + 6, now.getDate());
+  max = new Date(now.getFullYear(), now.getMonth() + 12, now.getDate());
 // tslint:disable-next-line:variable-name
   date_time: any;
 // @ts-ignore
@@ -122,8 +122,16 @@ export class BookingHotelComponent implements OnInit {
         this.arrayStart = this.startString.split('/');
         console.log(this.startString);
         this.arrayEnd = this.endString.split('/');
-        this.bookingNow.checkIn = this.arrayStart[2] + '-0' + this.arrayStart[0] + '-' + this.arrayStart[1];
-        this.bookingNow.checkOut = this.arrayEnd[2] + '-0' + this.arrayEnd[0] + '-' + this.arrayEnd[1];
+        if (this.arrayStart[0].length === 1) {
+          this.bookingNow.checkIn = this.arrayStart[2] + '-0' + this.arrayStart[0] + '-' + this.arrayStart[1];
+        } else {
+          this.bookingNow.checkIn = this.arrayStart[2] + '-' + this.arrayStart[0] + '-' + this.arrayStart[1];
+        }
+        if (this.arrayEnd[0].length === 1) {
+          this.bookingNow.checkOut = this.arrayEnd[2] + '-0' + this.arrayEnd[0] + '-' + this.arrayEnd[1];
+        } else {
+          this.bookingNow.checkOut = this.arrayEnd[2] + '-' + this.arrayEnd[0] + '-' + this.arrayEnd[1];
+        }
         // @ts-ignore
         this.bookingNow.total = this.days * this.house.price;
         if (this.arrayBooked != null) {
