@@ -31,7 +31,7 @@
     <div class="container">
       <div class="row">
         <div *ngFor="let owner of listOwners | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index" class="col-md-4">
-          <div class="card-box-d"  style="width: 360px; height: 420px">
+          <div class="card-box-d"  style="width: 360px; height: 420px"  routerLink="/hosts/{{owner.userId}}">
             <div class="card-img-d">
               <img src="{{owner.avatar}}" alt="" class="img-d img-fluid">
             </div>
@@ -39,7 +39,7 @@
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="#" class="link-two">{{owner.username}}</a>
+                    <a routerLink="/hosts/{{owner.userId}}" class="link-two">{{owner.username}}</a>
                   </h3>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <div class="socials-footer d-flex justify-content-center">
                   <ul class="list-inline">
                     <li class="list-inline-item">
-                      <a href="#" class="link-one">
+                      <a class="link-one">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                       </a>
                     </li>
