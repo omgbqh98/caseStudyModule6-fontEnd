@@ -356,6 +356,7 @@
                 <div class="price-box d-flex">
                   <span class="price-a">RENT | $ {{house.price}} </span>
                 </div>
+                <h4 style="color: white">{{house.avgRate}}&nbsp;<i class="fa fa-star star" aria-hidden="true"></i></h4>
                 <a [routerLink]="['/house-view', house.houseId]" class="link-a">Click here to view
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
@@ -376,7 +377,7 @@
           </div>
         </div>
         <div>
-          <h6>({{house.avgRate}}<i class="fa fa-star star" aria-hidden="true"></i>) {{house.address}}</h6>
+          <h5>{{house.address}}</h5>
         </div>
       </div>
       <!--      <div *ngFor="let house of listBestHouses" class="carousel-item-c">-->

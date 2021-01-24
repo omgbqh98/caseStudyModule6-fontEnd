@@ -19,7 +19,7 @@
 
       <!--      Danh sách các nhà-->
       <div class="col-md-4" *ngFor="let house of listHouses  | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
-        <div class="card-box-a card-shadow">
+        <div class="card-box-a card-shadow" style="width: 350px !important; height: 250px !important;">
           <div class="img-box-a">
             <img  src="{{house.avatar}}" alt="" class="img-a img-fluid"  style="width: 350px !important; height: 250px !important;" >
           </div>
