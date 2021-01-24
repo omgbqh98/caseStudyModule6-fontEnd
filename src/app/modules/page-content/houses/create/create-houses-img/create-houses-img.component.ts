@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../../../service/authen-service/auth.service';
 import {UserService} from '../../../../../service/user-service/user.service';
@@ -6,8 +6,8 @@ import {HouseService} from '../../../../../service/house-service/house.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {House} from '../../../../../model/house-model/house';
 
-import {finalize} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {debounceTime, finalize} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 import {HousesImg} from '../../../../../model/house-model/housesImg';
 import {HousesImgService} from '../../../../../service/house-service/houses-img.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
@@ -33,10 +33,11 @@ export class CreateHousesImgComponent implements OnInit {
   selectedFile: File = null;
   // @ts-ignore
   downloadURL: Observable<string>;
-  Img: HousesImg[] = [];
-  Imgs: HousesImg[] = [];
-   // @ts-ignore
-  mess : String;
+  Img: any[] = [];
+  // @ts-ignore
+  mess: String;
+
+
 
   // tslint:disable-next-line:max-line-length
   constructor(private activate: ActivatedRoute, private housesImgService: HousesImgService, private formBuilder: FormBuilder, private authService: AuthService, private  userService: UserService, private  housesService: HouseService, private storage: AngularFireStorage) {
@@ -63,12 +64,13 @@ export class CreateHousesImgComponent implements OnInit {
 
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  onFileSelected(event, id) {
+  file : any;
+  onFileSelected(event : any) {
+      this.file = event.target.files[0];
     const n = Date.now();
-    const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    const task = this.storage.upload(`RoomsImages/${n}`,this.file);
     task
       .snapshotChanges()
       .pipe(
@@ -78,52 +80,30 @@ export class CreateHousesImgComponent implements OnInit {
           console.log(this.downloadURL);
           this.downloadURL.subscribe(async (url) => {
             console.log(this.downloadURL);
-            if (url) {
-              console.log(url);
-              this.fb = url;
+            if(this.Img.length == 1){
+              this.Img[1]=url;
+              console.log(this.Img[1])
             }
-            this.Img.push(this.fb);
-            // if (Img[0].length == 1) {
-            //
-            //   this.Img[0] = this.fb;
-            //
-            // }
-            // if (Img[1].length == 1 && Img[0].length == 1) {
-            //   this.Img[1] = this.fb;
-            // }
-            // if(Img[1].length == 1 && Img[0].length == 1){
-            //   this.Img.push("1");
-            //   this.Img.push(this.fb);
-            // }
-            // if (Img[1].length == 1 && Img[0].length == null) {
-            //   this.Img[0] = "";
-            //   this.Img[1] = this.fb;
-            // }
-            // // if(Img[1] && Img[0])
-            // if (Img[2]) {
-            //   this.Img[0] = '';
-            //   this.Img[1] = '';
-            //   Img[2] = this.fb;
-            //   this.Img[2] = Img[2];
-            //
-            // }
-            console.log(this.Img);
-            if (this.Img.length == 4) {
-              console.log(this.Img[0]);
-              this.Img[0] = this.Img[3];
-              this.Img.splice(2);
+            if (this.Img.length == 0) {
+              this.Img[0] = url
+              console.log(this.Img[0])
             }
-            console.log(this.Img);
-            console.log(this.fb);
           });
+          if (this.Img.length == 3) {
+            console.log(this.Img[0]);
+            this.Img[0] = this.Img[2];
+            this.Img.splice(2,1);
+          }
         })
       )
       .subscribe((url) => {
         if (url) {
           console.log(url);
+          this.mess = 'Bạn Đã Lựa Chọn Thành Công';
         }
       });
   }
+
 
   async createHousesImg() {
     const house = await this.getHouse(this.id);
@@ -131,17 +111,30 @@ export class CreateHousesImgComponent implements OnInit {
     let houseImgs: HousesImg = {};
     houseImgs.houseId = house[0];
     houseImgs.isAvatar = false;
-    for (var i = 1; this.Img.length >= i; i++) {
-      houseImgs.link = this.Img[0];
+    for (var i = 0; this.Img.length > i; i++) {
+      houseImgs.link = this.Img[i];
       console.log(houseImgs);
       this.housesImgService.createHouses(houseImgs).subscribe(() => {
-        this.mess ="Bạn đã thêm thành công"
-        this.Img.splice(0);
+        this.mess = 'Bạn đã thêm thành công';
+        // this.do_alert();
+
       }, error => {
         console.log('Lỗi: ');
         console.log(error);
+        this.mess = 'Bạn đã thêm thất bại';
       });
     }
+  }
 
+  async deleteHousesImg(Img: []) {
+    const deleteImg = Img;
+    for (var i = 0; this.Img.length > i; i++) {
+      if (deleteImg == this.Img[i] ) {
+      // const deleteImgs = this.Img.indexOf(Img[i])
+        this.Img.splice(i,1)
+        this.mess = "Bạn Đã Xóa Thành Công"
+        return
+      }
+    }
   }
 }
