@@ -41,6 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from "ngx-pagination";
 import { ListComponent } from './modules/page-content/user/list/list.component';
 import { UserShowForAllComponent } from './modules/page-content/user/detail/user-show-for-all/user-show-for-all.component';
+import { ListHousesOfHostComponent } from './modules/page-content/houses/list/list-houses-of-host/list-houses-of-host.component';
 
 
 // @ts-ignore
@@ -77,6 +78,7 @@ import { UserShowForAllComponent } from './modules/page-content/user/detail/user
     SearchComponent,
     ListComponent,
     UserShowForAllComponent,
+    ListHousesOfHostComponent,
   ],
   imports: [
     MbscModule,

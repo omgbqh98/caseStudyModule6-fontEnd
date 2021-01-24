@@ -256,7 +256,7 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let house of listBestHouses; let i = index">
         <div *ngIf="i<3">
-          <div class="card-box-d">
+          <div class="card-box-d" [routerLink]="['/hosts',house.ownerId.userId]">
             <div class="card-img-d">
               <img src="{{house.ownerId.avatar}}" alt="" class="img-d img-fluid" style="width: 360px !important; height: 500px !important;">
             </div>

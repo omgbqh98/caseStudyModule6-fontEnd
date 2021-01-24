@@ -1,0 +1,49 @@
+  <div class="container">
+    <!--    Phần list nhà -->
+    <div class="row">
+      <div class="col-md-4" *ngFor="let house of listHouse  | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
+        <div class="card-box-a card-shadow">
+          <div class="img-box-a">
+            <img  src="{{house.avatar}}" alt="" class="img-a img-fluid"  style="width: 350px !important; height: 250px !important;" >
+          </div>
+          <div class="card-overlay">
+            <div class="card-overlay-a-content">
+              <div class="card-header-a">
+                <h2 class="card-title-a">
+                  <a [routerLink]="['/house-view',house.houseId]">{{house.houseName}}</a>
+                </h2>
+              </div>
+              <div class="card-body-a">
+                <div class="price-box d-flex">
+                  <span class="price-a">rent | $ {{house.price}}</span>
+                </div>
+                <a [routerLink]="['/house-view',house.houseId]">Click here to view
+                  <span class="ion-ios-arrow-forward"></span>
+                </a>
+              </div>
+              <div class="card-footer-a">
+                <ul class="card-info d-flex justify-content-around">
+                  <li>
+                    <h4 class="card-info-title">Beds</h4>
+                    <span>{{house.bedroom}}</span>
+                  </li>
+                  <li>
+                    <h4 class="card-info-title">Baths</h4>
+                    <span>{{house.bathroom}}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--     End danh sách các nhà-->
+    </div>
+    <!--    End phần list nhà -->
+    <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+<!--/ Property Grid End /-->
+
+
+
