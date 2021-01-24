@@ -200,8 +200,8 @@
               </div>
               <div class="card-body-a">
                 <div class="price-box d-flex">
-                  <span class="price-a">RENT | $ {{house.price}} </span>
-                </div>
+                  <span class="price-a"> RENT | $ {{house.price}} </span>
+                </div><h4 style="color: white">{{house.avgRate}}&nbsp;<i class="fa fa-star star" aria-hidden="true"></i></h4>
                 <a [routerLink]="['/house-view', house.houseId]" class="link-a">Click here to view
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
@@ -227,7 +227,7 @@
           </div>
         </div>
         <div>
-          <h6>({{house.avgRate}}<i class="fa fa-star star" aria-hidden="true"></i>) {{house.address}}</h6>
+          <h5> {{house.address}}</h5>
         </div>
       </div>
       <!---->
@@ -245,11 +245,11 @@
           <div class="title-box">
             <h2 class="title-a">Best Agents</h2>
           </div>
-          <!--          <div class="title-link">-->
-          <!--            <a href="agents-grid.html">All Agents-->
-          <!--              <span class="ion-ios-arrow-forward"></span>-->
-          <!--            </a>-->
-          <!--          </div>-->
+                    <div class="title-link">
+                      <a routerLink="/hosts">All Hosts
+                        <span class="ion-ios-arrow-forward"></span>
+                      </a>
+                    </div>
         </div>
       </div>
     </div>
