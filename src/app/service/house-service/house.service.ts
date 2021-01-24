@@ -78,4 +78,16 @@ export class HouseService {
   getBestHouses(): Observable<any> {
     return this.http.get(API_URL + '/houses' + '/bestHouses');
   }
+
+  getAllCities(): Observable<any> {
+    return this.http.get('https://thongtindoanhnghiep.co/api/city');
+  }
+
+  getAllDistrictsByCity(id: number): Observable<any>{
+    return this.http.get('https://thongtindoanhnghiep.co/api/city' + `/${id}` + '/district');
+  }
+
+  getAllWardsByDistrict(id: number): Observable<any>{
+    return this.http.get('https://thongtindoanhnghiep.co/api/district' + `/${id}` + '/ward');
+  }
 }
