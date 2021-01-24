@@ -1,0 +1,122 @@
+<!--/ Intro Single star /-->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Host profile</h1>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a routerLink="/hosts">Hosts</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Host profile
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Intro Single End /-->
+
+<!--/ Agent Single Star /-->
+<section class="agent-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="agent-avatar-box">
+              <img src="{{user.avatar}}" alt="" class="agent-avatar img-fluid">
+            </div>
+          </div>
+          <div class="col-md-5 section-md-t3">
+            <div class="agent-info-box">
+              <div class="agent-title">
+                <div class="title-box-d">
+                  <h3 class="title-d">{{user.fullName}}</h3>
+                </div>
+              </div>
+              <div class="agent-content mb-3">
+                <p class="content-d color-text-a">
+                  <!--                  User description-->
+                </p>
+                <div class="info-agents color-a">
+                  <p>
+                    <strong>Phone: </strong>
+                    <span class="color-text-a"> {{user.phone}} </span>
+                  </p>
+                  <p>
+                    <strong>Email: </strong>
+                    <span class="color-text-a"> {{user.email}}</span>
+                  </p>
+                  <p>
+                    <strong>Address: </strong>
+                    <span class="color-text-a"> {{user.address}}</span>
+                  </p>
+                  <p>
+                    <strong>Full Name: </strong>
+                    <span class="color-text-a">{{user.fullName}}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="socials-footer">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a href="#" class="link-one">
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="link-one">
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="link-one">
+                      <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="link-one">
+                      <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#" class="link-one">
+                      <i class="fa fa-dribbble" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+<!--              <div>-->
+<!--                <a type="button" class="btn btn-outline-secondary" [routerLink]="['/user-update',user.userId]">Update-->
+<!--                  Information</a>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 section-t8">
+        <div class="title-box-d">
+          <h3 class="title-d">Properties of {{user.username}}</h3>
+        </div>
+      </div>
+      <div class="row property-grid grid">
+        <div class="col-sm-12">
+        </div>
+        <app-list-houses-of-host></app-list-houses-of-host>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Agent Single End /-->
+

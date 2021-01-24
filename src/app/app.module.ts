@@ -39,8 +39,10 @@ import { RatingListComponent } from './modules/rating/rating-list/rating-list.co
 import {CreateHousesImgComponent} from './modules/page-content/houses/create/create-houses-img/create-houses-img.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from "ngx-pagination";
+import { ListComponent } from './modules/page-content/user/list/list.component';
+import { UserShowForAllComponent } from './modules/page-content/user/detail/user-show-for-all/user-show-for-all.component';
+import { ListHousesOfHostComponent } from './modules/page-content/houses/list/list-houses-of-host/list-houses-of-host.component';
 
-import { CommentCreateComponent } from './modules/rating/comment-create/comment-create.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -74,7 +76,9 @@ import { CommentCreateComponent } from './modules/rating/comment-create/comment-
     RatingListComponent,
     CreateHousesImgComponent,
     SearchComponent,
-    // CommentCreateComponent,
+    ListComponent,
+    UserShowForAllComponent,
+    ListHousesOfHostComponent,
   ],
   imports: [
     MbscModule,

@@ -44,15 +44,17 @@
       <!--        </div>-->
       <!--      </div>-->
       <!--      End phần sort nhà-->
-<!--      <tr *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: p }; let i  = index">-->
+      <!--      <tr *ngFor="let user of users | paginate: { itemsPerPage: 2, currentPage: p }; let i  = index">-->
 
 
-<!--      Danh sách các nhà-->
-      <div class="col-md-4" *ngFor="let house of listHouses | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
-<!--        <div scope="row">{{ i + 1}}</div>-->
-        <div class="card-box-a card-shadow">
+      <!--      Danh sách các nhà-->
+      <div class="col-md-4"
+           *ngFor="let house of listHouses | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
+        <!--        <div scope="row">{{ i + 1}}</div>-->
+        <div class="card-box-a card-shadow" style="width: 350px; height: 386px; margin-bottom: 0px; margin-top: 30px ">
           <div class="img-box-a">
-            <img src="{{house.avatar}}" alt="" class="img-a img-fluid"  style="width: 350px !important; height: 250px !important;">
+            <img src="{{house.avatar}}" alt="" class="img-a img-fluid"
+                 style="width: 350px !important; height: 250px !important;">
           </div>
           <div class="card-overlay">
             <div class="card-overlay-a-content">
@@ -65,6 +67,7 @@
                 <div class="price-box d-flex">
                   <span class="price-a">rent | $ {{house.price}}</span>
                 </div>
+                <h4 style="color: white">{{house.avgRate}}&nbsp;<i class="fa fa-star star" aria-hidden="true"></i></h4>
                 <a [routerLink]="['/house-view',house.houseId]">Click here to view
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
@@ -83,12 +86,15 @@
               </div>
             </div>
           </div>
+          <div>
+          </div>
         </div>
+        <h5 style="margin-top: 0px"> {{house.address}}</h5>
       </div>
       <!--     End danh sách các nhà-->
     </div>
     <!--    End phần list nhà -->
-    <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls style="float: right; color:#2eca6a " (pageChange)="p = $event"></pagination-controls>
 
   </div>
 </section>

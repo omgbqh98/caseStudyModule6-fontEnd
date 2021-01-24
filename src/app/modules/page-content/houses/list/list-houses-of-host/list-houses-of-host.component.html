@@ -1,26 +1,8 @@
-<section class="property-grid grid">
   <div class="container">
     <!--    Phần list nhà -->
     <div class="row">
-      <!--      Phần sort nhà-->
-      <!--      <div class="col-sm-12">-->
-      <!--        <div class="grid-option">-->
-      <!--          <form>-->
-      <!--            <select class="custom-select">-->
-      <!--              <option selected>All</option>-->
-      <!--              <option value="1">New to Old</option>-->
-      <!--              <option value="2">For Rent</option>-->
-      <!--              <option value="3">For Sale</option>-->
-      <!--            </select>-->
-      <!--          </form>-->
-      <!--        </div>-->
-      <!--      </div>-->
-      <!--      End phần sort nhà-->
-
-      <!--      Danh sách các nhà-->
-
       <div class="col-md-4"
-           *ngFor="let house of listHouses | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
+           *ngFor="let house of listHouse | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
         <!--        <div scope="row">{{ i + 1}}</div>-->
         <div class="card-box-a card-shadow" style="width: 350px; height: 386px; margin-bottom: 0px; margin-top: 30px ">
           <div class="img-box-a">
@@ -31,7 +13,7 @@
             <div class="card-overlay-a-content">
               <div class="card-header-a">
                 <h2 class="card-title-a">
-                  <a [routerLink]="['/user-ownHouse',house.houseId]">{{house.houseName}}</a>
+                  <a [routerLink]="['/house-view',house.houseId]">{{house.houseName}}</a>
                 </h2>
               </div>
               <div class="card-body-a">
@@ -39,7 +21,7 @@
                   <span class="price-a">rent | $ {{house.price}}</span>
                 </div>
                 <h4 style="color: white">{{house.avgRate}}&nbsp;<i class="fa fa-star star" aria-hidden="true"></i></h4>
-                <a [routerLink]="['/user-ownHouse',house.houseId]">Click here to view
+                <a [routerLink]="['/house-view',house.houseId]">Click here to view
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
               </div>
@@ -66,9 +48,9 @@
     </div>
     <!--    End phần list nhà -->
     <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
-
   </div>
-</section>
+
 <!--/ Property Grid End /-->
+
 
 

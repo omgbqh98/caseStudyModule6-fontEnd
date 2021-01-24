@@ -23,6 +23,8 @@ import {StatisticsComponent} from './modules/statistics/statistics.component';
 import {ListRentHousesByTimeComponent} from './modules/list-rent-houses-by-time/list-rent-houses-by-time.component';
 
 import {SearchComponent} from './_shared/search/search.component';
+import {ListComponent} from './modules/page-content/user/list/list.component';
+import {UserShowForAllComponent} from './modules/page-content/user/detail/user-show-for-all/user-show-for-all.component';
 
 
 const routes: Routes = [
@@ -95,6 +97,14 @@ const routes: Routes = [
   {
     path: 'list-rent-houses-by-time/:id',
     component: ListRentHousesByTimeComponent
+  },
+  {
+    path: 'hosts',
+    component: ListComponent
+  },
+  {
+    path: 'hosts/:id',
+    component: UserShowForAllComponent
   }
 ];
 

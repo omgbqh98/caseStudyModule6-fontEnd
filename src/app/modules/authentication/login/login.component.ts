@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserToken} from '../../../model/user-model/user-token';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -6,6 +6,7 @@ import {AuthService} from '../../../service/authen-service/auth.service';
 import {User} from '../../../model/user-model/user';
 import {first} from 'rxjs/operators';
 import {UserService} from '../../../service/user-service/user.service';
+import {GoogleToken} from '../../../model/googleToken-model/GoogleToken';
 
 @Component({
   selector: 'app-login',
@@ -42,11 +43,13 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private authService: AuthService,
+              private ngZone: NgZone,
               private formBuilder: FormBuilder,
               private userService: UserService) {
     // @ts-ignore
     this.authService.currentUser.subscribe(value => this.currentUser = value);
-    // window['onSignIn'] = this.onSignIn;
+    // @ts-ignore
+    window['onSignIn'] = (user: any) => ngZone.run(() => this.onSignIn(user));
   }
 
   // tslint:disable-next-line:typedef
@@ -77,7 +80,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['']); // navigate sau khi login
           window.location.href = '';
         }, error => {
-          // @ts-ignore
           this.message = 'Incorrect username or password';
         }
       );
@@ -124,8 +126,9 @@ export class LoginComponent implements OnInit {
   onSignIn(googleUser: any) {
     console.log('Login thành công');
     const id_token = googleUser.getAuthResponse().id_token;
-    console.log(id_token);
-    this.authService.googleSignIn(id_token);
+    const googleToken = new GoogleToken();
+    googleToken.token = id_token;
+    this.authService.googleSignIn(googleToken);
   }
 
   // @ts-ignore

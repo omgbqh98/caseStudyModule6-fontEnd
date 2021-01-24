@@ -28,7 +28,7 @@
             <div class = "row">
               <h4 class="comment-author">{{rating.userId.username}} </h4><span style="margin-top: 5px">&nbsp; &nbsp; rated it {{rating.rate}} <i class="fa fa-star star" aria-hidden="true"></i></span>
             </div>
-            <span>{{rating.createdAt}}</span>
+            <span>{{rating.createdAt | date:'MMM d, y, h:mm:ss a'}}</span>
             <p class="comment-description">
               {{rating.review}}
             </p>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="comment-details">
                   <h4 class="comment-author">{{child.userId.username}}</h4>
-                  <span>{{child.createdAt}}</span>
+                  <span>{{child.createdAt| date:'MMM d, y, h:mm:ss a'}}</span>
                   <p class="comment-description">
                     {{child.review}}
                   </p>
