@@ -75,7 +75,14 @@
               <input formControlName="username" type="hidden">
               <div class="col-xs-6">
                 <label for="phone"><h4>Phone</h4></label>
-                <input type="number" formControlName="phone" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+<!--                <input type="number" formControlName="phone" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">-->
+                <input id = "phone" [class.is-invalid] = "updateUserForm.get('phone').invalid && updateUserForm.get('phone').touched" type="number" class="form-control" formControlName="phone" />
+
+              </div>
+              <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
+                <small *ngIf="phone.errors?.required" class="text-danger">phone number is too short !</small>
+                <small *ngIf="phone.errors?.pattern" class="text-danger">
+                  invalid phone number !</small>
               </div>
             </div>
 
@@ -89,9 +96,16 @@
 
               <div class="col-xs-6">
                 <label for="email"><h4>Email</h4></label>
-                <input type="email" formControlName="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+<!--                <input type="email" formControlName="email"  class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">-->
+                <input id="email" [class.is-invalid] = "updateUserForm.get('email').invalid && updateUserForm.get('email').touched" type="email" class="form-control" formControlName="email" />
+              </div>
+              <div *ngIf="(secondEmail.invalid && secondEmail.touched) || secondEmail.dirty">
+                <small *ngIf="secondEmail.errors?.required" class="text-danger">
+                  Email is too short !</small>
+                <small *ngIf="secondEmail.errors?.pattern" class="text-danger">Please provide a valid email address !</small>
               </div>
             </div>
+
             <div class="form-group">
 
               <div class="col-xs-6">
@@ -123,3 +137,5 @@
 <!--  <img src="{{ downloadURL }}" alt="" />-->
 
 
+<!--app.component.html-->
+<!--app.component.html-->
