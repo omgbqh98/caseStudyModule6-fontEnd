@@ -21,8 +21,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
 
-  constructor(private http: HttpClient,
-              private router: Router) {
+  constructor(private http: HttpClient) {
     // @ts-ignore
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -33,14 +32,17 @@ export class AuthService {
   }
   initGoogleOAuth(): Promise<any> {
     return new Promise((resolve, reject) => {
-      gapi.load('auth2', async () => {
-        const gAuth = await gapi.auth2.init({
+      gapi.load('client:auth2', () => {
+        gapi.client.init({
           client_id: '360187321088-pphmdafbluqev38ctadkfvj02v7n346p.apps.googleusercontent.com',
           fetch_basic_profile: true,
           scope: 'profile email'
-        });
-        resolve(gAuth);
-      }, reject);
+        }).then(() => {
+          // console.log(gapi.auth2.getAuthInstance());
+          const googleAuth = gapi.auth2.getAuthInstance();
+          resolve(googleAuth);
+        }, (err: any) => reject(err));
+      });
     });
   }
   // tslint:disable-next-line:typedef
@@ -59,15 +61,13 @@ export class AuthService {
   async logout() {
     localStorage.removeItem('user');
     // @ts-ignore
-    gapi = await this.initGoogleOAuth();
-    const auth2 = gapi.auth2.getAuthInstance();
-    console.log(auth2);
-    if (auth2) {
-      auth2.signOut().then(() => {
-        auth2.disconnect();
+    const authInstance = await this.initGoogleOAuth();
+    if (authInstance ) {
+      authInstance.signOut().then(() => {
+        console.log('sign out');
       });
     }
-    this.currentUserSubject.next(null);
+    this.currentUserSubject.next({});
   }
 
   signup(user: User): Observable<User> {
@@ -82,8 +82,7 @@ export class AuthService {
       // @ts-ignore
       this.currentUserSubject.next(user);
       this.update.emit('login');
-      console.log(user);
-      this.router.navigate(['/']);
+      window.location.href = '/';
     });
   }
 }

@@ -67,8 +67,8 @@ export class HeaderComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  logout() {
-    this.authService.logout();
+  async logout() {
+    await this.authService.logout();
     window.location.href = '/login';
   }
 

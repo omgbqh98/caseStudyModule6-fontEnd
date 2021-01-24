@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     // @ts-ignore
     this.authService.currentUser.subscribe(value => this.currentUser = value);
     // @ts-ignore
-    window['onSignIn'] = (user: any) => ngZone.runOutsideAngular(() => this.onSignIn(user));
+    window['onSignIn'] = (user: any) => ngZone.run(() => this.onSignIn(user));
   }
 
   // tslint:disable-next-line:typedef
@@ -128,8 +128,7 @@ export class LoginComponent implements OnInit {
     const id_token = googleUser.getAuthResponse().id_token;
     const googleToken = new GoogleToken();
     googleToken.token = id_token;
-    return this.authService.googleSignIn(googleToken);
-    // this.sendToken(id_token);
+    this.authService.googleSignIn(googleToken);
   }
 
   // @ts-ignore
