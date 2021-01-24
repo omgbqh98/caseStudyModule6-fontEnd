@@ -3,42 +3,6 @@
 <br>
 <br>
 <hr>
-<!--<table>-->
-<!--  <tr><td>{{houses.houseId}}</td></tr>-->
-<!--  <tr><td>{{houses.houseName}}</td></tr>-->
-<!--  <tr><td>{{houses.description}}</td></tr>-->
-<!--</table>-->
-<!--  <div>-->
-<!--    <input type="file"-->
-<!--           (change)="onFileSelected($event,id)">-->
-<!--  </div>-->
-<!--&lt;!&ndash;<div *ngIf="fb" class="list">&ndash;&gt;-->
-<!--&lt;!&ndash;  <img src="{{ fb }}" alt="" />&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--  <div>-->
-<!--    <input type="file"-->
-<!--           (change)="onFileSelected($event,id)">-->
-<!--  </div>-->
-<!--&lt;!&ndash;<div *ngIf="fb" class="list">&ndash;&gt;-->
-<!--&lt;!&ndash;  <img src="{{ fb }}" alt="" />&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--  <div>-->
-<!--    <input type="file"-->
-<!--           (change)="onFileSelected($event,id)">-->
-<!--  </div>-->
-<!--&lt;!&ndash;<div *ngIf="fb" class="list">&ndash;&gt;-->
-<!--&lt;!&ndash;  <img src="{{ fb }}" alt="" />&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--<div class="col-md-4" *ngFor="let img of Img"></div>-->
-<!--<div class="img-box-a">-->
-<!--  <img src="{{Img[0]}}" alt="" class="img-a img-fluid">-->
-<!--</div>-->
-<!--<div class="img-box-a">-->
-<!--  <img src="{{Img[1]}}" alt="" class="img-a img-fluid">-->
-<!--</div>-->
-<!--<div class="img-box-a">-->
-<!--  <img src="{{Img[2]}}" alt="" class="img-a img-fluid">-->
-<!--</div>-->
 <hr>
 <div class="container bootstrap snippet">
   <div class="row">
@@ -52,13 +16,13 @@
       </div>
       <ul class="list-group">
         <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>{{this.houses.status}}</strong></span>
-          125
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Trạng Thái:</strong></span>
+          {{this.houses.status}}
         </li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>{{this.houses.address}}</strong></span>
-          13
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Địa Chỉ</strong></span>
+          {{this.houses.address}}
         </li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>{{this.houses.price}}</strong></span> 37
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Gía</strong></span> 37
         </li>
       </ul>
       <div class="panel panel-default">
@@ -68,95 +32,64 @@
           class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
         </div>
       </div>
-    </div><!--/col-3-->
+    </div>
     <div class="carousel-item-b" style="left: 500px">
       <div class="card-box-a card-shadow">
-        <!--        <div class="img-box-a">-->
-        <!--          <img src="{{this.Img[0]}}" alt="" class="img-a img-fluid" style="width: 300px; height: 300px;object-fit: cover">-->
-        <!--        </div>-->
-        <!--        <div class="img-box-a">-->
-        <!--          <img src="{{this.Img[1]}}" alt="" class="img-a img-fluid" style="width: 300px; height: 300px;object-fit: cover">-->
-        <!--        </div>-->
-        <!--        <img src="{{this.Img[0]}}" [width]="300" >-->
-        <!--        <img src="{{this.Img[1]}}"  [width]="300">-->
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <div class="tab-content">
         <div class="tab-pane active">
           <div class="form-group">
             <div class="text-center">
               <div class="text-center" *ngIf="Img[0]">
-                <img src="{{Img[0]}}" class="avatar img-circle img-thumbnail" alt="avatar"
-                     style="width: 300px;height: 300px">
+                <img src="{{Img[0]}}" style="width: 300px;height: 300px" >
               </div>
               <div class="text-center" *ngIf="!Img[0]">
-                <img src="https://i.pinimg.com/originals/2d/91/01/2d9101ca4d2c0259f39f60ec2ea2be56.png" class="avatar img-circle img-thumbnail" alt="avatar"
-                     style="width: 300px;height: 300px">
+                <img src="https://holcim.com.vn/wp-content/uploads/2019/04/hinh-anh-mau-nha-2-tang-nong-thon-dep-5.jpg" style="width: 300px;height: 300px">
               </div>
               <div class="up_button">
                 <label class="fileContainer" for="up_button">
                   <i class="fa fa-edit" style='font-size:36px'></i>
                 </label>
-                <p hidden><input type="file" accept="image/*" id="up_button" (change)="onFileSelected($event,id)"
+                <p hidden><input type="file" accept="image/*" id="up_button" (change)="onFileSelected($event)"
                                  name="avatarFile"></p>
+              </div>
+              <div class="btn-group">
+                <button  class="btn btn-primary"     (click)="deleteHousesImg(Img[0])">Xóa</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-5">
       <div class="tab-content">
         <div class="tab-pane active">
           <div class="form-group">
             <div class="text-center">
               <div class="text-center" *ngIf="Img[1]">
-                <img src="{{Img[1]}}" class="avatar img-circle img-thumbnail" alt="avatar"
-                     style="width: 300px;height: 300px">
+                <img src="{{Img[1]}}" style="width: 300px;height: 300px">
               </div>
               <div class="text-center" *ngIf="!Img[1]">
-                <img src="https://i.pinimg.com/originals/2d/91/01/2d9101ca4d2c0259f39f60ec2ea2be56.png" class="avatar img-circle img-thumbnail" alt="avatar"
-                     style="width: 300px;height: 300px">
+                <img src="https://holcim.com.vn/wp-content/uploads/2019/04/hinh-anh-mau-nha-2-tang-nong-thon-dep-5.jpg" style="width: 300px;height: 300px">
               </div>
               <div class="up_button">
                 <label class="fileContainer" for="up_button">
                   <i class="fa fa-edit" style='font-size:36px'></i>
                 </label>
-                <p hidden><input type="file" accept="image/*" id="up_button" (change)="onFileSelected($event,id)"
+                <p hidden><input type="file" accept="image/*"  (change)="onFileSelected($event)"
                                  name="avatarFile"></p>
+              </div>
+              <div class="btn-group">
+                <a  class="btn btn-primary" (click)="deleteHousesImg(Img[1])">Xóa</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-3">
-      <div class="tab-content">
-        <div class="tab-pane active">
-          <div class="form-group">
-            <div class="text-center">
-              <div class="text-center" *ngIf="Img[2]">
-                <img src="{{Img[2]}}" class="avatar img-circle img-thumbnail" alt="avatar"
-                     style="width: 300px;height: 300px">
-              </div>
-              <div class="text-center" *ngIf="!Img[2]">
-                <img src="https://i.pinimg.com/originals/2d/91/01/2d9101ca4d2c0259f39f60ec2ea2be56.png" class="avatar img-circle img-thumbnail" alt="avatar"
-                     style="width: 300px;height: 300px">
-              </div>
-              <div class="up_button">
-                <label class="fileContainer" for="up_button">
-                  <i class="fa fa-edit" style='font-size:36px'></i>
-                </label>
-                <p hidden><input type="file" accept="image/*" id="up_button" (change)="onFileSelected($event,id)"
-                                 name="avatarFile"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6"  style="left: 500px ; top: -100px">
+    <div class="col-sm-6"  style="left: 650px ; top: -100px">
       <button class="btn btn-lg btn-success" (click)="createHousesImg()" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
     </div>
   </div>

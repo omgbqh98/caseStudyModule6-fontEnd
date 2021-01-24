@@ -16,6 +16,7 @@ declare var $: any;
 })
 export class HouseDetailViewComponent implements OnInit {
   house: any;
+  houseImgOne: any;
   // @ts-ignore
   id: number;
   // @ts-ignore
@@ -210,5 +211,16 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
       }, 1000);
     });
     // this.getAllHouses();
+  }
+
+
+  async deleteHousesImg(id : number) {
+    const Id = id;
+    console.log(this.houseImg);
+    this.houseImgService.deleteOwnedHouseImg(Id).subscribe()
+      const deleteImgs = this.houseImg.indexOf(Id)
+      this.houseImg.splice(deleteImgs,1)
+    // this.houseImg
+     return this.houseImg;
   }
 }
