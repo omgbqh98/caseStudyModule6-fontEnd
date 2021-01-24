@@ -21,7 +21,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient  ) {
     // @ts-ignore
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
