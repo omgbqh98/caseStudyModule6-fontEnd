@@ -80,6 +80,10 @@ export class CreateHousesImgComponent implements OnInit {
           console.log(this.downloadURL);
           this.downloadURL.subscribe(async (url) => {
             console.log(this.downloadURL);
+            if(this.Img.length == 2){
+              this.Img[2]=url;
+              console.log(this.Img[2])
+            }
             if(this.Img.length == 1){
               this.Img[1]=url;
               console.log(this.Img[1])
@@ -89,10 +93,10 @@ export class CreateHousesImgComponent implements OnInit {
               console.log(this.Img[0])
             }
           });
-          if (this.Img.length == 3) {
+          if (this.Img.length == 4) {
             console.log(this.Img[0]);
-            this.Img[0] = this.Img[2];
-            this.Img.splice(2,1);
+            this.Img[0] = this.Img[3];
+            this.Img.splice(3,1);
           }
         })
       )
