@@ -20,7 +20,7 @@
         </div>
         <!--  End alert không thể reply  -->
         <!--      Các comment cha -->
-        <li *ngFor="let rating of listParentRating">
+        <li *ngFor="let rating of listParentRating  | paginate: { itemsPerPage: 9, currentPage: p }; let i  = index">
           <div class="comment-avatar">
             <img src="{{rating.userId.avatar}}" alt="">
           </div>
@@ -80,6 +80,7 @@
         </li>
         <!--      End comment cha -->
       </ul>
+      <pagination-controls style="float: right; color:#2eca6a "  (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
 </div>

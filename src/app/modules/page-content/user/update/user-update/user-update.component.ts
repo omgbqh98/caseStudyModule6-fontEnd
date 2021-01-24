@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../../../model/user-model/user';
 import {UserToken} from '../../../../../model/user-model/user-token';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../../../../../service/user-service/user.service';
 import {AuthService} from '../../../../../service/authen-service/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -10,6 +10,7 @@ import firebase from 'firebase';
 import {finalize} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-update',
@@ -27,8 +28,9 @@ export class UserUpdateComponent implements OnInit {
   // @ts-ignore
   currentUser: UserToken;
   // @ts-ignore
-  updateUserForm: FormGroup;
+  updateUserForm: any;
   arrayPicture = '';
+  show = '';
   constructor(
     private storage: AngularFireStorage,
     private userService: UserService,
@@ -39,16 +41,23 @@ export class UserUpdateComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) { }
-
+  // tslint:disable-next-line:typedef
+  get secondEmail(){
+    return this.updateUserForm.get('email');
+  }
+  // tslint:disable-next-line:typedef
+  get phone(){
+    return this.updateUserForm.get('phone');
+  }
   ngOnInit(): void {
       this.updateUserForm = this.fb.group({
         id: [''],
         username: [''],
         fullName: [''],
         address: [''],
-        phone: [''],
-        email: [''],
-        avatar: ['']
+        avatar: [''],
+        phone: new FormControl('', [Validators.required, Validators.pattern('(84|0[3|5|7|8|9])+([0-9]{8})\\b')]),
+        email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       });
       this.authService.currentUser.subscribe(value => {
         this.currentUser = value;
@@ -79,9 +88,10 @@ export class UserUpdateComponent implements OnInit {
       // this.user.avatar = this.updateUserForm.value.avatar;
       this.user.avatar = this.arrayPicture;
       this.userService.updateUser(this.user).subscribe(() => {
-        alert('Cập nhật User thành công!');
+        // alert('Cập nhật User thành công!');
+        this.show = 'Update Successful!';
         this.router.navigate(['/user-update', this.currentUser.username]);
-        window.location.href = '/user-update/' + this.currentUser.username;
+        // window.location.href = '/user-update/' + this.currentUser.username;
       }, error => {
         alert('Lỗi!');
       });

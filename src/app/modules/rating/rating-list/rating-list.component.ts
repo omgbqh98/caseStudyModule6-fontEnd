@@ -34,6 +34,7 @@ export class RatingListComponent implements OnInit {
   createNewCommentForm: FormGroup;
   sumRate = 0;
   avgRate = 0;
+  p = 1;
 
   // newComment: Rating;
 
