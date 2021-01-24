@@ -19,7 +19,10 @@ export class HousesImgService {
     return this.http.post<HousesImg>(API_URL + '/housesImg' + '/create', housesImg);
   }
 
+  // deleteOwnedHouseImg(id: number): Observable<HousesImg> {
+  //   return this.http.delete<HousesImg>('http://localhost:8080/housesImg/delete/' + id);
+  // }
   deleteOwnedHouseImg(id: number): Observable<HousesImg> {
-    return this.http.delete<HousesImg>('http://localhost:8080/housesImg/delete/' + id);
+    return this.http.delete<HousesImg>(API_URL + '/housesImg/' +'delete/'  + id);
   }
 }

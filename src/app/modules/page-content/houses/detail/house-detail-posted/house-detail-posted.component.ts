@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {HouseService} from '../../../../../service/house-service/house.service';
 import {HousesImg} from '../../../../../model/house-model/housesImg';
 import {House} from '../../../../../model/house-model/house';
+import {HousesImgService} from '../../../../../service/house-service/houses-img.service';
 // import {error} from "@angular/compiler/src/util";
 declare var $: any;
 
@@ -20,7 +21,8 @@ export class HouseDetailPostedComponent implements OnInit {
 
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private houseImgService : HousesImgService) {
   }
 
   ngOnInit(): void {
@@ -130,5 +132,15 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
       this.show = 'Changed successfully!';
     });
     this.id = id;
+  }
+  async deleteHousesImg(id : number) {
+    // const Id = id;
+    console.log(this.houseImg);
+    this.houseImgService.deleteOwnedHouseImg(id).subscribe()
+    // @ts-ignore
+    const deleteImgs = this.houseImg.indexOf(id)
+    this.houseImg.splice(deleteImgs,1)
+    // this.houseImg
+    return this.houseImg;
   }
 }
