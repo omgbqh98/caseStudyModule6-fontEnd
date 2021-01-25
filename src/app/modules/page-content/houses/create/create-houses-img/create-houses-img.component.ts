@@ -35,7 +35,7 @@ export class CreateHousesImgComponent implements OnInit {
   downloadURL: Observable<string>;
   Img: any[] = [];
   // @ts-ignore
-  mess: String;
+  mess: string;
 
 
 
@@ -82,14 +82,14 @@ export class CreateHousesImgComponent implements OnInit {
             console.log(this.downloadURL);
             if(this.Img.length == 2){
               this.Img[2]=url;
-              console.log(this.Img[2])
+              console.log(this.Img[2]);
             }
             if(this.Img.length == 1){
               this.Img[1]=url;
-              console.log(this.Img[1])
+              console.log(this.Img[1]);
             }
             if (this.Img.length == 0) {
-              this.Img[0] = url
+              this.Img[0] = url;
               console.log(this.Img[0])
             }
           });
@@ -132,12 +132,11 @@ export class CreateHousesImgComponent implements OnInit {
 
   async deleteHousesImg(Img: []) {
     const deleteImg = Img;
-    for (var i = 0; this.Img.length > i; i++) {
+    for (let i = 0; this.Img.length > i; i++) {
       if (deleteImg == this.Img[i] ) {
       // const deleteImgs = this.Img.indexOf(Img[i])
         this.Img.splice(i,1)
         this.mess = "Bạn Đã Xóa Thành Công"
-        return
       }
     }
   }
