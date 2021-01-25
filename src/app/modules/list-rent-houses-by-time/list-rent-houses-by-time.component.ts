@@ -3,6 +3,10 @@ import {HouseService} from '../../service/house-service/house.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {AuthService} from '../../service/authen-service/auth.service';
 import {UserService} from '../../service/user-service/user.service';
+// @ts-ignore
+import {User} from '../../../../../model/user-model/user';
+// @ts-ignore
+import {UserToken} from '../../../../../model/user-model/user-token';
 
 @Component({
   selector: 'app-list-rent-houses-by-time',
@@ -15,7 +19,7 @@ export class ListRentHousesByTimeComponent implements OnInit {
   total = 0;
   p = 1;
   // @ts-ignore
-  private user: User;
+  user: User;
   // @ts-ignore
   currentUser: UserToken;
 
