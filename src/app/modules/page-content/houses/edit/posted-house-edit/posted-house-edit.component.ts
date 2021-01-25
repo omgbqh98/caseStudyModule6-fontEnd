@@ -5,6 +5,10 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import firebase from 'firebase';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
+import {User} from '../../../../../model/user-model/user';
+import {UserToken} from '../../../../../model/user-model/user-token';
+import {AuthService} from '../../../../../service/authen-service/auth.service';
+import {UserService} from '../../../../../service/user-service/user.service';
 
 @Component({
   selector: 'app-posted-house-edit',
@@ -12,6 +16,10 @@ import {AngularFireStorage} from '@angular/fire/storage';
   styleUrls: ['./posted-house-edit.component.css']
 })
 export class PostedHouseEditComponent implements OnInit {
+  // @ts-ignore
+  private user: User;
+  // @ts-ignore
+  currentUser: UserToken;
   // @ts-ignore
   updateForm: FormGroup;
   id: any;
@@ -38,7 +46,17 @@ export class PostedHouseEditComponent implements OnInit {
               private ad: AngularFireDatabase,
               private fb: FormBuilder,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private authService: AuthService,
+              private userService: UserService) {
+    // @ts-ignore
+    this.authService.currentUser.subscribe(
+      // @ts-ignore
+      currentUser => {
+        // @ts-ignore
+        this.currentUser = currentUser;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -58,6 +76,12 @@ export class PostedHouseEditComponent implements OnInit {
       this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
+        this.authService.currentUser.subscribe(value => {
+          this.currentUser = value;
+          this.userService.getUserByUsername(value.username).subscribe(value1 => {
+            this.user = value1;
+          });
+        });
         this.arrayPicture = this.house.avatar;
         this.updateForm.setValue({
           houseName: this.house.houseName,

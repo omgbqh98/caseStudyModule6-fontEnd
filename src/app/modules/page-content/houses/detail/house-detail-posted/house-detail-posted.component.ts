@@ -4,6 +4,10 @@ import {HouseService} from '../../../../../service/house-service/house.service';
 import {HousesImg} from '../../../../../model/house-model/housesImg';
 import {House} from '../../../../../model/house-model/house';
 import {HousesImgService} from '../../../../../service/house-service/houses-img.service';
+import {AuthService} from '../../../../../service/authen-service/auth.service';
+import {UserService} from '../../../../../service/user-service/user.service';
+import {User} from '../../../../../model/user-model/user';
+import {UserToken} from '../../../../../model/user-model/user-token';
 // import {error} from "@angular/compiler/src/util";
 declare var $: any;
 
@@ -18,11 +22,25 @@ export class HouseDetailPostedComponent implements OnInit {
   id: any;
   houseImg: HousesImg[] = [];
   show = '';
+  // @ts-ignore
+  private user: User;
+  // @ts-ignore
+  currentUser: UserToken;
 
   constructor(private houseService: HouseService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private houseImgService : HousesImgService) {
+              private houseImgService: HousesImgService,
+              private authService: AuthService,
+              private userService: UserService) {
+    // @ts-ignore
+    this.authService.currentUser.subscribe(
+      // @ts-ignore
+      currentUser => {
+        // @ts-ignore
+        this.currentUser = currentUser;
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -30,6 +48,12 @@ export class HouseDetailPostedComponent implements OnInit {
       this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
+        this.authService.currentUser.subscribe(value => {
+          this.currentUser = value;
+          this.userService.getUserByUsername(value.username).subscribe(value1 => {
+            this.user = value1;
+          });
+        });
       });
       this.houseService.getAllHouseImg(this.id).subscribe(list => {
         setTimeout(() => {
@@ -75,7 +99,7 @@ export class HouseDetailPostedComponent implements OnInit {
               loop: true,
               margin: 0,
               nav: true,
-navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'],
+              navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'],
               responsive: {
                 0: {
                   items: 1,
@@ -105,7 +129,7 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
               nav: true,
               animateOut: 'fadeOut',
               animateIn: 'fadeInUp',
-navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'],
+              navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'],
               autoplayTimeout: 4000,
               autoplayHoverPause: true,
               responsive: {
@@ -133,13 +157,15 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
     });
     this.id = id;
   }
-  async deleteHousesImg(id : number) {
+
+  // tslint:disable-next-line:typedef
+  async deleteHousesImg(id: number) {
     // const Id = id;
     console.log(this.houseImg);
-    this.houseImgService.deleteOwnedHouseImg(id).subscribe()
+    this.houseImgService.deleteOwnedHouseImg(id).subscribe();
     // @ts-ignore
-    const deleteImgs = this.houseImg.indexOf(id)
-    this.houseImg.splice(deleteImgs,1)
+    const deleteImgs = this.houseImg.indexOf(id);
+    this.houseImg.splice(deleteImgs, 1);
     // this.houseImg
     return this.houseImg;
   }
