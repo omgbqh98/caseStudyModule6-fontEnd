@@ -48,12 +48,12 @@ export class HouseDetailPostedComponent implements OnInit {
       this.id = paramMap.get('id');
       this.houseService.getDetailHouse(this.id).subscribe((result) => {
         this.house = result;
-        this.authService.currentUser.subscribe(value => {
-          this.currentUser = value;
-          this.userService.getUserByUsername(value.username).subscribe(value1 => {
-            this.user = value1;
-          });
-        });
+        // this.authService.currentUser.subscribe(value => {
+        //   this.currentUser = value;
+        //   this.userService.getUserByUsername(value.username).subscribe(value1 => {
+        //     this.user = value1;
+        //   });
+        // });
       });
       this.houseService.getAllHouseImg(this.id).subscribe(list => {
         setTimeout(() => {
