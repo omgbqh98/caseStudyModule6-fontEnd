@@ -5,10 +5,10 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import firebase from 'firebase';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {User} from '../../../../../model/user-model/user';
 import {UserToken} from '../../../../../model/user-model/user-token';
 import {AuthService} from '../../../../../service/authen-service/auth.service';
 import {UserService} from '../../../../../service/user-service/user.service';
+import {User} from '../../../../../model/user-model/user';
 
 @Component({
   selector: 'app-posted-house-edit',
