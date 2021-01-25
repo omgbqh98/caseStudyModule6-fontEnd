@@ -141,7 +141,7 @@
           class="icon fa fa-tachometer fa-fw iconsmall" aria-hidden="true"
           title="Nhà của tôi"></i>&nbsp;History</a>
         <a class="dropdown-item"
-           href="/statistics/{{user.userId}}"
+           [routerLink]="['/statistics/',user.userId]"
            role="menuitem"><i
           class="icon fa fa-table fa-fw iconsmall" aria-hidden="true"
           title="Điểm"></i>&nbsp;Statistics</a>
