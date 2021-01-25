@@ -9,18 +9,32 @@
     </div>
   </div>
 </div>
-
-
-<div class="container">
-  <br><br>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="title-box-d section-t4">
-        <h3 class="title-d">Booking history</h3>
+<!--/ Intro Single star /-->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Booking history</h1>
+          <span class="color-text-a">Rocket Stay</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="''">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Booking history
+            </li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
-
+</section>
+<div class="container">
   <div class="wrapper">
     <table class="table table-bordered cart_summary">
       <thead>
@@ -68,7 +82,8 @@
           <!--        <button type="button" *ngIf="booking.houseId.status == 1" >da thue</button>-->
         </td>
         <td class="cart_avail">
-          <button *ngIf="booking.houseId.status !== 1" id="cancel" (click)="checkIn(booking.bookingId); clicked = true;"
+          <button data-toggle="modal"
+                  data-target=".bd-example-modal-lg" *ngIf="booking.houseId.status !== 1" id="cancel" (click)="checkIn(booking.bookingId); clicked = true;"
                   style="color: blue" class="btn btn-outline-primary">Check In
           </button>
           <button *ngIf="booking.houseId.status == 1" id="cancel" style="color: blue; cursor: not-allowed"

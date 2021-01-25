@@ -32,7 +32,7 @@
               <a [routerLink]="''">Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a [routerLink]="''">Profile</a>
+              <a [routerLink]="['/user-show',user.userId]">Profile</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
               House Detail
@@ -53,8 +53,11 @@
         <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
           <div class="carousel-item-b" *ngFor="let house of houseImg">
             <div>
-            <img src="{{house.link}}" alt="" style="width: 1200px !important; height: 601px !important;" class="img-a img-fluid">
-            <button style="float:right;position: relative;bottom: 38px"  class="btn btn-danger" (click)="deleteHousesImg(house.imageId)">delete</button>
+              <img src="{{house.link}}" alt="" style="width: 1200px !important; height: 601px !important;"
+                   class="img-a img-fluid">
+              <button style="float:right;position: relative;bottom: 38px" class="btn btn-danger"
+                      (click)="deleteHousesImg(house.imageId)">delete
+              </button>
             </div>
           </div>
         </div>

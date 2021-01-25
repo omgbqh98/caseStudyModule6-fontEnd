@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {User} from '../../../../../model/user-model/user';
 import {HousesImgService} from '../../../../../service/house-service/houses-img.service';
 import {HousesImg} from '../../../../../model/house-model/housesImg';
+
 declare var $: any;
 
 @Component({
@@ -14,7 +15,6 @@ declare var $: any;
 })
 export class HouseDetailViewComponent implements OnInit {
   house: any;
-  houseImgOne: any;
   // @ts-ignore
   id: number;
   // @ts-ignore
@@ -210,7 +210,4 @@ navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="io
     });
     // this.getAllHouses();
   }
-
-
-
 }
