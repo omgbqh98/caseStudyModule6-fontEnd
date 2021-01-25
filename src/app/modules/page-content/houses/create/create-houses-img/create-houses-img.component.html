@@ -1,3 +1,15 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        <br>
+        <h4 style=" color: #005cbf;position: relative;left: 260px">{{mess3}}</h4>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <br>
 <br>
@@ -33,7 +45,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-sm-4">
       <div class="tab-content">
         <div class="tab-pane active">
@@ -86,10 +97,8 @@
         </div>
       </div>
     </div>
-
     <div class="col-sm-5"  style="left: 520px ; top: 60px">
-      <button class="btn btn-lg btn-success" (click)="createHousesImg()" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+      <button data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-lg btn-success" (click)="createHousesImg()" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
     </div>
   </div>
 </div>
-
